@@ -1,22 +1,47 @@
-# degerkaybimi.com | Araç Değer Kaybı Hesaplama Sistemi
+# 🚗 degerkaybimi.com | Araç Değer Kaybı Çözüm Platformu
 
-Bu proje, trafik kazası sonrası araçlarda oluşan maddi değer kaybını şeffaf ve hızlı bir şekilde hesaplamak için geliştirilmiş bir web uygulamasıdır. Kullanıcıların yasal haklarını öğrenmelerini ve uzman danışmanlığa kolayca erişmelerini sağlar.
+**degerkaybimi.com**, trafik kazası sonrası araç sahiplerinin yaşadığı maddi kayıpları minimize etmek ve yasal haklarına ulaşmalarını kolaylaştırmak için tasarlanmış, veriye dayalı bir hesaplama ve yönlendirme (lead generation) platformudur.
 
-## 🚀 Proje Özellikleri
+---
 
-* **Akıllı Hesaplama Motoru:** Aracın kilometresi, piyasa değeri ve hasar derecesine göre Sigorta Tahkim standartlarına yakın tahmini sonuçlar üretir.
-* **Mobil Uyumlu Tasarım:** Tailwind CSS altyapısı ile telefon, tablet ve bilgisayarlarda kusursuz görüntülenir.
-* **Anlık İletişim Entegrasyonu:** WhatsApp üzerinden uzman danışmanlara doğrudan erişim imkanı sağlar.
-* **SEO Odaklı İçerik:** Google aramalarında üst sıralara çıkmak için optimize edilmiş başlık ve açıklama yapıları.
-* **Hızlı Performans:** Vercel üzerinde barındırılan statik yapı sayesinde milisaniyeler içinde yüklenir.
+## 🌟 Güncel Özellikler
 
-## 🛠 Teknik Detaylar
+### 1. Gelişmiş Hesaplama Motoru
+* **Dinamik Algoritma:** Araç kilometresi, piyasa rayiç bedeli ve hasar şiddetini (hafif, orta, ağır) baz alan hibrit hesaplama sistemi.
+* **Anlık Görselleştirme:** Kullanıcı veriyi girdiği anda sonuçları şık bir kart içerisinde sunan reaktif arayüz.
 
-* **Dil:** HTML5, Modern JavaScript (ES6+)
-* **Tasarım:** Tailwind CSS 3.0
-* **Barındırma:** Vercel (CI/CD entegrasyonu ile)
-* **Kaynak Kontrolü:** GitHub
+### 2. Profesyonel Kullanıcı Deneyimi (UX/UI)
+* **Modern Teknoloji:** Tailwind CSS altyapısı ile temiz, güven veren ve kurumsal renk paleti.
+* **Fully Responsive:** Tüm mobil cihazlarda ve tabletlerde kusursuz çalışan, "Mobile-First" yaklaşımıyla geliştirilmiş tasarım.
+* **Etkileşimli Butonlar:** Kullanıcıyı harekete geçiren (CTA) animasyonlu "Hemen Hesapla" ve "Uzmana Danış" butonları.
 
-## 📈 Para Kazanma Modeli (Lead Generation)
+### 3. Dönüşüm ve İletişim Odaklılık
+* **WhatsApp API Entegrasyonu:** Tek tıkla doğrudan profesyonel destek hattına bağlanma özelliği.
+* **Bilgilendirme Bölümü:** 2 yıl zaman aşımı ve kusur oranı gibi kritik yasal bilgilerin sunulduğu rehber alanlar.
 
-Bu site, kaza mağdurları ile sigorta hukuku uzmanları arasında bir köprü kurmak için tasarlanmıştır. Hesaplama yapan kullanıcılar, uzman desteği için yönlendirilerek yüksek dönüşümlü müşteri adayına (lead) dönüştürülür.
+---
+
+## 🛠 Teknik Mimari
+
+* **Frontend:** HTML5, Modern ES6+ JavaScript.
+* **Styling:** Tailwind CSS (CDN).
+* **Deployment:** Vercel (Auto-deploy on GitHub push).
+* **Performance:** %100 Statik içerik sayesinde milisaniye bazında sayfa yüklenme hızı (Lighthouse puanı odaklı).
+
+---
+
+## 📈 Proje Hedefi
+
+Bu platform, sigorta hukuku ve araç ekspertiz sektöründe faaliyet gösteren profesyoneller için **nitelikli müşteri adayı (Lead)** üretmek üzere optimize edilmiştir. Google SEO uyumlu başlık yapısı ile organik trafikte "değer kaybı hesaplama" aramalarında üst sıraları hedeflemektedir.
+
+---
+
+## 🔧 Kurulum ve Geliştirme
+
+1.  Bu repoyu bilgisayarınıza klonlayın.
+2.  `index.html` dosyasını herhangi bir tarayıcıda açarak önizleme yapın.
+3.  Numara değişikliği için `index.html` içindeki WhatsApp linkini güncelleyin.
+4.  Değişiklikleri `main` branch'ine push ederek Vercel üzerinde otomatik olarak yayına alın.
+
+---
+© 2026 degerkaybimi.com - Tüm Hakları Saklıdır.
