@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araç Değer Kaybı Hesaplama | degerkaybimi.com</title>
+    <meta name="description" content="Ücretsiz araç değer kaybı hesaplayın. Sigorta tahkim süreci ile tazminatınızı geri alın.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="text-2xl font-black text-blue-700 tracking-tighter">DEGERKAYBIMI<span class="text-slate-400">.com</span></div>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#nasil" class="hover:text-blue-600">Nasıl Alınır?</a>
+                <a href="#hesapla" class="hover:text-blue-600">Hesaplama</a>
+                <a href="#sss" class="hover:text-blue-600">S.S.S</a>
+            </div>
+            <a href="https://wa.me/905000000000" class="bg-green-500 text-white px-5 py-2 rounded-full font-bold flex items-center gap-2">
+                <i class="fab fa-whatsapp"></i> WhatsApp Destek
+            </a>
+        </div>
+    </nav>
+
+    <header class="py-16 px-4 bg-gradient-to-r from-blue-700 to-blue-900 text-white text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Kaza Yaptıysanız <br>Paranızı Sigortadan Alalım!</h1>
+        <p class="text-xl opacity-90 mb-10 max-w-2xl mx-auto">Son 2 yıl içindeki kazalarınızda aracınızda oluşan değer kaybını profesyonel ekibimizle tahsil ediyoruz.</p>
+        <a href="#hesapla" class="bg-orange-500 hover:bg-orange-600 px-10 py-4 rounded-xl text-xl font-bold transition-all shadow-lg">
+            Hemen Ücretsiz Hesapla
+        </a>
+    </header>
+
+    <section id="hesapla" class="py-16 px-4">
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2">
+            <div class="p-8 bg-slate-100">
+                <h3 class="text-2xl font-bold mb-6">Hesaplama Aracı</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Araç Kilometresi</label>
+                        <input type="number" id="km" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Örn: 45000">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Piyasa Değeri (Yaklaşık)</label>
+                        <input type="number" id="val" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Örn: 950000">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Hasar Türü</label>
