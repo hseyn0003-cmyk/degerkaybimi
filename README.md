@@ -1,47 +1,44 @@
-# 🚗 degerkaybimi.com | Araç Değer Kaybı Çözüm Platformu
+# 🚗 degerkaybimi.com | Araç Değer Kaybı Hesaplama Platformu
 
-**degerkaybimi.com**, trafik kazası sonrası araç sahiplerinin yaşadığı maddi kayıpları minimize etmek ve yasal haklarına ulaşmalarını kolaylaştırmak için tasarlanmış, veriye dayalı bir hesaplama ve yönlendirme (lead generation) platformudur.
-
----
-
-## 🌟 Güncel Özellikler
-
-### 1. Gelişmiş Hesaplama Motoru
-* **Dinamik Algoritma:** Araç kilometresi, piyasa rayiç bedeli ve hasar şiddetini (hafif, orta, ağır) baz alan hibrit hesaplama sistemi.
-* **Anlık Görselleştirme:** Kullanıcı veriyi girdiği anda sonuçları şık bir kart içerisinde sunan reaktif arayüz.
-
-### 2. Profesyonel Kullanıcı Deneyimi (UX/UI)
-* **Modern Teknoloji:** Tailwind CSS altyapısı ile temiz, güven veren ve kurumsal renk paleti.
-* **Fully Responsive:** Tüm mobil cihazlarda ve tabletlerde kusursuz çalışan, "Mobile-First" yaklaşımıyla geliştirilmiş tasarım.
-* **Etkileşimli Butonlar:** Kullanıcıyı harekete geçiren (CTA) animasyonlu "Hemen Hesapla" ve "Uzmana Danış" butonları.
-
-### 3. Dönüşüm ve İletişim Odaklılık
-* **WhatsApp API Entegrasyonu:** Tek tıkla doğrudan profesyonel destek hattına bağlanma özelliği.
-* **Bilgilendirme Bölümü:** 2 yıl zaman aşımı ve kusur oranı gibi kritik yasal bilgilerin sunulduğu rehber alanlar.
+**degerkaybimi.com**, trafik kazası sonrası araç sahiplerinin hak ettikleri maddi tazminatı öğrenmeleri ve hukuk süreçlerine hızlıca dahil olmaları için geliştirilmiş bir **Dijital Hesaplama ve Danışmanlık** aracıdır.
 
 ---
 
-## 🛠 Teknik Mimari
+## 🚀 Öne Çıkan Özellikler
 
-* **Frontend:** HTML5, Modern ES6+ JavaScript.
-* **Styling:** Tailwind CSS (CDN).
-* **Deployment:** Vercel (Auto-deploy on GitHub push).
-* **Performance:** %100 Statik içerik sayesinde milisaniye bazında sayfa yüklenme hızı (Lighthouse puanı odaklı).
+### ✅ Akıllı Hesaplama Motoru
+* **Gerçekçi Algoritma:** Kilometre, piyasa değeri ve hasar derecesine dayalı Sigorta Tahkim standartlarına yakın hesaplama.
+* **Hızlı Sonuç:** Kullanıcı verilerini girdiği anda sayfa yenilenmeden tahmini tazminat miktarını görüntüler.
+
+### 🎨 Modern ve Profesyonel Arayüz
+* **Tailwind CSS Gücü:** Temiz, güven verici ve tamamen mobil uyumlu (responsive) tasarım.
+* **Kullanıcı Dostu UX:** Karmaşık formlar yerine sade ve anlaşılır bir veri giriş ekranı.
+
+### 📩 Dönüşüm (Conversion) Araçları
+* **WhatsApp Destek Hattı:** Tek tuşla uzman danışmanlara doğrudan erişim imkanı.
+* **Bilgilendirme Panelleri:** Kullanıcılara 2 yıllık zaman aşımı ve hak arama yolları hakkında pratik bilgiler sunar.
+
+---
+
+## 🛠 Teknik Altyapı
+
+| Teknoloji | Kullanım Amacı |
+| :--- | :--- |
+| **HTML5** | İskelet Yapısı |
+| **Tailwind CSS** | Modern Tasarım ve Mobil Uyumluluk |
+| **JavaScript (ES6+)** | Hesaplama Algoritması |
+| **Vercel** | Hosting ve Cloud Dağıtım |
+| **GitHub** | Kaynak Kod Yönetimi |
 
 ---
 
-## 📈 Proje Hedefi
+## ⚙️ Kurulum ve Özelleştirme
 
-Bu platform, sigorta hukuku ve araç ekspertiz sektöründe faaliyet gösteren profesyoneller için **nitelikli müşteri adayı (Lead)** üretmek üzere optimize edilmiştir. Google SEO uyumlu başlık yapısı ile organik trafikte "değer kaybı hesaplama" aramalarında üst sıraları hedeflemektedir.
+Projeyi kendi ihtiyaçlarınıza göre güncellemek için şu adımları izleyebilirsiniz:
 
----
-
-## 🔧 Kurulum ve Geliştirme
-
-1.  Bu repoyu bilgisayarınıza klonlayın.
-2.  `index.html` dosyasını herhangi bir tarayıcıda açarak önizleme yapın.
-3.  Numara değişikliği için `index.html` içindeki WhatsApp linkini güncelleyin.
-4.  Değişiklikleri `main` branch'ine push ederek Vercel üzerinde otomatik olarak yayına alın.
+1.  **Numara Güncelleme:** `index.html` dosyasındaki `https://wa.me/90...` satırını kendi telefon numaranızla değiştirin.
+2.  **Renk Ayarları:** Tailwind sınıflarını (Örn: `bg-blue-600`) değiştirerek markanıza uygun renkleri uygulayın.
+3.  **Yayınlama:** Değişiklikleri GitHub'a "push" edin; Vercel saniyeler içinde sitenizi güncelleyecektir.
 
 ---
-© 2026 degerkaybimi.com - Tüm Hakları Saklıdır.
+*Bu proje kaza mağdurlarının hak kaybına uğramaması için bir sosyal sorumluluk ve danışmanlık girişimi olarak tasarlanmıştır.*
