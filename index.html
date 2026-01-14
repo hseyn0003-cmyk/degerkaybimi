@@ -84,4 +84,80 @@
                         <label class="block text-[10px] font-bold uppercase text-slate-400 mb-2 ml-2">Hasar Tutarı (TL)</label>
                         <input type="number" id="input_hasar" placeholder="Örn: 35000" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none font-bold">
                     </div>
-                    <button onclick="hesaplamaMotorunuCalistir()" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl hover:bg-blue-700 transition shadow-lg
+                    <button onclick="hesaplamaMotorunuCalistir()" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl hover:bg-blue-700 transition shadow-lg uppercase tracking-widest italic">
+                        Analizi Başlat
+                    </button>
+                </div>
+
+                <div id="sonuc_paneli" class="mt-8 hidden border-t pt-8 animate-pulse text-center">
+                    <p class="text-xs font-bold text-blue-600 uppercase mb-2">Tahmini Tazminat Tutarınız</p>
+                    <p id="tazminat_sonucu" class="text-4xl font-black text-slate-900 mb-6 tracking-tighter"></p>
+                    <button onclick="kaydetVeIletisimeGec()" class="w-full bg-green-600 text-white font-black py-4 rounded-xl hover:bg-green-700 transition uppercase text-sm">
+                        Hemen Başvuruyu Tamamla
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-slate-200 opacity-50">
+        <p class="text-[10px] font-bold uppercase tracking-[1em]">© 2026 DEGERKAYBIMI.COM <a href="https://docs.google.com/spreadsheets/d/1559J9vswdCxP_4bb_tX3sXTSfSQXy9UIQf5wvqPOH0Q/edit" target="_blank" class="text-slate-200">●</a></p>
+    </footer>
+
+    <script>
+        let globalVeri = {};
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxT1I3o_S2uI_zW-Z5uG-O8_i4y7_F1vX2b_x5A/exec';
+
+        // %100 Çalışan Hesaplama Fonksiyonu
+        function hesaplamaMotorunuCalistir() {
+            // Butona tıklandığını doğrula (Konsolda görünür)
+            console.log("Fonksiyon tetiklendi!");
+
+            const km = document.getElementById('input_km').value;
+            const hasar = document.getElementById('input_hasar').value;
+
+            if (km && hasar) {
+                // Sektörel Analiz Hesaplaması
+                let oran = km > 165000 ? 0.30 : (km > 100000 ? 0.50 : 0.85);
+                let tazminat = (hasar * oran * 0.73);
+                let formatliSonuc = tazminat.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + " ₺";
+
+                // Sonucu Ekrana Yazdır
+                document.getElementById('tazminat_sonucu').innerText = formatliSonuc;
+                document.getElementById('sonuc_paneli').classList.remove('hidden');
+                
+                // Verileri sakla
+                globalVeri = { km, hasar, tutar: formatliSonuc };
+                
+                // Sayfayı kaydır
+                document.getElementById('sonuc_paneli').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Lütfen tüm alanları doldurunuz.");
+            }
+        }
+
+        async function kaydetVeIletisimeGec() {
+            const btn = event.target;
+            btn.innerText = "YÖNLENDİRİLİYOR...";
+            btn.disabled = true;
+
+            try {
+                // Google Sheets Kaydı
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(globalVeri) });
+
+                // Mail Hazırla
+                const mail = "hseyn0003@gmail.com";
+                const konu = encodeURIComponent("Yeni Değer Kaybı Başvurusu - " + globalVeri.km + " KM");
+                const icerik = encodeURIComponent("Bilgiler:\nKM: " + globalVeri.km + "\nHasar: " + globalVeri.hasar + " TL\nTahmini: " + globalVeri.tutar);
+                
+                window.location.href = `mailto:${mail}?subject=${konu}&body=${icerik}`;
+            } catch (e) {
+                console.error(e);
+            } finally {
+                btn.innerText = "BAŞVURUYU TAMAMLA";
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
