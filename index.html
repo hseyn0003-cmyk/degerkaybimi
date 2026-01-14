@@ -9,7 +9,8 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
         .bento-card { background: white; border-radius: 2.5rem; border: 1px solid #f1f5f9; }
-        .loading { pointer-events: none; opacity: 0.6; }
+        .loading { pointer-events: none; opacity: 0.6; cursor: not-allowed; }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-6 text-slate-900">
@@ -34,13 +35,13 @@
             </button>
         </div>
 
-        <div id="sonucAlani" class="mt-8 hidden animate-bounce">
+        <div id="sonucAlani" class="mt-8 hidden">
             <div class="p-8 bg-blue-50 rounded-[2.5rem] border-2 border-blue-100 text-center">
                 <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Tahmini Tazminatınız</p>
-                <p id="tutar" class="text-4xl font-black text-slate-900 tracking-tighter"></p>
-                <div class="mt-6 pt-6 border-t border-blue-100">
-                   <button onclick="veriyiKaydetVeGonder(event)" class="w-full bg-white text-blue-600 px-8 py-3 rounded-xl font-bold text-sm shadow-sm hover:bg-blue-50 transition border border-blue-200 uppercase tracking-wider italic">
-                     Admin Paneline Kaydet & Başvur
+                <p id="tutar" class="text-4xl font-black text-slate-900 tracking-tighter mb-6"></p>
+                <div class="pt-6 border-t border-blue-100">
+                   <button id="submitBtn" onclick="veriyiKaydetVeGonder(event)" class="w-full bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-sm shadow-lg hover:bg-blue-700 transition uppercase tracking-wider italic">
+                     Hemen Başvuruyu Tamamla
                    </button>
                 </div>
             </div>
@@ -51,7 +52,7 @@
 
     <script>
         let hesaplananVeri = {};
-        // Google Script URL'nizi buraya otomatik işledim
+        // Sizin Google Apps Script URL'niz
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxT1I3o_S2uI_zW-Z5uG-O8_i4y7_F1vX2b_x5A/exec';
 
         function hesapla() {
@@ -61,6 +62,7 @@
             const tutarP = document.getElementById('tutar');
 
             if(km && hasar) {
+                // 2026 Değer Kaybı Formülü (Temsili)
                 let carpan = km > 165000 ? 0.28 : (km > 100000 ? 0.48 : 0.86);
                 let sonucNum = (hasar * carpan * 0.72);
                 let sonucStr = sonucNum.toLocaleString('tr-TR', { minimumFractionDigits: 2 });
@@ -69,37 +71,43 @@
                 hesaplananVeri = { km: km, hasar: hasar, tutar: sonucStr + " ₺" };
                 sonucAlani.classList.remove('hidden');
                 sonucAlani.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Lütfen tüm alanları doldurun.");
             }
         }
 
-        function veriyiKaydetVeGonder(event) {
-            const btn = event.target;
-            const originalText = btn.innerText;
-            btn.innerText = "Kaydediliyor...";
+        async function veriyiKaydetVeGonder(event) {
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "Sisteme Kaydediliyor...";
             btn.classList.add('loading');
 
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(hesaplananVeri)
-            })
-            .then(() => {
-                alert("Başvuru admin paneline kaydedildi! Mail taslağı açılıyor.");
+            try {
+                // Veriyi Google Sheets'e gönder
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(hesaplananVeri)
+                });
+                
+                // Başarılı kayıttan sonra Mail yönlendirmesi
                 yönlendirMail();
-                btn.innerText = originalText;
-                btn.classList.remove('loading');
-            })
-            .catch(error => {
+                
+            } catch (error) {
                 console.error('Hata:', error);
+                // Hata olsa bile kullanıcıyı mağdur etmemek için maili aç
                 yönlendirMail();
-            });
+            } finally {
+                btn.innerText = "Hemen Başvuruyu Tamamla";
+                btn.classList.remove('loading');
+            }
         }
 
         function yönlendirMail() {
-            let subject = encodeURIComponent("Yeni Değer Kaybı Başvurusu - " + hesaplananVeri.km + " KM");
-            let body = encodeURIComponent("Merhaba,\n\nHesaplama detayları:\nKM: " + hesaplananVeri.km + "\nHasar: " + hesaplananVeri.hasar + " TL\nTahmini: " + hesaplananVeri.tutar);
-            window.location.href = "mailto:hseyn0003@gmail.com?subject=" + subject + "&body=" + body;
+            const mail = "hseyn0003@gmail.com";
+            const subject = encodeURIComponent("Yeni Değer Kaybı Başvurusu - " + hesaplananVeri.km + " KM");
+            const body = encodeURIComponent("Merhaba,\n\nSitenizden yapılan hesaplama sonucu bilgilerim:\n\nAraç KM: " + hesaplananVeri.km + "\nHasar Tutarı: " + hesaplananVeri.hasar + " TL\nTahmini Tazminat: " + hesaplananVeri.tutar + "\n\nGeri dönüşünüzü bekliyorum.");
+            window.location.href = "mailto:" + mail + "?subject=" + subject + "&body=" + body;
         }
     </script>
 </body>
