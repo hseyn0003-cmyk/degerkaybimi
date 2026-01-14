@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araç Değer Kaybı Hesaplama 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
+        .bento-card { background: white; border-radius: 2rem; border: 1px solid #f1f5f9; transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-md w-full">
+        <div class="bento-card p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <span class="bg-blue-100 text-blue-700 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">GÜNCEL 2026</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 mt-4">Değer Kaybı <span class="text-blue-600">Sorgula</span></h1>
+            </div>
+            <div class="space-y-5">
+                <input type="number" id="km" placeholder="Araç Kilometresi" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+                <input type="number" id="hasar" placeholder="Hasar Tutarı (TL)" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+                <button onclick="hesapla()" class="w-full bg-blue-600 text-white font-extrabold py-5 rounded-2xl shadow-lg hover:bg-blue-700 transition active:scale-95 uppercase">HESAPLA</button>
+            </div>
+            <div id="sonucAlani" class="mt-8 hidden">
+                <div class="p-6 bg-blue-50 rounded-3xl border border-blue-100 text-center">
+                    <p class="text-blue-600 text-xs font-bold uppercase mb-1">Tahmini Alacağınız</p>
+                    <p id="tutar" class="text-4xl font-black text-slate-900 tracking-tighter mb-4"></p>
+                    <a href="https://wa.me/905000000000" class="block bg-white text-slate-900 py-3 rounded-xl font-bold text-sm shadow-sm border border-slate-200">WhatsApp Başvuru</a>
+                </div>
+            </div>
+            <p class="text-center mt-8 text-[9px] text-slate-400 font-bold uppercase tracking-widest">© 2026 DEGERKAYBIMI.COM</p>
+        </div>
+    </div>
+    <script>
+        function hesapla() {
+            const km = document.getElementById('km').value;
+            const hasar = document.getElementById('hasar').value;
+            const sonucAlani = document.getElementById('sonucAlani');
+            const tutarP = document.getElementById('tutar');
+            if(km && hasar) {
+                let carpan = km > 150000 ? 0.35 : (km > 100000 ? 0.55 : 0.85);
+                let sonuc = (hasar * carpan * 0.75).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
+                tutarP.innerText = sonuc + " ₺";
+                sonucAlani.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
