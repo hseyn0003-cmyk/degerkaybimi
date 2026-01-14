@@ -1,44 +1,38 @@
-# 🚗 degerkaybimi.com | Araç Değer Kaybı Hesaplama Platformu
+# 🚗 Araç Değer Kaybı Analiz Sistemi
 
-**degerkaybimi.com**, trafik kazası sonrası araç sahiplerinin hak ettikleri maddi tazminatı öğrenmeleri ve hukuk süreçlerine hızlıca dahil olmaları için geliştirilmiş bir **Dijital Hesaplama ve Danışmanlık** aracıdır.
+Bu proje, trafik kazası sonrası araçlarda oluşan değer kaybını hukuki katsayılar kullanarak hesaplayan ve potansiyel müşteri verilerini **Google E-Tablolar**'a anlık olarak ileten modern bir web uygulamasıdır.
 
----
 
-## 🚀 Öne Çıkan Özellikler
 
-### ✅ Akıllı Hesaplama Motoru
-* **Gerçekçi Algoritma:** Kilometre, piyasa değeri ve hasar derecesine dayalı Sigorta Tahkim standartlarına yakın hesaplama.
-* **Hızlı Sonuç:** Kullanıcı verilerini girdiği anda sayfa yenilenmeden tahmini tazminat miktarını görüntüler.
+## 🌟 Özellikler
 
-### 🎨 Modern ve Profesyonel Arayüz
-* **Tailwind CSS Gücü:** Temiz, güven verici ve tamamen mobil uyumlu (responsive) tasarım.
-* **Kullanıcı Dostu UX:** Karmaşık formlar yerine sade ve anlaşılır bir veri giriş ekranı.
+- **Akıllı Hesaplama:** Hasar tutarı ve kilometre verilerine dayalı hukuki analiz.
+- **Anlık Veri Kaydı:** Form verileri Google Apps Script aracılığıyla doğrudan Google Sheets'e iletilir.
+- **Modern Arayüz:** Plus Jakarta Sans yazı tipi ve akıcı CSS animasyonları ile kullanıcı dostu tasarım.
+- **Mobil Uyumluluk:** Tüm telefon ve tabletlerle %100 uyumlu responsive yapı.
 
-### 📩 Dönüşüm (Conversion) Araçları
-* **WhatsApp Destek Hattı:** Tek tuşla uzman danışmanlara doğrudan erişim imkanı.
-* **Bilgilendirme Panelleri:** Kullanıcılara 2 yıllık zaman aşımı ve hak arama yolları hakkında pratik bilgiler sunar.
+## 🛠️ Teknoloji Yığınları
 
----
+- **Frontend:** HTML5, CSS3 (Modern Flexbox), JavaScript (ES6+)
+- **Backend:** Google Apps Script (Serverless)
+- **Veri Depolama:** Google Sheets API
+- **Barındırma:** GitHub Pages
 
-## 🛠 Teknik Altyapı
+## 📋 Kurulum ve Dağıtım
 
-| Teknoloji | Kullanım Amacı |
-| :--- | :--- |
-| **HTML5** | İskelet Yapısı |
-| **Tailwind CSS** | Modern Tasarım ve Mobil Uyumluluk |
-| **JavaScript (ES6+)** | Hesaplama Algoritması |
-| **Vercel** | Hosting ve Cloud Dağıtım |
-| **GitHub** | Kaynak Kod Yönetimi |
+Sistemi kendi alan adınızda çalıştırmak için:
 
----
+1. Bu depoyu (repository) fork'layın veya kopyalayın.
+2. `index.html` içindeki `scriptURL` değişkenini kendi Google Apps Script URL'nizle değiştirin.
+3. GitHub Ayarlarından **Pages** sekmesine giderek `main` dalını yayına alın.
+4. Alan adı (Custom Domain) ayarlarınızı yaparak HTTPS sertifikasını aktif edin.
 
-## ⚙️ Kurulum ve Özelleştirme
+## 📊 Veri Akışı Nasıl Çalışır?
 
-Projeyi kendi ihtiyaçlarınıza göre güncellemek için şu adımları izleyebilirsiniz:
-
-1.  **Numara Güncelleme:** `index.html` dosyasındaki `https://wa.me/90...` satırını kendi telefon numaranızla değiştirin.
-2.  **Renk Ayarları:** Tailwind sınıflarını (Örn: `bg-blue-600`) değiştirerek markanıza uygun renkleri uygulayın.
-3.  **Yayınlama:** Değişiklikleri GitHub'a "push" edin; Vercel saniyeler içinde sitenizi güncelleyecektir.
+1. Kullanıcı site üzerindeki formu doldurur.
+2. JavaScript, verileri JSON formatına dönüştürür.
+3. `fetch` API ile Google Apps Script'e `POST` isteği gönderilir.
+4. Script, gelen veriyi yakalar ve Google E-Tablo'ya yeni bir satır olarak ekler.
 
 ---
-*Bu proje kaza mağdurlarının hak kaybına uğramaması için bir sosyal sorumluluk ve danışmanlık girişimi olarak tasarlanmıştır.*
+*Bu proje hseyn0003-cmyk tarafından geliştirilmiştir.*
