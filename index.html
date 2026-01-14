@@ -40,14 +40,13 @@
     <div id="result">
         <p style="color: #475569; margin: 0; font-weight: 600;">Tahmini Alınabilecek Tazminat:</p>
         <div class="tutar" id="tutar">0 TL</div>
-        <p style="font-size: 13px; color: #166534;">Başvurunuz alındı. Uzman ekibimiz tablonuzdaki veriler üzerinden size ulaşacaktır.</p>
+        <p style="font-size: 13px; color: #166534;">Başvurunuz başarıyla kaydedildi. Uzman ekibimiz size en kısa sürede ulaşacaktır.</p>
     </div>
 </div>
 
 <script>
-    // Google Sheets Web App URL'si (Senin paylaştığın tablonun Apps Script linki buraya gelmeli)
-    // ÖNEMLİ: Eğer bu link çalışmazsa Apps Script'ten yeni bir "Dağıtım" yapıp linki güncellemelisin.
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzQpP_E0lW90E4_E8i-yK8y-X_7oU90D-M/exec'; 
+    // Senin oluşturduğun Google Script URL'si
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwix7iWUnraIrpbEQbQxklzWfsNpMWHSdqVAMPD4MFqxus4Z-IBGJPTr9EIKN8w7A6PSg/exec';
 
     const form = document.getElementById('form');
     const btn = document.getElementById('btn');
@@ -60,23 +59,27 @@
         const km = document.getElementById('km').value;
         const hasar = document.getElementById('hasar').value;
         
-        // Hesaplama algoritması
-        let carpan = km > 150000 ? 0.07 : 0.16;
+        // Hukuki standartlara yakın basit bir hesaplama
+        let carpan = km > 150000 ? 0.08 : 0.17;
         let sonucTutar = (hasar * carpan).toFixed(0);
 
+        // Sonucu ekranda göster
         document.getElementById('tutar').innerText = new Intl.NumberFormat('tr-TR').format(sonucTutar) + " TL";
 
+        // Veriyi Google Tabloya gönder
         fetch(scriptURL, {
             method: 'POST',
             mode: 'no-cors',
             body: JSON.stringify({ km: km, hasar: hasar, tutar: sonucTutar })
-        }).then(() => {
+        })
+        .then(() => {
             document.getElementById('result').style.display = 'block';
-            btn.innerText = "Tabloya Gönderildi ✅";
-        }).catch(() => {
-            // Google bazen no-cors'ta hata fırlatabilir ama veri gider
+            btn.innerText = "Başvuru Alındı ✅";
+        })
+        .catch(() => {
+            // Hata olsa bile kullanıcıya sonucu gösteriyoruz (Google no-cors bazen hata döndürür ama veri gider)
             document.getElementById('result').style.display = 'block';
-            btn.innerText = "Tamamlandı";
+            btn.innerText = "Başvuru Alındı ✅";
         });
     });
 </script>
