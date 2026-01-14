@@ -3,47 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEĞER KAYBI AI | Profesyonel Danışmanlık</title>
+    <title>DEĞER KAYBI AI | Yapay Zeka Destekli Analiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f1a; color: white; overflow-x: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .accent-gradient { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); }
-        .hero-image { mask-image: linear-gradient(to right, black 70%, transparent 100%); }
+        body { font-family: 'Roboto', sans-serif; background: #0a0a0a; color: #e0e0e0; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
+        .hero-section {
+            background: radial-gradient(circle at center, rgba(17, 24, 39, 0.8) 0%, #0a0a0a 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-face {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; /* Kontrol edilebilir boyut */
+            max-width: 900px; /* Maksimum genişlik */
+            height: auto;
+            opacity: 0.15;
+            pointer-events: none;
+            filter: grayscale(100%) brightness(50%) contrast(150%) blur(1px); /* Daha soyut bir AI efekti */
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+        }
+        .neon-text {
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
+        }
+        .neon-border-blue { border-color: #0ff; box-shadow: 0 0 10px rgba(0,255,255,0.5); }
+        .neon-border-purple { border-color: #f0f; box-shadow: 0 0 10px rgba(255,0,255,0.5); }
+        .neon-border-green { border-color: #0f0; box-shadow: 0 0 10px rgba(0,255,0,0.5); }
+        input[type="number"] {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #e0e0e0 !important;
+        }
+        input[type="number"]:focus {
+            border-color: #0ff !important;
+            box-shadow: 0 0 8px rgba(0,255,255,0.6) !important;
+        }
     </style>
 </head>
 <body>
 
-    <nav class="p-6 flex justify-between items-center relative z-20 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-tighter italic">AI.<span class="text-blue-500">DEĞERKAYBI</span></div>
-        <a href="mailto:hseyn0003@gmail.com" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full text-xs font-bold transition uppercase tracking-widest shadow-lg shadow-blue-900/20">Ücretsiz Danışın</a>
-    </nav>
-
-    <main class="relative z-10 px-6 pt-10 pb-24 overflow-hidden">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
-            
-            <div class="lg:col-span-5 relative hidden lg:block">
-                <div class="absolute -inset-10 bg-blue-600/20 blur-[120px] rounded-full"></div>
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800" 
-                     alt="Danışman" 
-                     class="relative z-10 rounded-[3rem] shadow-2xl hero-image border border-white/10 grayscale-[30%] hover:grayscale-0 transition duration-700">
-                <div class="absolute bottom-10 left-10 z-20 glass p-6 rounded-2xl border-l-4 border-l-blue-500">
-                    <p class="text-sm font-bold italic">"Size yardımcı olmak için buradayım."</p>
-                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-bold text-blue-400">Dosya Uzmanı</p>
-                </div>
-            </div>
-
-            <div class="lg:col-span-7 space-y-12">
-                <div>
-                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter italic">
-                        Hak Ettiğiniz <br><span class="text-transparent bg-clip-text accent-gradient uppercase">Tazminatı Alın.</span>
-                    </h1>
-                    <p class="mt-6 text-slate-400 text-lg max-w-xl italic leading-relaxed">
-                        Aracınızdaki değer kaybını uzman ekibimizle profesyonelce yönetiyoruz. Tek yapmanız gereken verileri girip analizi başlatmak.
-                    </p>
-                </div>
-
-                <div class="glass p-8 md:p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-8 opacity-10">
-                        <svg width="100" height="100" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8
+    <img src="
