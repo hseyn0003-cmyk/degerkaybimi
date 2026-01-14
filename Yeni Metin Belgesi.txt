@@ -41,7 +41,7 @@
                 <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-extrabold shadow-lg shadow-blue-200">DK</div>
                 <span class="text-xl font-extrabold tracking-tight">degerkaybimi<span class="text-blue-600">.com</span></span>
             </div>
-            <a href="https://wa.me/905000000000" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md transition-transform active:scale-95 flex items-center gap-2">
+            <a href="https://wa.me/905000000000" target="_blank" rel="noopener" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md transition-transform active:scale-95 flex items-center gap-2">
                 WhatsApp Danışma
             </a>
         </nav>
@@ -52,8 +52,3 @@
             
             <section class="lg:col-span-8 bento-card p-10 md:p-16 flex flex-col justify-center animate-in">
                 <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest w-fit mb-6">2026 Güncel Mevzuat</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 text-slate-900">
-                    Aracınızdaki Kaybı <br><span class="gradient-text italic">Nakit'e Dönüştürün.</span>
-                </h1>
-                <p class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
-                    Kaza sonrası aracınız onarılsa dahi oluşan piyasa değer
