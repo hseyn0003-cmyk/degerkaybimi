@@ -13,64 +13,47 @@
       gtag('config', 'G-HNXMBKV2TN');
     </script>
 
-    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Sorgulama Ekranı</title>
-    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel verileriyle hesaplayın. 2 yıl geriye dönük haklarınız için ücretsiz tazminat sorgulama.">
-    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, trafik kazası tazminat, sigorta sorgulama">
+    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Tazminat Sorgulama</title>
+    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel sigorta katsayılarıyla hesaplayın. 2 yıl içindeki kazalarınız için yasal tazminat hakkınızı öğrenin.">
+    <meta name="keywords" content="araç değer kaybı hesaplama, değer kaybı sorgulama, trafik kazası tazminat, sigorta değer kaybı 2026">
+    <link rel="canonical" href="https://degerkaybimi.com" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
-        
-        /* Bento Grid Stili */
-        .bento-card { 
-            background: white; 
-            border: 1px solid #f1f5f9; 
-            border-radius: 2.5rem; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-        }
-        .bento-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.05); 
-            border-color: #e2e8f0;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .input-focus:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-        }
-
-        .animate-in {
-            animation: slideUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfe; color: #0f172a; }
+        .bento-card { background: white; border: 1px solid #f1f5f9; border-radius: 2.5rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .bento-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.05); }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(241, 245, 249, 0.7); }
+        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .animate-in { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
-        <nav class="container mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-bold shadow-lg shadow-blue-200">DK</div>
+    <header class="sticky top-0 z-50 glass-nav">
+        <nav class="container mx-auto px-6 h-20 flex justify-between items-center" aria-label="Ana Menü">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-extrabold shadow-lg shadow-blue-200">DK</div>
                 <span class="text-xl font-extrabold tracking-tight">degerkaybimi<span class="text-blue-600">.com</span></span>
             </div>
-            <a href="https://wa.me/905000000000" class="hidden sm:flex bg-green-500 hover:bg-green-600 text-white px-6 py-2.5 rounded-full text-sm font-bold transition shadow-lg items-center gap-2 active:scale-95">
-                <span>Ücretsiz Danışmanlık</span>
+            <a href="https://wa.me/905000000000" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md transition-transform active:scale-95 flex items-center gap-2">
+                WhatsApp Danışma
             </a>
         </nav>
     </header>
 
-    <main class="container mx-auto px-6 py-12 lg:py-20">
-        <div class="grid grid-cols-1 lg:grid
+    <main class="container mx-auto px-6 py-10 lg:py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <section class="lg:col-span-8 bento-card p-10 md:p-16 flex flex-col justify-center animate-in">
+                <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest w-fit mb-6">2026 Güncel Mevzuat</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 text-slate-900">
+                    Aracınızdaki Kaybı <br><span class="gradient-text italic">Nakit'e Dönüştürün.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
+                    Kaza sonrası aracınız onarılsa dahi oluşan piyasa değer
