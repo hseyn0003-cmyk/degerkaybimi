@@ -13,32 +13,28 @@
       gtag('config', 'G-HNXMBKV2TN');
     </script>
 
-    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Tazminat Sorgulama</title>
-    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel sigorta katsayılarıyla hesaplayın. 2 yıl içindeki kazalarınız için yasal tazminat hakkınızı anında öğrenin.">
-    <meta name="keywords" content="değer kaybı hesaplama 2026, araç değer kaybı sorgulama, trafik kazası tazminat, sigorta değer kaybı başvurusu">
-    <link rel="canonical" href="https://degerkaybimi.com" />
-
+    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Sorgulama</title>
+    <meta name="description" content="Kaza sonrası aracınızın piyasa değerindeki düşüşü 2026 sigorta katsayılarıyla ücretsiz hesaplayın. 2 yıl geriye dönük haklarınızı anında öğrenin.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfe; color: #0f172a; }
-        .bento-card { background: white; border: 1px solid #f1f5f9; border-radius: 2.5rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .bento-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.05); }
+        .bento-card { background: white; border: 1px solid #f1f5f9; border-radius: 2rem; transition: all 0.4s ease; }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05); }
         .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .animate-in { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
         <nav class="container mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-extrabold shadow-lg shadow-blue-200">DK</div>
+                <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-extrabold">DK</div>
                 <span class="text-xl font-extrabold tracking-tight">degerkaybimi<span class="text-blue-600">.com</span></span>
             </div>
-            <a href="https://wa.me/905000000000" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md transition-transform active:scale-95 flex items-center gap-2">
+            <a href="https://wa.me/905000000000" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md transition-all active:scale-95">
                 WhatsApp Danışma
             </a>
         </nav>
@@ -47,19 +43,86 @@
     <main class="container mx-auto px-6 py-10 lg:py-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
             
-            <section class="lg:col-span-8 bento-card p-10 md:p-16 flex flex-col justify-center animate-in">
-                <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest w-fit mb-6 italic">2026 Mevzuat Uyumu ✔</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 text-slate-900">
-                    Aracınızdaki Kaybı <br><span class="gradient-text italic">Nakit'e Dönüştürün.</span>
+            <section class="lg:col-span-8 bento-card p-10 md:p-16 flex flex-col justify-center">
+                <span class="px-4 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest w-fit mb-6">2026 Mevzuat Uyumu ✔</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8 text-slate-900">
+                    Aracınızdaki Kaybı <br><span class="gradient-text">Nakit'e Dönüştürün.</span>
                 </h1>
-                <p class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
-                    Kaza sonrası aracınız onarılsa dahi piyasa değeri düşer. Bu farkı yasal olarak sigortadan alabilirsiniz.
+                <p class="text-lg text-slate-500 max-w-xl leading-relaxed">
+                    Trafik kazası sonrası onarılan aracınızın piyasa değerindeki düşüşü sigorta şirketinden yasal olarak talep edebilirsiniz.
                 </p>
             </section>
 
-            <aside class="lg:col-span-4 bento-card p-8 md:p-10 bg-slate-900 text-white animate-in" style="animation-delay: 0.1s;">
-                <h2 class="text-2xl font-bold mb-8">Tazminat Sorgula</h2>
+            <aside class="lg:col-span-4 bento-card p-8 md:p-10 bg-slate-900 text-white">
+                <h2 class="text-2xl font-bold mb-8">Hemen Hesapla</h2>
                 <form onsubmit="event.preventDefault(); hesapla();" class="space-y-6">
                     <div>
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1">Araç Kilometresi</label>
-                        <input type="number" id="km" required placeholder="Örn: 45000" class="w-full bg-slate-800 border border-slate-70
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Kilometre</label>
+                        <input type="number" id="km" required placeholder="Örn: 45000" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Hasar Tutarı (TL)</label>
+                        <input type="number" id="hasar" required placeholder="Örn: 35000" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl transition-all shadow-xl shadow-blue-500/20 text-lg uppercase active:scale-95">
+                        Hesaplamayı Başlat
+                    </button>
+                </form>
+
+                <div id="sonuc" class="mt-8 hidden animate-pulse">
+                    <div class="p-6 bg-white/10 rounded-3xl border border-white/10 text-center">
+                        <p class="text-blue-400 text-xs font-bold uppercase mb-1">Tahmini Alacağınız</p>
+                        <p id="tutar" class="text-4xl font-black tracking-tighter text-white"></p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <section class="py-20 bg-white border-t border-slate-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-extrabold mb-12">Başvuru Süreci Nasıl İşler?</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-16 max-w-5xl mx-auto">
+                <div class="p-8 bento-card">
+                    <div class="text-3xl mb-4">⚖️</div>
+                    <h3 class="font-bold mb-2">Yasal Şartlar</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Kazada %100 kusurlu olmamalı ve araç 165.000 km altında olmalıdır.</p>
+                </div>
+                <div class="p-8 bento-card">
+                    <div class="text-3xl mb-4">📅</div>
+                    <h3 class="font-bold mb-2">2 Yıl Süre</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Kaza tarihinden itibaren 2 yıl içerisinde başvuru hakkınız bulunur.</p>
+                </div>
+                <div class="p-8 bento-card">
+                    <div class="text-3xl mb-4">💰</div>
+                    <h3 class="font-bold mb-2">Nakit Ödeme</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Tazminat tutarı doğrudan IBAN numaranıza nakit olarak yatırılır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-100 text-center">
+        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em]">© 2026 DEGERKAYBIMI.COM • TÜM HAKLARI SAKLIDIR</p>
+    </footer>
+
+    <script>
+        function hesapla() {
+            const km = parseFloat(document.getElementById('km').value);
+            const hasar = parseFloat(document.getElementById('hasar').value);
+            const sonucDiv = document.getElementById('sonuc');
+            const tutarP = document.getElementById('tutar');
+
+            if (km >= 0 && hasar > 0) {
+                // 2026 Güncel Sektör Algoritması
+                let carpan = km > 165000 ? 0.15 : (km > 100000 ? 0.42 : (km > 50000 ? 0.68 : 0.88));
+                let sonuc = hasar * carpan * 0.74; 
+                
+                tutarP.innerText = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(sonuc);
+                sonucDiv.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
