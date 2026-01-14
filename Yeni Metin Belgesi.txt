@@ -13,53 +13,48 @@
       gtag('config', 'G-HNXMBKV2TN');
     </script>
 
-    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Tazminat Sorgulama</title>
-    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel verileriyle ücretsiz hesaplayın. 2 yıl içinde başvuru hakkınızı hemen sorgulayın.">
-    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, trafik kazası tazminat, sigorta değer kaybı sorgulama">
+    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Sorgulama</title>
+    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel verileriyle hesaplayın. 2 yıl içindeki kazalar için tazminat hakkınızı ücretsiz öğrenin.">
+    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, trafik kazası tazminat, sigorta değer kaybı">
     <link rel="canonical" href="https://degerkaybimi.com" />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .calculator-shadow { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); }
-        .input-focus:focus { border-color: #2563eb; ring: 4px rgba(37, 99, 235, 0.1); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 leading-relaxed">
+<body class="bg-[#f8fafc] text-slate-900">
 
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
-        <nav class="container mx-auto px-4 h-16 flex justify-between items-center" aria-label="Ana Menü">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-sm">DK</div>
+                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">DK</div>
                 <span class="text-xl font-extrabold tracking-tight">degerkaybimi<span class="text-blue-600">.com</span></span>
             </div>
-            <a href="https://wa.me/905000000000" target="_blank" rel="noopener" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 shadow-lg shadow-green-100">
-                <span>WhatsApp Destek</span>
+            <a href="https://wa.me/905000000000" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full text-sm font-bold transition shadow-md flex items-center gap-2">
+                WhatsApp Destek
             </a>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main>
-        <section class="container mx-auto px-4 py-12 md:py-20 text-center">
-            <div class="max-w-3xl mx-auto animate-fade-in">
-                <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
-                    Aracınızın Hakkını <br><span class="text-blue-600 underline decoration-blue-100 underline-offset-8">Geri Alın</span>
-                </h1>
-                <p class="text-lg text-slate-600 mb-10">
-                    Trafik kazası sonrası aracınızda oluşan piyasa değer kaybını ücretsiz hesaplayın. 2 yıl içindeki kazalarınız için tazminat alma hakkınız vardır.
-                </p>
-            </div>
+        <header class="py-12 md:py-24 bg-gradient-to-b from-blue-50 to-transparent text-center px-4 animate-fade-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                Aracınızın Hakkını <br><span class="text-blue-600">Sigortadan Tahsil Edin</span>
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                Kazadan sonra aracınız onarılsa dahi oluşan değer kaybını 2 yıl içinde nakit olarak geri alabilirsiniz. Saniyeler içinde hesaplayın.
+            </p>
+        </header>
 
-            <div class="max-w-xl mx-auto bg-white p-8 md:p-12 rounded-[2.5rem] calculator-shadow border border-slate-100">
-                <form id="calcForm" onsubmit="event.preventDefault(); hesapla();" class="space-y-6">
-                    <div class="text-left">
+        <section class="container mx-auto px-4 -mt-12 mb-20 animate-fade-up">
+            <div class="max-w-xl mx-auto glass-card p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-blue-900/5">
+                <div class="space-y-6">
+                    <div>
                         <label for="km" class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Araç Kilometresi</label>
-                        <input type="number" id="km" required placeholder="Örn: 45.000" class="w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl outline-none transition-all input-focus text-lg font-semibold">
-                    </div>
-                    <div class="text-left">
-                        <label for="hasar" class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Tahmini Hasar Tutarı (TL)</label>
-                        <input type="number" id="hasar" required placeholder="Örn: 25.000" class="w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl outline-none transition-all input-focus text-lg font-semibold">
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-
+                        <input type="number" id="km" placeholder="Örn: 45000" class="w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl focus:ring-4 focus:ring-blue-100
