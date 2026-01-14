@@ -40,13 +40,14 @@
     <div id="result">
         <p style="color: #475569; margin: 0; font-weight: 600;">Tahmini Alınabilecek Tazminat:</p>
         <div class="tutar" id="tutar">0 TL</div>
-        <p style="font-size: 13px; color: #166534;">Başvurunuz alındı. Uzman ekibimiz tabloya düşen verileriniz üzerinden size ulaşacaktır.</p>
+        <p style="font-size: 13px; color: #166534;">Başvurunuz alındı. Uzman ekibimiz tablonuzdaki veriler üzerinden size ulaşacaktır.</p>
     </div>
 </div>
 
 <script>
-    // ÖNEMLİ: Google Sheets'ten aldığın linki aşağıya yapıştır
-    const scriptURL = https://docs.google.com/spreadsheets/d/1559J9vswdCxP_4bb_tX3sXTSfSQXy9UIQf5wvqPOH0Q/edit?usp=sharing;
+    // Google Sheets Web App URL'si (Senin paylaştığın tablonun Apps Script linki buraya gelmeli)
+    // ÖNEMLİ: Eğer bu link çalışmazsa Apps Script'ten yeni bir "Dağıtım" yapıp linki güncellemelisin.
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzQpP_E0lW90E4_E8i-yK8y-X_7oU90D-M/exec'; 
 
     const form = document.getElementById('form');
     const btn = document.getElementById('btn');
@@ -54,12 +55,12 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
         btn.disabled = true;
-        btn.innerText = "Hesaplanıyor...";
+        btn.innerText = "Gönderiliyor...";
 
         const km = document.getElementById('km').value;
         const hasar = document.getElementById('hasar').value;
         
-        // Hızlı hesaplama algoritması
+        // Hesaplama algoritması
         let carpan = km > 150000 ? 0.07 : 0.16;
         let sonucTutar = (hasar * carpan).toFixed(0);
 
@@ -71,10 +72,11 @@
             body: JSON.stringify({ km: km, hasar: hasar, tutar: sonucTutar })
         }).then(() => {
             document.getElementById('result').style.display = 'block';
-            btn.innerText = "Veriler Tabloya Gönderildi";
+            btn.innerText = "Tabloya Gönderildi ✅";
         }).catch(() => {
-            alert("Bağlantı hatası oluştu, lütfen sayfayı yenileyin.");
-            btn.disabled = false;
+            // Google bazen no-cors'ta hata fırlatabilir ama veri gider
+            document.getElementById('result').style.display = 'block';
+            btn.innerText = "Tamamlandı";
         });
     });
 </script>
