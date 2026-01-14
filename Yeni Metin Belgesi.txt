@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
+<head><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HNXMBKV2TN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HNXMBKV2TN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Araç Değer Kaybı Hesaplama | degerkaybimi.com</title>
     <meta name="description" content="Ücretsiz araç değer kaybı hesaplayın. Sigorta tahkim süreci ile tazminatınızı geri alın.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+</head><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HNXMBKV2TN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HNXMBKV2TN');
+</script>
 <body class="bg-slate-50 text-slate-900">
 
     <nav class="bg-white border-b sticky top-0 z-50">
@@ -46,4 +62,5 @@
                         <input type="number" id="val" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Örn: 950000">
                     </div>
                     <div>
+
                         <label class="block text-sm font-bold mb-1">Hasar Türü</label>
