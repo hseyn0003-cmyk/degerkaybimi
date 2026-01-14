@@ -3,92 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEĞER KAYBI AI | Dijital Analiz Sistemi</title>
+    <title>DEĞER KAYBI AI | Profesyonel Danışmanlık</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Space Grotesk', sans-serif; background: #0f172a; color: white; overflow-x: hidden; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .neon-border { position: relative; border-radius: 2rem; }
-        .neon-border::after { content: ""; position: absolute; inset: -1px; border-radius: 2rem; padding: 1px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
-        .glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-        input { background: rgba(15, 23, 42, 0.6) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; }
-        input:focus { border-color: #3b82f6 !important; outline: none; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f1a; color: white; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .accent-gradient { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); }
+        .hero-image { mask-image: linear-gradient(to right, black 70%, transparent 100%); }
     </style>
 </head>
 <body>
 
-    <div class="fixed inset-0 pointer-events-none opacity-20">
-        <div class="absolute top-10 left-10 w-64 h-64 bg-blue-600 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-10 right-10 w-64 h-64 bg-purple-600 rounded-full blur-[120px]"></div>
-    </div>
-
-    <nav class="p-6 flex justify-between items-center relative z-10">
-        <div class="text-2xl font-bold tracking-tighter italic">AI.<span class="text-blue-500">DEGERKAYBI</span></div>
-        <div class="flex gap-4">
-             <a href="mailto:hseyn0003@gmail.com" class="glass px-6 py-2 rounded-full text-xs font-bold border border-white/10 hover:bg-white/10 transition uppercase tracking-widest">Bize Ulaşın</a>
-        </div>
+    <nav class="p-6 flex justify-between items-center relative z-20 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter italic">AI.<span class="text-blue-500">DEĞERKAYBI</span></div>
+        <a href="mailto:hseyn0003@gmail.com" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full text-xs font-bold transition uppercase tracking-widest shadow-lg shadow-blue-900/20">Ücretsiz Danışın</a>
     </nav>
 
-    <main class="relative z-10 px-6 pt-12 pb-24">
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+    <main class="relative z-10 px-6 pt-10 pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
             
-            <div>
-                <h1 class="text-6xl lg:text-8xl font-bold leading-none tracking-tight">Dijital. <br><span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-500">Kusursuz.</span></h1>
-                <p class="mt-8 text-slate-400 text-lg max-w-md leading-relaxed">2026 Algoritmaları ile aracınızdaki değer kaybını saniyeler içinde analiz edin ve hukuki süreci başlatın.</p>
-                
-                <div class="mt-12 flex flex-wrap gap-8 text-sm font-bold uppercase tracking-widest opacity-60">
-                    <div class="flex items-center gap-2"><span>✔</span> Şeffaf Analiz</div>
-                    <div class="flex items-center gap-2"><span>✔</span> Anında Veri</div>
-                    <div class="flex items-center gap-2"><span>✔</span> Uzman Takip</div>
+            <div class="lg:col-span-5 relative hidden lg:block">
+                <div class="absolute -inset-10 bg-blue-600/20 blur-[120px] rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800" 
+                     alt="Danışman" 
+                     class="relative z-10 rounded-[3rem] shadow-2xl hero-image border border-white/10 grayscale-[30%] hover:grayscale-0 transition duration-700">
+                <div class="absolute bottom-10 left-10 z-20 glass p-6 rounded-2xl border-l-4 border-l-blue-500">
+                    <p class="text-sm font-bold italic">"Size yardımcı olmak için buradayım."</p>
+                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest font-bold text-blue-400">Dosya Uzmanı</p>
                 </div>
             </div>
 
-            <div class="glass p-10 rounded-[3rem] neon-border glow">
-                <h2 class="text-xl font-bold mb-8 italic tracking-widest uppercase text-blue-400">Veri Girişi</h2>
-                <div class="space-y-6">
-                    <div class="relative group">
-                        <label class="text-[10px] uppercase tracking-[3px] text-slate-500 ml-2 mb-2 block font-bold">Kilometre</label>
-                        <input type="number" id="km" placeholder="000.000" class="w-full p-6 rounded-2xl transition-all">
-                    </div>
-                    <div class="relative group">
-                        <label class="text-[10px] uppercase tracking-[3px] text-slate-500 ml-2 mb-2 block font-bold">Hasar Tutarı</label>
-                        <input type="number" id="hasar" placeholder="0.000 ₺" class="w-full p-6 rounded-2xl transition-all">
-                    </div>
-                    <button onclick="hesapla()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl shadow-2xl transition-all active:scale-95 uppercase tracking-widest">Analiz Et</button>
+            <div class="lg:col-span-7 space-y-12">
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter italic">
+                        Hak Ettiğiniz <br><span class="text-transparent bg-clip-text accent-gradient uppercase">Tazminatı Alın.</span>
+                    </h1>
+                    <p class="mt-6 text-slate-400 text-lg max-w-xl italic leading-relaxed">
+                        Aracınızdaki değer kaybını uzman ekibimizle profesyonelce yönetiyoruz. Tek yapmanız gereken verileri girip analizi başlatmak.
+                    </p>
                 </div>
 
-                <div id="sonucAlani" class="mt-8 hidden animate-pulse">
-                    <div class="p-8 bg-white/5 rounded-3xl border border-white/10 text-center">
-                        <p class="text-xs uppercase tracking-[4px] text-blue-400 mb-2">Hesaplanan Tazminat</p>
-                        <p id="tutar" class="text-5xl font-bold tracking-tighter text-white"></p>
-                        <button onclick="kaydetVeGit()" class="mt-8 w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-slate-200 transition">Hemen Başvuruyu Başlat</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <section class="py-24 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-            <div class="glass p-8 rounded-[2rem] hover:bg-white/5 transition border-white/5">
-                <div class="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center text-blue-500 mb-6 text-2xl font-bold italic">01</div>
-                <h3 class="text-xl font-bold mb-4 italic">Hızlı Analiz</h3>
-                <p class="text-slate-400 text-sm leading-relaxed italic">Girdiğiniz veriler 2026 sigorta mevzuatına göre milisaniyeler içinde işlenir.</p>
-            </div>
-            <div class="glass p-8 rounded-[2rem] hover:bg-white/5 transition border-white/5">
-                <div class="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center text-purple-500 mb-6 text-2xl font-bold italic">02</div>
-                <h3 class="text-xl font-bold mb-4 italic">Hukuki Güvence</h3>
-                <p class="text-slate-400 text-sm leading-relaxed italic">Hesaplanan veriler, hukuk ekibimiz tarafından incelenerek resmi başvuruya dönüştürülür.</p>
-            </div>
-            <div class="glass p-8 rounded-[2rem] hover:bg-white/5 transition border-white/5">
-                <div class="w-12 h-12 bg-emerald-600/20 rounded-xl flex items-center justify-center text-emerald-500 mb-6 text-2xl font-bold italic">03</div>
-                <h3 class="text-xl font-bold mb-4 italic">Sıfır Risk</h3>
-                <p class="text-slate-400 text-sm leading-relaxed italic">Süreç başında herhangi bir ücret talep edilmez, ödeme başarı odaklıdır.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="p-12 border-t border-white/5 text-center relative z-10">
-        <p class="text-[9px] text-slate-600 font-bold uppercase tracking-[1em]">© 2026 DEGERKAYBIMI.COM 
-            <a href="
+                <div class="glass p-8 md:p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-10">
+                        <svg width="100" height="100" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8
