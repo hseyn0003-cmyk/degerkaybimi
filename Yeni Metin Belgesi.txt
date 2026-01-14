@@ -19,15 +19,12 @@
     <link rel="canonical" href="https://degerkaybimi.com" />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfe; color: #0f172a; }
         .bento-card { background: white; border: 1px solid #f1f5f9; border-radius: 2.5rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .bento-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.05); }
-        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(241, 245, 249, 0.7); }
         .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .animate-in { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -35,13 +32,13 @@
 </head>
 <body class="antialiased overflow-x-hidden">
 
-    <header class="sticky top-0 z-50 glass-nav">
-        <nav class="container mx-auto px-6 h-20 flex justify-between items-center" aria-label="Ana Navigasyon">
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+        <nav class="container mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-extrabold shadow-lg shadow-blue-200">DK</div>
                 <span class="text-xl font-extrabold tracking-tight">degerkaybimi<span class="text-blue-600">.com</span></span>
             </div>
-            <a href="https://wa.me/905000000000" target="_blank" rel="noopener" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md transition-transform active:scale-95 flex items-center gap-2">
+            <a href="https://wa.me/905000000000" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md transition-transform active:scale-95 flex items-center gap-2">
                 WhatsApp Danışma
             </a>
         </nav>
@@ -50,25 +47,4 @@
     <main class="container mx-auto px-6 py-10 lg:py-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
             
-            <section class="lg:col-span-8 bento-card p-10 md:p-16 flex flex-col justify-center animate-in">
-                <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest w-fit mb-6 italic">2026 Mevzuat Uyumu ✔</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 text-slate-900">
-                    Aracınızdaki Kaybı <br><span class="gradient-text italic">Tazminata Dönüştürün.</span>
-                </h1>
-                <p class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
-                    Kaza sonrası aracınız onarılsa dahi piyasa değeri düşer. Bu farkı yasal olarak sigortadan alabilirsiniz. 2 yıl geriye dönük haklarınız için ücretsiz sorgulayın.
-                </p>
-            </section>
-
-            <aside class="lg:col-span-4 bento-card p-8 md:p-10 bg-slate-900 text-white animate-in" style="animation-delay: 0.1s;">
-                <h2 class="text-2xl font-bold mb-8">Tazminat Hesapla</h2>
-                <form onsubmit="event.preventDefault(); hesapla();" class="space-y-6">
-                    <div>
-                        <label for="km" class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1 text-white/60">Araç Kilometresi</label>
-                        <input type="number" id="km" required placeholder="Örn: 45000" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-lg font-semibold text-white">
-                    </div>
-                    <div>
-                        <label for="hasar" class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1 text-white/60">Hasar Tutarı (TL)</label>
-                        <input type="number" id="hasar" required placeholder="Örn: 35000" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-lg font-semibold text-white">
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl transition-
+            <section class="lg:col-span-8 b
