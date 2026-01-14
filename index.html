@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Sorgulama</title>
-    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel katsayılarıyla hesaplayın. 2 yıl içindeki kazalarınız için yasal tazminat hakkınızı öğrenin.">
+    <meta name="description" content="2026 sigorta mevzuatına uygun araç değer kaybı hesaplayıcı. 2 yıl içindeki kazalarınız için tazminat hakkınızı hemen öğrenin.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
             </section>
 
             <aside class="lg:col-span-4 bento-card p-8 md:p-10 bg-slate-900 text-white shadow-2xl shadow-blue-500/20">
-                <h2 class="text-2xl font-bold mb-8 italic">Hızlı Sorgulama</h2>
+                <h2 class="text-2xl font-bold mb-8 italic text-blue-400">Hızlı Sorgulama</h2>
                 <form onsubmit="event.preventDefault(); hesapla();" class="space-y-6">
                     <div>
                         <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Araç Kilometresi</label>
@@ -58,26 +58,26 @@
                 </div>
             </aside>
 
-            <div class="lg:col-span-12 mt-10 text-center">
-                <h2 class="text-3xl font-extrabold mb-8 text-slate-900">Tazminat Alım Süreci</h2>
+            <div class="lg:col-span-12 mt-10">
+                <h2 class="text-3xl font-extrabold mb-8 text-center text-slate-900">Tazminat Süreci Nasıl İşler?</h2>
                 
                 
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                    <div class="bento-card p-8">
+                    <div class="bento-card p-8 text-center">
                         <div class="text-3xl mb-4">⚖️</div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-800">Kusur Şartı</h3>
-                        <p class="text-slate-500 text-sm">Kazada %100 kusurlu olmamanız yeterlidir.</p>
+                        <h3 class="font-bold text-xl mb-3">Kusur Şartı</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Kazada %100 kusurlu olmamanız tazminat için yeterlidir.</p>
                     </div>
-                    <div class="bento-card p-8">
+                    <div class="bento-card p-8 text-center">
                         <div class="text-3xl mb-4">📅</div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-800">2 Yıl Süre</h3>
-                        <p class="text-slate-500 text-sm">2 yıl geriye dönük kazalarınız için başvuru yapabilirsiniz.</p>
+                        <h3 class="font-bold text-xl mb-3">2 Yıl Süre</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Geriye dönük 2 yıl içindeki tüm kazalarınız için hak talep edebilirsiniz.</p>
                     </div>
-                    <div class="bento-card p-8">
+                    <div class="bento-card p-8 text-center">
                         <div class="text-3xl mb-4">💰</div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-800">Nakit Ödeme</h3>
-                        <p class="text-slate-500 text-sm">Tutar doğrudan IBAN numaranıza nakit olarak yatırılır.</p>
+                        <h3 class="font-bold text-xl mb-3">Nakit Tahsilat</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Onaylanan tutar doğrudan IBAN numaranıza nakit olarak yatırılır.</p>
                     </div>
                 </div>
             </div>
@@ -96,6 +96,7 @@
             const tutarP = document.getElementById('tutar');
 
             if (km >= 0 && hasar > 0) {
+                // 2026 Sektörel Katsayı Algoritması
                 let carpan = km > 165000 ? 0.22 : (km > 100000 ? 0.46 : (km > 50000 ? 0.74 : 0.94));
                 let sonuc = hasar * carpan * 0.72; 
                 
