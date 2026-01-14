@@ -16,7 +16,7 @@
     <div class="max-w-md w-full bento-card shadow-2xl p-8 md:p-12 border-t-[12px] border-t-blue-600">
         <div class="text-center mb-10">
             <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">Resmi 2026 Mevzuatı</span>
-            <h1 class="text-4xl font-extrabold mt-6 tracking-tighter italic uppercase">Değer Kaybı <span class="text-blue-600 text-3xl block mt-2 tracking-normal">Hesaplama</span></h1>
+            <h1 class="text-4xl font-extrabold mt-6 tracking-tighter italic uppercase">Değer Kaybı <br><span class="text-blue-600 text-3xl block mt-2 tracking-normal uppercase">Hesaplama</span></h1>
         </div>
 
         <div class="space-y-6">
@@ -35,10 +35,10 @@
 
         <div id="sonucAlani" class="mt-8 hidden animate-bounce">
             <div class="p-8 bg-blue-50 rounded-[2.5rem] border-2 border-blue-100 text-center">
-                <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Tahmini Alacağınız</p>
+                <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Tahmini Tazminatınız</p>
                 <p id="tutar" class="text-4xl font-black text-slate-900 tracking-tighter"></p>
                 <div class="mt-6 pt-6 border-t border-blue-100">
-                   <a href="https://wa.me/905000000000" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-bold text-sm shadow-sm hover:bg-blue-50 transition border border-blue-200 uppercase tracking-wider">Dosya Açılışı Yap</a>
+                   <a id="emailLink" href="#" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-bold text-sm shadow-sm hover:bg-blue-50 transition border border-blue-200 uppercase tracking-wider italic">E-posta ile Başvur</a>
                 </div>
             </div>
         </div>
@@ -52,12 +52,20 @@
             const hasar = document.getElementById('hasar').value;
             const sonucAlani = document.getElementById('sonucAlani');
             const tutarP = document.getElementById('tutar');
+            const emailLink = document.getElementById('emailLink');
 
             if(km && hasar) {
-                // 2026 Güncel Yargıtay Katsayıları
                 let carpan = km > 165000 ? 0.28 : (km > 100000 ? 0.48 : 0.86);
                 let sonuc = (hasar * carpan * 0.72).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
                 tutarP.innerText = sonuc + " ₺";
+                
+                // E-posta adresinizi ve konuyu buraya yazın
+                let email = "destek@degerkaybimi.com"; 
+                let subject = encodeURIComponent("Değer Kaybı Başvurusu - 2026");
+                let body = encodeURIComponent("Merhaba, aracımın değer kaybı tazminatı için başvuru yapmak istiyorum.\n\nKilometre: " + km + "\nHasar Tutarı: " + hasar + " TL\nHesaplanan Tahmini Tutar: " + sonuc + " TL");
+                
+                emailLink.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
+                
                 sonucAlani.classList.remove('hidden');
                 sonucAlani.scrollIntoView({ behavior: 'smooth' });
             }
