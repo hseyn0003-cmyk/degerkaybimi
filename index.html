@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Sorgulama</title>
-    <meta name="description" content="2026 sigorta mevzuatına uygun araç değer kaybı hesaplayıcı. Yasal hakkınızı hemen öğrenin.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -24,10 +23,10 @@
             <section class="lg:col-span-8 bento-card p-10 md:p-16 flex flex-col justify-center border-2 border-slate-50">
                 <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest w-fit mb-6 italic">2026 Mevzuat Uyumu ✔</span>
                 <h1 class="text-4xl md:text-7xl font-extrabold leading-tight mb-8 text-slate-900">
-                    Aracınızdaki Kaybı <br><span class="gradient-text italic">Tazminata Dönüştürün.</span>
+                    Aracınızdaki Kaybı <br><span class="gradient-text italic">Nakit Tazminata Dönüştürün.</span>
                 </h1>
                 <p class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
-                    Kaza sonrası aracınız onarılsa dahi piyasa değeri düşer. Bu maddi zararı sigorta şirketinden yasal olarak talep edebilirsiniz.
+                    Kaza sonrası aracınız onarılsa dahi piyasa değeri düşer. Bu maddi zararı yasal olarak talep edebilirsiniz.
                 </p>
             </section>
 
@@ -47,7 +46,7 @@
                     </button>
                 </form>
 
-                <div id="sonuc" class="mt-8 hidden animate-bounce">
+                <div id="sonuc" class="mt-8 hidden">
                     <div class="p-6 bg-white/10 rounded-3xl border border-white/10 text-center">
                         <p class="text-blue-400 text-xs font-bold uppercase mb-1">Tahmini Alacağınız</p>
                         <p id="tutar" class="text-4xl font-black mb-4 tracking-tighter"></p>
@@ -57,22 +56,28 @@
                     </div>
                 </div>
             </aside>
+        </div>
 
-            <div class="lg:col-span-12 mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bento-card p-8 text-center">
+        <div class="mt-20">
+            <h2 class="text-3xl font-extrabold mb-10 text-center text-slate-900">Tazminat Tahsilat Süreci</h2>
+            
+            
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bento-card p-8 text-center border-b-4 border-blue-500">
                     <div class="text-3xl mb-4">⚖️</div>
-                    <h3 class="font-bold text-xl mb-3">Kusur Şartı</h3>
-                    <p class="text-slate-500 text-sm">Kazada %100 kusurlu olmamanız yeterlidir.</p>
+                    <h3 class="font-bold text-xl mb-3 uppercase text-[12px] tracking-widest">Kusur Oranı</h3>
+                    <p class="text-slate-500 text-sm italic">Kazada %100 kusurlu olmamanız yeterlidir.</p>
                 </div>
-                <div class="bento-card p-8 text-center">
+                <div class="bento-card p-8 text-center border-b-4 border-blue-500">
                     <div class="text-3xl mb-4">📅</div>
-                    <h3 class="font-bold text-xl mb-3">2 Yıl Süre</h3>
-                    <p class="text-slate-500 text-sm">Geriye dönük 2 yıl içindeki kazalar için hak talep edebilirsiniz.</p>
+                    <h3 class="font-bold text-xl mb-3 uppercase text-[12px] tracking-widest">Zaman Aşımı</h3>
+                    <p class="text-slate-500 text-sm italic">2 yıl geriye dönük tüm kazalarınız için hak talep edebilirsiniz.</p>
                 </div>
-                <div class="bento-card p-8 text-center">
+                <div class="bento-card p-8 text-center border-b-4 border-blue-500">
                     <div class="text-3xl mb-4">💰</div>
-                    <h3 class="font-bold text-xl mb-3">Nakit Tahsilat</h3>
-                    <p class="text-slate-500 text-sm">Tutar doğrudan IBAN numaranıza nakit olarak yatırılır.</p>
+                    <h3 class="font-bold text-xl mb-3 uppercase text-[12px] tracking-widest">Ödeme Yöntemi</h3>
+                    <p class="text-slate-500 text-sm italic">Tazminat doğrudan IBAN numaranıza nakit yatar.</p>
                 </div>
             </div>
         </div>
@@ -94,7 +99,6 @@
                 let sonuc = hasar * carpan * 0.72; 
                 tutarP.innerText = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(sonuc);
                 sonucDiv.classList.remove('hidden');
-                sonucDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     </script>
