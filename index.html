@@ -1,102 +1,40 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Tazminat Sorgulama</title>
-    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 katsayılarıyla hesaplayın. 2 yıl içindeki kazalarınız için yasal tazminat hakkınızı hemen öğrenin.">
-    
+    <title>Araç Değer Kaybı Sorgulama 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfe; color: #0f172a; }
-        .bento-card { background: white; border: 1px solid #f1f5f9; border-radius: 2.5rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .bento-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.05); }
-        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
 </head>
-<body class="antialiased p-4 md:p-8">
-
-    <main class="container mx-auto max-w-6xl">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            
-            <section class="lg:col-span-8 bento-card p-10 md:p-16 flex flex-col justify-center border-2 border-slate-50">
-                <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest w-fit mb-6 italic">2026 Güncel Mevzuat ✔</span>
-                <h1 class="text-4xl md:text-7xl font-extrabold leading-tight mb-8 text-slate-900">
-                    Aracınızdaki Kaybı <br><span class="gradient-text italic">Nakit'e Dönüştürün.</span>
-                </h1>
-                <p class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
-                    Kaza sonrası aracınız onarılsa dahi piyasa değeri düşer. Bu maddi zararı sigorta şirketinden yasal olarak talep edebilirsiniz.
-                </p>
-            </section>
-
-            <aside class="lg:col-span-4 bento-card p-8 md:p-10 bg-slate-900 text-white shadow-2xl shadow-blue-500/20">
-                <h2 class="text-2xl font-bold mb-8 italic text-blue-400">Anında Sorgula</h2>
-                <form onsubmit="event.preventDefault(); hesapla();" class="space-y-6">
-                    <div>
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Araç Kilometresi</label>
-                        <input type="number" id="km" required placeholder="Örn: 45000" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-2xl outline-none text-white font-semibold focus:ring-2 focus:ring-blue-500 transition-all">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Hasar Tutarı (TL)</label>
-                        <input type="number" id="hasar" required placeholder="Örn: 35000" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-2xl outline-none text-white font-semibold focus:ring-2 focus:ring-blue-500 transition-all">
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl transition-all shadow-xl shadow-blue-500/20 text-lg uppercase active:scale-95 tracking-wider">
-                        Hesaplamayı Başlat
-                    </button>
-                </form>
-
-                <div id="sonuc" class="mt-8 hidden animate-bounce">
-                    <div class="p-6 bg-white/10 rounded-3xl border border-white/10 text-center">
-                        <p class="text-blue-400 text-xs font-bold uppercase mb-1">Tahmini Alacağınız</p>
-                        <p id="tutar" class="text-4xl font-black mb-4 tracking-tighter"></p>
-                        <a href="https://wa.me/905000000000" target="_blank" class="inline-block w-full bg-white text-slate-950 py-3 rounded-xl font-bold hover:bg-slate-100 transition shadow-lg text-sm">
-                            Hemen Başvuru Yap
-                        </a>
-                    </div>
-                </div>
-            </aside>
-
-            <div class="lg:col-span-12 mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bento-card p-8 text-center border-b-4 border-blue-500">
-                    <div class="text-3xl mb-4">⚖️</div>
-                    <h3 class="font-bold text-xl mb-3 uppercase text-[12px] tracking-widest">Kusur Oranı</h3>
-                    <p class="text-slate-500 text-sm italic italic">Kazada %100 kusurlu olmamanız tazminat için yeterlidir.</p>
-                </div>
-                <div class="bento-card p-8 text-center border-b-4 border-blue-500">
-                    <div class="text-3xl mb-4">📅</div>
-                    <h3 class="font-bold text-xl mb-3 uppercase text-[12px] tracking-widest">2 Yıl Zaman Aşımı</h3>
-                    <p class="text-slate-500 text-sm italic">2 yıl geriye dönük tüm kazalarınız için hak talep edebilirsiniz.</p>
-                </div>
-                <div class="bento-card p-8 text-center border-b-4 border-blue-500">
-                    <div class="text-3xl mb-4">💰</div>
-                    <h3 class="font-bold text-xl mb-3 uppercase text-[12px] tracking-widest">Nakit Ödeme</h3>
-                    <p class="text-slate-500 text-sm italic">Tazminat tutarı doğrudan IBAN numaranıza nakit olarak yatırılır.</p>
-                </div>
-            </div>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+        <h1 class="text-2xl font-bold text-center text-blue-700 mb-6">Araç Değer Kaybı Sorgulama</h1>
+        
+        <div class="space-y-4">
+            <input type="number" id="km" placeholder="Araç Kilometresi" class="w-full p-4 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="number" id="hasar" placeholder="Hasar Tutarı (TL)" class="w-full p-4 bg-gray-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+            <button onclick="hesapla()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition duration-300">HESAPLA</button>
         </div>
 
-        <section class="mt-20">
-            <h2 class="text-3xl font-extrabold mb-10 text-center text-slate-900 italic uppercase">Tazminat Alım Süreci</h2>
-            
-            
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 italic text-[10px] font-bold text-slate-400 text-center uppercase tracking-widest">
-                <span>1. Ücretsiz Sorgulama</span>
-                <span>2. Dosya Analizi</span>
-                <span>3. Yasal Başvuru</span>
-                <span>4. Kesin Ödeme</span>
-            </div>
-        </section>
-    </main>
-
-    <footer class="py-12 text-center border-t border-slate-100 mt-20 uppercase tracking-[0.3em] text-[10px] font-black text-slate-400">
-        © 2026 DEGERKAYBIMI.COM • TÜM HAKLARI SAKLIDIR
-    </footer>
+        <div id="sonuc" class="mt-6 p-4 bg-green-50 text-green-700 rounded-xl hidden text-center font-bold italic"></div>
+        
+        <div class="mt-10 pt-4 border-t text-center text-[10px] text-gray-400 uppercase tracking-widest">
+            2026 GÜNCEL MEVZUAT SİSTEMİ
+        </div>
+    </div>
 
     <script>
         function hesapla() {
-            const km = parseFloat(document.getElementById('km').value);
-            const hasar
-
+            const km = document.getElementById('km').value;
+            const hasar = document.getElementById('hasar').value;
+            const sonucDiv = document.getElementById('sonuc');
+            if(km && hasar) {
+                let carpan = km > 100000 ? 0.35 : 0.70;
+                let sonuc = (hasar * carpan).toLocaleString('tr-TR');
+                sonucDiv.innerHTML = "Tahmini Alacağınız: " + sonuc + " TL";
+                sonucDiv.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
