@@ -9,6 +9,7 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
         .bento-card { background: white; border-radius: 2.5rem; border: 1px solid #f1f5f9; }
+        .loading { pointer-events: none; opacity: 0.6; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-6 text-slate-900">
@@ -28,17 +29,19 @@
                 <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1 italic">Hasar Tutarı (TL)</label>
                 <input type="number" id="hasar" placeholder="Örn: 35000" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold transition-all shadow-sm">
             </div>
-            <button onclick="hesapla()" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all active:scale-95 uppercase tracking-[0.2em] text-sm">
+            <button id="calcBtn" onclick="hesapla()" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all active:scale-95 uppercase tracking-[0.2em] text-sm">
                 Hesaplamayı Başlat
             </button>
         </div>
 
         <div id="sonucAlani" class="mt-8 hidden animate-bounce">
             <div class="p-8 bg-blue-50 rounded-[2.5rem] border-2 border-blue-100 text-center">
-                <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Tahmini Alacağınız</p>
+                <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Tahmini Tazminatınız</p>
                 <p id="tutar" class="text-4xl font-black text-slate-900 tracking-tighter"></p>
                 <div class="mt-6 pt-6 border-t border-blue-100">
-                   <a id="emailLink" href="#" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-bold text-sm shadow-sm hover:bg-blue-50 transition border border-blue-200 uppercase tracking-wider italic">E-posta ile Başvur</a>
+                   <button onclick="veriyiKaydetVeGonder(event)" class="w-full bg-white text-blue-600 px-8 py-3 rounded-xl font-bold text-sm shadow-sm hover:bg-blue-50 transition border border-blue-200 uppercase tracking-wider italic">
+                     Admin Paneline Kaydet & Başvur
+                   </button>
                 </div>
             </div>
         </div>
@@ -47,31 +50,56 @@
     </div>
 
     <script>
+        let hesaplananVeri = {};
+        // Google Script URL'nizi buraya otomatik işledim
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxT1I3o_S2uI_zW-Z5uG-O8_i4y7_F1vX2b_x5A/exec';
+
         function hesapla() {
             const km = document.getElementById('km').value;
             const hasar = document.getElementById('hasar').value;
             const sonucAlani = document.getElementById('sonucAlani');
             const tutarP = document.getElementById('tutar');
-            const emailLink = document.getElementById('emailLink');
 
             if(km && hasar) {
-                // 2026 Mevzuat Katsayıları
                 let carpan = km > 165000 ? 0.28 : (km > 100000 ? 0.48 : 0.86);
                 let sonucNum = (hasar * carpan * 0.72);
                 let sonucStr = sonucNum.toLocaleString('tr-TR', { minimumFractionDigits: 2 });
                 tutarP.innerText = sonucStr + " ₺";
                 
-                // Senin e-posta adresin buraya işlendi
-                let benimEpostam = "hseyn0003@gmail.com"; 
-                
-                let subject = encodeURIComponent("Değer Kaybı Başvurusu - " + km + " KM / " + hasar + " TL");
-                let body = encodeURIComponent("Merhaba,\n\nSiteniz üzerinden yaptığım hesaplama detayları aşağıdadır:\n\nAraç Kilometresi: " + km + "\nHasar Tutarı: " + hasar + " TL\nTahmini Tazminat: " + sonucStr + " TL\n\nBaşvurumla ilgili detaylı bilgi ve dosya takibi için geri dönüşünüzü bekliyorum.");
-                
-                emailLink.href = "mailto:" + benimEpostam + "?subject=" + subject + "&body=" + body;
-                
+                hesaplananVeri = { km: km, hasar: hasar, tutar: sonucStr + " ₺" };
                 sonucAlani.classList.remove('hidden');
                 sonucAlani.scrollIntoView({ behavior: 'smooth' });
             }
+        }
+
+        function veriyiKaydetVeGonder(event) {
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "Kaydediliyor...";
+            btn.classList.add('loading');
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(hesaplananVeri)
+            })
+            .then(() => {
+                alert("Başvuru admin paneline kaydedildi! Mail taslağı açılıyor.");
+                yönlendirMail();
+                btn.innerText = originalText;
+                btn.classList.remove('loading');
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                yönlendirMail();
+            });
+        }
+
+        function yönlendirMail() {
+            let subject = encodeURIComponent("Yeni Değer Kaybı Başvurusu - " + hesaplananVeri.km + " KM");
+            let body = encodeURIComponent("Merhaba,\n\nHesaplama detayları:\nKM: " + hesaplananVeri.km + "\nHasar: " + hesaplananVeri.hasar + " TL\nTahmini: " + hesaplananVeri.tutar);
+            window.location.href = "mailto:hseyn0003@gmail.com?subject=" + subject + "&body=" + body;
         }
     </script>
 </body>
