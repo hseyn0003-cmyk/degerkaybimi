@@ -3,86 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Değer Kaybı Analizi | Ücretsiz Sorgulama</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Araç Değer Kaybı Analizi | Ücretsiz Sorgulama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .card { background: #ffffff; padding: 40px; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); width: 100%; max-width: 420px; text-align: center; border-top: 8px solid #2563eb; }
-        h1 { color: #1e293b; margin-bottom: 30px; font-size: 26px; font-weight: 800; letter-spacing: -1px; }
-        .input-box { text-align: left; margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: #475569; font-size: 14px; }
-        input { width: 100%; padding: 16px; border: 2px solid #e2e8f0; border-radius: 15px; font-size: 16px; box-sizing: border-box; transition: 0.3s; }
-        input:focus { border-color: #2563eb; outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
-        button { width: 100%; padding: 18px; background: #2563eb; color: white; border: none; border-radius: 15px; font-size: 18px; font-weight: 700; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px -1px rgba(37,99,235,0.4); }
-        button:hover { background: #1d4ed8; transform: translateY(-2px); }
-        button:disabled { background: #94a3b8; cursor: not-allowed; }
-        #result { display: none; margin-top: 30px; padding: 25px; background: #f0fdf4; border-radius: 20px; border: 1px solid #bbf7d0; animation: fadeIn 0.5s ease; }
-        .tutar { font-size: 36px; color: #15803d; font-weight: 800; margin: 10px 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
-</head>
-<body>
-
-<div class="card">
-    <h1>Tazminat Analizi</h1>
-    <form id="form">
-        <div class="input-box">
-            <label>Araç Kilometresi</label>
-            <input type="number" id="km" placeholder="Örn: 45000" required>
-        </div>
-        <div class="input-box">
-            <label>Hasar Kaydı Tutarı (TL)</label>
-            <input type="number" id="hasar" placeholder="Örn: 25000" required>
-        </div>
-        <button type="submit" id="btn">Analizi Başlat</button>
-    </form>
-
-    <div id="result">
-        <p style="color: #475569; margin: 0; font-weight: 600;">Tahmini Alınabilecek Tazminat:</p>
-        <div class="tutar" id="tutar">0 TL</div>
-        <p style="font-size: 13px; color: #166534;">Başvurunuz başarıyla kaydedildi. Uzman ekibimiz size en kısa sürede ulaşacaktır.</p>
-    </div>
-</div>
-
-<script>
-    // Senin oluşturduğun Google Script URL'si
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwix7iWUnraIrpbEQbQxklzWfsNpMWHSdqVAMPD4MFqxus4Z-IBGJPTr9EIKN8w7A6PSg/exec';
-
-    const form = document.getElementById('form');
-    const btn = document.getElementById('btn');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        btn.disabled = true;
-        btn.innerText = "Gönderiliyor...";
-
-        const km = document.getElementById('km').value;
-        const hasar = document.getElementById('hasar').value;
+        :root { --primary: #2563eb; --primary-hover: #1d4ed8; --bg: #f8fafc; --text: #1e293b; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; }
         
-        // Hukuki standartlara yakın basit bir hesaplama
-        let carpan = km > 150000 ? 0.08 : 0.17;
-        let sonucTutar = (hasar * carpan).toFixed(0);
-
-        // Sonucu ekranda göster
-        document.getElementById('tutar').innerText = new Intl.NumberFormat('tr-TR').format(sonucTutar) + " TL";
-
-        // Veriyi Google Tabloya gönder
-        fetch(scriptURL, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify({ km: km, hasar: hasar, tutar: sonucTutar })
-        })
-        .then(() => {
-            document.getElementById('result').style.display = 'block';
-            btn.innerText = "Başvuru Alındı ✅";
-        })
-        .catch(() => {
-            // Hata olsa bile kullanıcıya sonucu gösteriyoruz (Google no-cors bazen hata döndürür ama veri gider)
-            document.getElementById('result').style.display = 'block';
-            btn.innerText = "Başvuru Alındı ✅";
-        });
-    });
-</script>
-
-</body>
-</html>
+        .container { background: #ffffff; padding: 40px; border-radius: 24px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); width: 100%; max-width: 450px; text-align: center; border-top: 8px solid var(--primary); }
+        
+        h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; color: #0f172a; }
+        p.subtitle { color: #64748b; margin-bottom: 30px; font-size: 15px; }
+        
+        .form-group { text-align: left; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #475569; }
+        
+        input { width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 16px; transition: all 0.2s; box-sizing: border-box; }
+        input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
+        
+        button { width: 100%; padding: 16px; background-color: var(--primary); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 6px -1px rgba(37,99,235,0.2); }
+        button:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+        button:disabled { background-color: #94a3b8; cursor: not-allowed; transform: none; }
+        
+        #resultArea { display: none; margin-top: 30px; padding: 25px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; animation: slideUp 0.4s ease-out; }
+        .result-label { font-size: 14px; color: #166534; font-weight: 600; margin-bottom: 5px; }
+        .amount { font-size: 38px; color: #15803d; font-weight:
