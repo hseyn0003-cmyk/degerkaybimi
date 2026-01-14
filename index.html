@@ -3,52 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEĞER KAYBI AI | Yapay Zeka Destekli Analiz</title>
+    <title>DEĞER KAYBI AI | Profesyonel Analiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Roboto', sans-serif; background: #0a0a0a; color: #e0e0e0; overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
-        .hero-section {
-            background: radial-gradient(circle at center, rgba(17, 24, 39, 0.8) 0%, #0a0a0a 70%);
-            position: relative;
-            overflow: hidden;
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #020617; /* Siyah yerine çok derin lacivert */
+            color: #f8fafc;
+            margin: 0;
         }
-        .ai-face {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%; /* Kontrol edilebilir boyut */
-            max-width: 900px; /* Maksimum genişlik */
-            height: auto;
-            opacity: 0.15;
-            pointer-events: none;
-            filter: grayscale(100%) brightness(50%) contrast(150%) blur(1px); /* Daha soyut bir AI efekti */
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #1e3a8a 0%, #020617 60%);
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1.5rem;
+            border-radius: 2rem;
         }
-        .neon-text {
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
+        .accent-glow {
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
         }
-        .neon-border-blue { border-color: #0ff; box-shadow: 0 0 10px rgba(0,255,255,0.5); }
-        .neon-border-purple { border-color: #f0f; box-shadow: 0 0 10px rgba(255,0,255,0.5); }
-        .neon-border-green { border-color: #0f0; box-shadow: 0 0 10px rgba(0,255,0,0.5); }
-        input[type="number"] {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            color: #e0e0e0 !important;
-        }
-        input[type="number"]:focus {
-            border-color: #0ff !important;
-            box-shadow: 0 0 8px rgba(0,255,255,0.6) !important;
+        .ai-image {
+            mask-image: linear-gradient(to top, transparent, black 20%, black 80%, transparent);
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
         }
     </style>
 </head>
-<body>
+<body class="hero-gradient min-h-screen">
 
-    <img src="
+    <nav class="max-w-7xl mx-auto p-8 flex justify-between items-center relative z-20">
+        <div class="text-2xl font-black tracking-tighter uppercase italic">AI.<span class="text-blue-500">DegerKaybı</span></div>
+        <div class="flex gap-4">
+            <a href="mailto:hseyn0003@gmail.com" class="text-xs font-bold border border-blue-500/30 px-6 py-2 rounded-full hover:bg-blue-500 transition uppercase tracking-widest">Destek</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-12 items-center pt-4 pb-20 relative z-10">
+        
+        <div class="relative order-2 lg:order-1 flex justify-center">
+            <div class="absolute inset-0 bg-blue-600/10 blur-[100px] rounded-full"></div>
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800&auto=format&fit=crop" 
+                 alt="AI Professional" 
+                 class="ai-image w-full max-w-md rounded-[3rem] shadow-2xl grayscale-[20%] border border-white/5">
+            
+            <div class="absolute bottom-10 glass-panel p-6 border-l-4 border-l-blue-500 animate-bounce shadow-2xl">
+                <p class="text-sm font-bold italic">Saniyeler içinde analiz hazır.</p>
+            </div>
+        </div>
+
+        <div class="space-y-10 order-1 lg:order-2">
+            <div>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none italic uppercase">
+                    Aracınızın <br><span class="text-blue-500">Hakkını Alın.</span>
+                </h1>
+                <p class="mt-6 text-slate-400 text-lg italic leading-relaxed max-w-lg">
+                    Yapay zeka algoritmalarımızla 2026 sigorta mevzuatına uygun en doğru değer kaybı analizini yapın.
+                </p>
+            </div>
+
+            <div class="glass-panel p-8 accent-glow">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase font-bold text-blue-400 tracking-widest ml-2">Kilometre</label>
+                        <input type="number" id="km" placeholder="45.000" class="w-full p-5 bg-black/30 border border-white/5 rounded-2xl focus:border-blue-500 outline-none transition-all font-bold">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase font-bold text-blue-400 tracking-widest ml-2">Hasar (TL)</label>
+                        <input type="number" id="hasar" placeholder="35.000" class="w-full p-5 bg-black/30 border border-white/5 rounded-2xl focus:border-blue-500 outline-none transition-all font-bold">
+                    </div>
+                </div>
+                <button onclick="hesapla()" class="w-full bg-blue-600 hover:bg-blue-500 mt-8 text-white font-black py-5 rounded-2xl shadow-xl transition-all active:scale-95 uppercase tracking-widest italic">Analizi Başlat</button>
+
+                <div id="sonucAlani" class="mt-8 hidden border-t border-white/10 pt-8">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="text-center md:text-left">
+                            <p class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Tahmini Alacağınız</p>
+                            <p id="tutar" class="text-4xl font-black text-white"></p>
+                        </div>
+                        <button onclick="kaydetVeGit()" class="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition shadow-lg text-xs uppercase tracking-widest italic">Hemen Başvur</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-12 text-center opacity-30">
+        <p class="text-[10px] font-bold uppercase tracking-[1em]">© 2026 DEGERKAYBIMI.COM 
+            <a href="
