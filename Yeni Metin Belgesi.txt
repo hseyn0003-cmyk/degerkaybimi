@@ -32,7 +32,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'G-HNXMBKV2TN');
 </script>
-<body class="bg-slate-50 text-slate-900">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><body class="bg-slate-50 text-slate-900">
 
     <nav class="bg-white border-b sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -72,4 +73,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <div>
 
                         <label class="block text-sm font-bold mb-1">Hasar Türü</label>
+
 
