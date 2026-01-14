@@ -14,23 +14,25 @@
     </script>
 
     <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Hızlı Sorgulama</title>
-    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel sigorta katsayılarıyla hesaplayın. 2 yıl içindeki kazalar için tazminat hakkınızı ücretsiz öğrenin.">
-    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, trafik kazası tazminat, değer kaybı başvurusu">
+    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını 2026 güncel verileriyle hesaplayın. 2 yıl içindeki kazalar için tazminat hakkınızı hemen öğrenin.">
+    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, sigorta tazminat, trafik kazası değer kaybı sorgulama">
     <link rel="canonical" href="https://degerkaybimi.com" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #f9fafb; }
-        .bento-card { background: white; border: 1px solid #f1f5f9; border-radius: 2rem; transition: all 0.3s ease; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #f8fafc; }
+        .bento-card { background: white; border: 1px solid #f1f5f9; border-radius: 2rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
-        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(241, 245, 249, 0.5); }
+        .animate-fade { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased text-slate-900">
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <header class="sticky top-0 z-50 glass-nav">
         <nav class="container mx-auto px-6 h-20 flex justify-between items-center" aria-label="Ana Menü">
             <div class="flex items-center gap-2">
                 <div class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-bold">DK</div>
@@ -42,28 +44,24 @@
         </nav>
     </header>
 
-    <main>
-        <section class="container mx-auto px-6 py-12 lg:py-20">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-8">
-                    <div class="space-y-4">
-                        <span class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest">2026 Mevzuat Uyumu</span>
-                        <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1]">
-                            Kaza Sonrası <br><span class="text-blue-600 italic">Değer Kaybınızı</span> <br>Geri Alın.
-                        </h1>
-                        <p class="text-lg text-slate-500 max-w-xl leading-relaxed">
-                            Aracınız onarılmış olsa dahi, ikinci el piyasasındaki fiyat düşüşünü sigorta şirketinden nakit olarak tahsil edebilirsiniz. Üstelik 2 yıl geçmişe dönük başvuru hakkınız var.
-                        </p>
-                    </div>
+    <main class="container mx-auto px-6 py-12 lg:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <section class="lg:col-span-7 space-y-8 animate-fade">
+                <div class="space-y-4">
+                    <span class="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest">2026 Mevzuat Uyumu</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1]">
+                        Aracınızdaki Kaybı <br><span class="text-blue-600 italic">Nakit'e Dönüştürün.</span>
+                    </h1>
+                    <p class="text-lg text-slate-500 max-w-xl leading-relaxed">
+                        Kaza sonrası aracınız onarılmış olsa dahi oluşan piyasa değer kaybını sigorta şirketinden alabilirsiniz. 2 yıl geçmişe dönük haklarınız için hemen sorgulama yapın.
+                    </p>
                 </div>
 
-                <aside class="lg:col-span-5">
-                    <div class="bento-card p-8 md:p-10 shadow-2xl shadow-blue-900/5 bg-white">
-                        <h2 class="text-2xl font-bold mb-8 text-slate-800">Tazminat Sorgulama</h2>
-                        <form onsubmit="event.preventDefault(); hesapla();" class="space-y-6">
-                            <div>
-                                <label for="km" class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Araç Kilometresi</label>
-                                <input type="number" id="km" required placeholder="Örn: 45.000" class="w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 outline-none transition-all text-lg font-semibold">
-                            </div>
-                            <div>
-                                <label for="has
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-6 bento-card text-center">
+                        <div class="text-3xl mb-2">⏳</div>
+                        <h3 class="font-bold text-sm">2 Yıl Zaman Aşımı</h3>
+                    </div>
+                    <div class="p-6 bento-card text-center">
+                        <div class="text-3xl mb-2">⚖️</div>
