@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araç Değer Kaybı Hesaplama | 2026 Mevzuatı</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .bento-card { background: white; border: 1px solid #e2e8f0; border-radius: 24px; transition: all 0.3s ease; }
+        .bento-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); }
+    </style>
+</head>
+<body class="antialiased p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <div class="md:col-span-8 bento-card p-8 md:p-12 gradient-bg text-white flex flex-col justify-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight leading-tight">
+                Aracınızdaki Değer Kaybını <span class="text-blue-200">Tahsil Edin.</span>
+            </h1>
+            <p class="text-lg text-blue-50 opacity-90 max-w-xl">
+                Kaza sonrası oluşan piyasa değer düşüşünü 2026 sigorta katsayılarıyla anında hesaplayın.
+            </p>
+        </div>
+
+        <div class="md:col-span-4 bento-card p-8 border-2 border-blue-600">
+            <h2 class="text-xl font-bold mb-6 italic">Hızlı Sorgulama</h2>
+            <form onsubmit="event.preventDefault(); hesapla();" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Kilometre</label>
+                    <input type="number" id="km" required placeholder="Örn: 45000" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Hasar Tutarı (TL)</label>
+                    <input type="number" id="hasar" required placeholder="Örn: 30000" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 rounded-2xl shadow-lg transition-all active:scale-95">
+                    HESAPLA
+                </button>
+            </form>
+            <div id="sonuc" class="mt-6 hidden animate-pulse">
+                <div class="p-4 bg-blue-50 border border-blue-100 rounded-2xl text-center">
+                    <p class="text-blue-600 text-xs font-bold uppercase mb-1">Tahmini Alacağınız</p>
+                    <p id="tutar" class="text-3xl font-black text-slate-900"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:col-span-4 bento-card p-8">
+            <div class="text-3xl mb-4">⚖️</div>
+            <h3 class="font-bold text-lg mb-2">2 Yıl Zaman Aşımı</h3>
+            <p class="text-slate-500 text-sm">Kazadan sonraki 2 yıl içinde başvuru hakkınız mevcuttur.</p>
+        </div>
+        <div class="md:col-span-4 bento-card p-8">
+            <div class="text-3xl mb-4">🚗</div>
+            <h3 class="font-bold text-lg mb-2">Kusur Oranı</h3>
+            <p class="text-slate-500 text-sm">Kazada %100 kusurlu olmamanız tazminat için yeterlidir.</p>
+        </div>
+        <div class="md:col-span-4 bento-card p-8">
+            <div class="text-3xl mb-4">💰</div>
+            <h3 class="font-bold text-lg mb-2">Hızlı Tahsilat</h3>
+            <p class="text-slate-500 text-sm">Onaylanan tutar doğrudan IBAN numaranıza nakit yatar.</p>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-12 text-center">
+        <h2 class="text-2xl font-bold mb-8">Tazminat Süreci Nasıl İşler?</h2>
+        
+    </div>
+
+    <footer class="mt-16 py-8 text-center text-slate-400 text-xs font-medium uppercase tracking-widest">
+        &copy; 2026 DEGERKAYBIMI.COM • TÜM HAKLARI SAKLIDIR
+    </footer>
+
+    <script>
+        function hesapla() {
+            const km = parseFloat(document.getElementById('km').value);
+            const hasar = parseFloat(document.getElementById('hasar').value);
+            const sonucDiv = document.getElementById('sonuc');
+            const tutarP = document.getElementById('tutar');
+
+            if (km >= 0 && hasar > 0) {
+                // 2026 Güncel Katsayı Hesaplama
+                let carpan = km > 150000 ? 0.25 : (km > 100000 ? 0.45 : 0.75);
+                let sonuc = hasar * carpan;
+                
+                tutarP.innerText = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(sonuc);
+                sonucDiv.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
