@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNXMBKV2TN"></script>
@@ -18,70 +19,108 @@
     <meta name="author" content="degerkaybimi.com">
     <link rel="canonical" href="https://degerkaybimi.com" />
 
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/741/741407.png" type="image/x-icon">
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-900 selection:bg-blue-200">
 
-    <nav class="bg-blue-700 p-4 text-white shadow-lg">
+    <nav class="bg-blue-700 p-4 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">degerkaybimi.com</h1>
-            <a href="https://wa.me/905000000000" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold transition">WhatsApp Destek</a>
+            <a href="/" class="text-xl font-bold flex items-center gap-2">
+                <span>🚗</span> degerkaybimi.com
+            </a>
+            <a href="https://wa.me/905000000000?text=Merhaba, araç değer kaybı hakkında bilgi almak istiyorum." 
+               target="_blank" 
+               class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold transition transform hover:scale-105 shadow-md">
+                WhatsApp Destek
+            </a>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-10">
-        <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
-            <h2 class="text-2xl font-bold mb-6 text-center text-blue-800">Ücretsiz Değer Kaybı Hesapla</h2>
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-blue-900 mb-2">Değer Kaybı Hesapla</h2>
+                <p class="text-gray-500">Bilgileri girerek tahmini tazminatınızı öğrenin</p>
+            </div>
             
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <div>
-                    <label class="block mb-1 font-medium">Araç Kilometresi</label>
-                    <input type="number" id="km" placeholder="Örn: 45000" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    <label class="block mb-2 font-semibold text-sm uppercase tracking-wide text-gray-600">Araç Kilometresi</label>
+                    <input type="number" id="km" placeholder="Örn: 45000" 
+                           class="w-full border-2 border-gray-100 p-4 rounded-xl focus:border-blue-500 focus:ring-0 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block mb-1 font-medium">Hasar Tutarı (TL)</label>
-                    <input type="number" id="hasar" placeholder="Örn: 15000" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    <label class="block mb-2 font-semibold text-sm uppercase tracking-wide text-gray-600">Hasar Tutarı (TL)</label>
+                    <input type="number" id="hasar" placeholder="Örn: 15000" 
+                           class="w-full border-2 border-gray-100 p-4 rounded-xl focus:border-blue-500 focus:ring-0 outline-none transition-all">
                 </div>
-                <button onclick="hesapla()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition text-lg shadow-md">Hemen Hesapla</button>
+                <button onclick="hesapla()" 
+                        class="w-full bg-blue-600 hover:bg-blue-800 text-white font-black py-5 rounded-2xl transition-all text-xl uppercase tracking-widest shadow-xl">
+                    HESAPLA
+                </button>
             </div>
 
-            <div id="sonuc" class="mt-8 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg hidden text-center">
-                <p class="text-gray-600">Tahmini Tazminat Tutarınız:</p>
-                <p id="tutar" class="text-3xl font-black text-blue-700"></p>
-                <p class="text-xs mt-2 text-gray-400 font-normal">*Bu değer tahmini olup yasal bağlayıcılığı yoktur.</p>
+            <div id="sonuc" class="mt-10 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl hidden animate-bounce-short">
+                <p class="text-blue-800 font-medium text-center">Tahmini Tazminat Tutarınız:</p>
+                <p id="tutar" class="text-4xl font-black text-center text-blue-900 mt-2"></p>
+                <div class="mt-4 p-3 bg-white rounded-lg text-xs text-gray-400 leading-relaxed italic text-center">
+                    *Bu hesaplama ortalama verilerle yapılmıştır. Kesin sonuç için uzman görüşü almanız önerilir.
+                </div>
             </div>
         </div>
     </main>
 
-    <section class="bg-white py-12">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-xl font-semibold mb-4">Neden Değer Kaybı Başvurusu Yapmalısınız?</h3>
-            <p class="text-gray-600 max-w-2xl mx-auto">Trafik kazası sonrası aracınız onarılsa bile ikinci el değeri düşer. Bu maddi zararı sigorta şirketinden 2 yıl içinde geri alma hakkınız vardır.</p>
+    <section class="container mx-auto px-4 pb-20">
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-500">
+                <h4 class="font-bold text-lg mb-2">2 Yıl Zaman Aşımı</h4>
+                <p class="text-sm text-gray-600">Kazadan itibaren 2 yıl içinde başvuru yapma hakkınız bulunmaktadır.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-green-500">
+                <h4 class="font-bold text-lg mb-2">Kusur Oranı</h4>
+                <p class="text-sm text-gray-600">%100 kusurlu olmadığınız sürece değer kaybı alabilirsiniz.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-red-500">
+                <h4 class="font-bold text-lg mb-2">Ücretsiz Danışmanlık</h4>
+                <p class="text-sm text-gray-600">Dosyanızın durumunu öğrenmek için bize WhatsApp'tan ulaşabilirsiniz.</p>
+            </div>
         </div>
     </section>
 
+    <footer class="text-center py-10 border-t border-gray-200 text-gray-400 text-sm">
+        <p>&copy; 2026 degerkaybimi.com | Tüm Hakları Saklıdır.</p>
+    </footer>
+
     <script>
         function hesapla() {
-            const km = document.getElementById('km').value;
-            const hasar = document.getElementById('hasar').value;
+            const km = parseFloat(document.getElementById('km').value);
+            const hasar = parseFloat(document.getElementById('hasar').value);
             const sonucDiv = document.getElementById('sonuc');
             const tutarP = document.getElementById('tutar');
 
-            if (km && hasar) {
-                // Basit bir örnek algoritma: Hasarın %40'ı ile %80'i arası bir değer (KM'ye göre değişir)
-                let carpan = km > 100000 ? 0.3 : 0.6;
-                let sonuc = hasar * carpan;
+            if (km >= 0 && hasar > 0) {
+                // Daha gerçekçi bir çarpan algoritması
+                let kmCarpan = 1;
+                if (km > 165000) kmCarpan = 0.2;
+                else if (km > 100000) kmCarpan = 0.4;
+                else if (km > 50000) kmCarpan = 0.7;
+                else kmCarpan = 0.9;
+
+                let tahminiSonuc = hasar * kmCarpan * 0.5; // Hasarın belli bir oranı
                 
-                tutarP.innerText = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(sonuc);
+                tutarP.innerText = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(tahminiSonuc);
                 sonucDiv.classList.remove('hidden');
+                sonucDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
-                alert("Lütfen tüm alanları doldurun.");
+                alert("Lütfen geçerli değerler giriniz.");
             }
         }
     </script>
-
 </body>
 </html>
+
 
 
 
