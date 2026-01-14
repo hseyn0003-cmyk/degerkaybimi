@@ -13,48 +13,35 @@
       gtag('config', 'G-HNXMBKV2TN');
     </script>
 
-    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Tazminat Sorgulama</title>
-    <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını saniyeler içinde hesaplayın. 2026 güncel verileri ve ücretsiz uzman danışmanlığı ile hakkınızı arayın.">
-    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, sigorta tazminat, trafik kazası değer kaybı">
+    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Sorgulama</title>
+    <meta name="description" content="2026 güncel verileriyle aracınızdaki değer kaybını ücretsiz hesaplayın. Uzman danışmanlık ve hızlı tazminat sorgulama hizmeti.">
+    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, trafik kazası tazminat, sigorta değer kaybı">
     <link rel="canonical" href="https://degerkaybimi.com" />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .glass-morphism { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.5); }
-        .input-group:focus-within label { color: #2563eb; }
-        .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .animate-up { animation: fadeInUp 0.5s ease-out forwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-[#fcfdfe] text-slate-900 leading-relaxed">
+<body class="bg-[#f8fafc] text-slate-900 leading-relaxed">
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <nav class="container mx-auto px-4 h-16 flex justify-between items-center" aria-label="Ana Menü">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-sm leading-none">DK</div>
-                <span class="text-xl font-extrabold tracking-tight text-slate-800">degerkaybimi<span class="text-blue-600">.com</span></span>
+                <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-sm">DK</div>
+                <h1 class="text-xl font-extrabold tracking-tight">degerkaybimi<span class="text-blue-600">.com</span></h1>
             </div>
-            <a href="https://wa.me/905000000000" target="_blank" rel="noopener" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full text-sm font-bold transition shadow-md flex items-center gap-2 active:scale-95">
+            <a href="https://wa.me/905000000000" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full text-sm font-bold transition shadow-md flex items-center gap-2">
                 <span>WhatsApp Destek</span>
             </a>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main>
-        <section class="container mx-auto px-4 py-12 lg:py-24 text-center">
-            <div class="max-w-3xl mx-auto fade-in-up">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-                    Aracınızın Hakkını <br><span class="text-blue-600">Sigortadan Geri Alın</span>
-                </h1>
-                <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
-                    Kaza sonrası onarılan aracınızın piyasa fiyatındaki düşüşü saniyeler içinde hesaplayın ve tazminatınızı nakit olarak tahsil edin.
-                </p>
-            </div>
-
-            <div class="max-w-xl mx-auto glass-morphism p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-blue-900/5 fade-in-up" style="animation-delay: 0.1s;">
-                <form id="calcForm" onsubmit="event.preventDefault(); hesapla();" class="space-y-6">
-                    <div class="input-group text-left">
-                        <label for="km" class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1
+        <header class="py-12 md:py-24 bg-gradient-to-b from-blue-50 to-transparent text-center px-4 animate-up">
+            <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
