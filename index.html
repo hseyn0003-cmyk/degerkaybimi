@@ -56,15 +56,17 @@
 
             if(km && hasar) {
                 let carpan = km > 165000 ? 0.28 : (km > 100000 ? 0.48 : 0.86);
-                let sonuc = (hasar * carpan * 0.72).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
-                tutarP.innerText = sonuc + " ₺";
+                let sonucNum = (hasar * carpan * 0.72);
+                let sonucStr = sonucNum.toLocaleString('tr-TR', { minimumFractionDigits: 2 });
+                tutarP.innerText = sonucStr + " ₺";
                 
-                // E-posta adresinizi ve konuyu buraya yazın
-                let email = "destek@degerkaybimi.com"; 
-                let subject = encodeURIComponent("Değer Kaybı Başvurusu - 2026");
-                let body = encodeURIComponent("Merhaba, aracımın değer kaybı tazminatı için başvuru yapmak istiyorum.\n\nKilometre: " + km + "\nHasar Tutarı: " + hasar + " TL\nHesaplanan Tahmini Tutar: " + sonuc + " TL");
+                // BURAYI DEĞİŞTİR: Kendi e-posta adresini buraya yaz
+                let benimEpostam = "hseyn0003@gmail.com"; 
                 
-                emailLink.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
+                let subject = encodeURIComponent("Değer Kaybı Tazminat Başvurusu");
+                let body = encodeURIComponent("Merhaba,\n\nSiteniz üzerinden yaptığım hesaplama sonucu bilgilerim aşağıdadır:\n\nAraç Kilometresi: " + km + "\nHasar Tutarı: " + hasar + " TL\nTahmini Tazminat: " + sonucStr + " TL\n\nKonuyla ilgili geri dönüşünüzü bekliyorum.");
+                
+                emailLink.href = "mailto:" + benimEpostam + "?subject=" + subject + "&body=" + body;
                 
                 sonucAlani.classList.remove('hidden');
                 sonucAlani.scrollIntoView({ behavior: 'smooth' });
