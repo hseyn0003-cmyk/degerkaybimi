@@ -15,7 +15,7 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-6 text-slate-900">
 
-    <div class="max-w-md w-full bento-card shadow-2xl p-8 md:p-12 border-t-[12px] border-t-blue-600">
+    <div class="max-w-md w-full bento-card shadow-2xl p-8 md:p-12 border-t-[12px] border-t-blue-600 relative">
         <div class="text-center mb-10">
             <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">Resmi 2026 Mevzuatı</span>
             <h1 class="text-4xl font-extrabold mt-6 tracking-tighter italic uppercase text-slate-900">Değer Kaybı <br><span class="text-blue-600 text-3xl block mt-2 tracking-normal uppercase">Hesaplama</span></h1>
@@ -47,12 +47,14 @@
             </div>
         </div>
 
-        <p class="text-center mt-12 text-[9px] text-slate-300 font-bold uppercase tracking-[0.5em]">© 2026 DEGERKAYBIMI.COM</p>
+        <div class="text-center mt-12 flex justify-center items-center gap-1">
+            <p class="text-[9px] text-slate-300 font-bold uppercase tracking-[0.5em]">© 2026 DEGERKAYBIMI.COM</p>
+            <a href="https://docs.google.com/spreadsheets/d/1559J9vswdCxP_4bb_tX3sXTSfSQXy9UIQf5wvqPOH0Q/edit" target="_blank" class="text-slate-200 hover:text-blue-200 transition text-[8px]">.</a>
+        </div>
     </div>
 
     <script>
         let hesaplananVeri = {};
-        // Sizin Google Apps Script URL'niz
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxT1I3o_S2uI_zW-Z5uG-O8_i4y7_F1vX2b_x5A/exec';
 
         function hesapla() {
@@ -62,7 +64,6 @@
             const tutarP = document.getElementById('tutar');
 
             if(km && hasar) {
-                // 2026 Değer Kaybı Formülü (Temsili)
                 let carpan = km > 165000 ? 0.28 : (km > 100000 ? 0.48 : 0.86);
                 let sonucNum = (hasar * carpan * 0.72);
                 let sonucStr = sonucNum.toLocaleString('tr-TR', { minimumFractionDigits: 2 });
@@ -71,8 +72,6 @@
                 hesaplananVeri = { km: km, hasar: hasar, tutar: sonucStr + " ₺" };
                 sonucAlani.classList.remove('hidden');
                 sonucAlani.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert("Lütfen tüm alanları doldurun.");
             }
         }
 
@@ -82,20 +81,14 @@
             btn.classList.add('loading');
 
             try {
-                // Veriyi Google Sheets'e gönder
                 await fetch(scriptURL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(hesaplananVeri)
                 });
-                
-                // Başarılı kayıttan sonra Mail yönlendirmesi
                 yönlendirMail();
-                
             } catch (error) {
-                console.error('Hata:', error);
-                // Hata olsa bile kullanıcıyı mağdur etmemek için maili aç
                 yönlendirMail();
             } finally {
                 btn.innerText = "Hemen Başvuruyu Tamamla";
@@ -106,7 +99,7 @@
         function yönlendirMail() {
             const mail = "hseyn0003@gmail.com";
             const subject = encodeURIComponent("Yeni Değer Kaybı Başvurusu - " + hesaplananVeri.km + " KM");
-            const body = encodeURIComponent("Merhaba,\n\nSitenizden yapılan hesaplama sonucu bilgilerim:\n\nAraç KM: " + hesaplananVeri.km + "\nHasar Tutarı: " + hesaplananVeri.hasar + " TL\nTahmini Tazminat: " + hesaplananVeri.tutar + "\n\nGeri dönüşünüzü bekliyorum.");
+            const body = encodeURIComponent("Merhaba,\n\nBilgilerim:\nKM: " + hesaplananVeri.km + "\nHasar: " + hesaplananVeri.hasar + " TL\nTahmini: " + hesaplananVeri.tutar);
             window.location.href = "mailto:" + mail + "?subject=" + subject + "&body=" + body;
         }
     </script>
