@@ -61,12 +61,11 @@
                 let sonucStr = sonucNum.toLocaleString('tr-TR', { minimumFractionDigits: 2 });
                 tutarP.innerText = sonucStr + " ₺";
                 
-                // --- BURAYI GÜNCELLE ---
+                // Senin e-posta adresin buraya işlendi
                 let benimEpostam = "hseyn0003@gmail.com"; 
-                // -----------------------
                 
-                let subject = encodeURIComponent("Değer Kaybı Başvurusu - " + km + " KM");
-                let body = encodeURIComponent("Merhaba,\n\nSiteniz üzerinden yaptığım hesaplama detayları aşağıdadır:\n\nAraç Kilometresi: " + km + "\nHasar Tutarı: " + hasar + " TL\nTahmini Tazminat: " + sonucStr + " TL\n\nBaşvurumla ilgili detaylı bilgi almak istiyorum.");
+                let subject = encodeURIComponent("Değer Kaybı Başvurusu - " + km + " KM / " + hasar + " TL");
+                let body = encodeURIComponent("Merhaba,\n\nSiteniz üzerinden yaptığım hesaplama detayları aşağıdadır:\n\nAraç Kilometresi: " + km + "\nHasar Tutarı: " + hasar + " TL\nTahmini Tazminat: " + sonucStr + " TL\n\nBaşvurumla ilgili detaylı bilgi ve dosya takibi için geri dönüşünüzü bekliyorum.");
                 
                 emailLink.href = "mailto:" + benimEpostam + "?subject=" + subject + "&body=" + body;
                 
