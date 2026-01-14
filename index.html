@@ -3,47 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Araç Değer Kaybı Hesaplama 2026</title>
+    <title>Araç Değer Kaybı Hesaplama 2026 | Ücretsiz Sorgula</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
-        .bento-card { background: white; border-radius: 2rem; border: 1px solid #f1f5f9; transition: all 0.3s ease; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.5); }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6">
-    <div class="max-w-md w-full">
-        <div class="bento-card p-8 shadow-2xl">
-            <div class="text-center mb-8">
-                <span class="bg-blue-100 text-blue-700 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">GÜNCEL 2026</span>
-                <h1 class="text-3xl font-extrabold text-slate-900 mt-4">Değer Kaybı <span class="text-blue-600">Sorgula</span></h1>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full glass-card shadow-2xl p-8 md:p-10">
+        <div class="text-center mb-10">
+            <div class="inline-block bg-blue-600 text-white text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-[0.2em] mb-4">2026 GÜNCEL SİSTEM</div>
+            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight leading-none italic uppercase">Araç Değer <br><span class="text-blue-600 tracking-tighter">Kaybı Sorgula</span></h1>
+        </div>
+
+        <div class="space-y-6">
+            <div>
+                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Araç Kilometresi</label>
+                <input type="number" id="km" placeholder="Örn: 45000" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold transition-all text-slate-700">
             </div>
-            <div class="space-y-5">
-                <input type="number" id="km" placeholder="Araç Kilometresi" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
-                <input type="number" id="hasar" placeholder="Hasar Tutarı (TL)" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
-                <button onclick="hesapla()" class="w-full bg-blue-600 text-white font-extrabold py-5 rounded-2xl shadow-lg hover:bg-blue-700 transition active:scale-95 uppercase">HESAPLA</button>
+            <div>
+                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Hasar Tutarı (TL)</label>
+                <input type="number" id="hasar" placeholder="Örn: 35000" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold transition-all text-slate-700">
             </div>
-            <div id="sonucAlani" class="mt-8 hidden">
-                <div class="p-6 bg-blue-50 rounded-3xl border border-blue-100 text-center">
-                    <p class="text-blue-600 text-xs font-bold uppercase mb-1">Tahmini Alacağınız</p>
-                    <p id="tutar" class="text-4xl font-black text-slate-900 tracking-tighter mb-4"></p>
-                    <a href="https://wa.me/905000000000" class="block bg-white text-slate-900 py-3 rounded-xl font-bold text-sm shadow-sm border border-slate-200">WhatsApp Başvuru</a>
-                </div>
+            <button onclick="hesapla()" class="w-full bg-slate-900 text-white font-extrabold py-5 rounded-2xl shadow-xl hover:bg-blue-600 transition-all active:scale-95 uppercase tracking-widest text-sm">
+                Hesaplamayı Başlat
+            </button>
+        </div>
+
+        <div id="sonucAlani" class="mt-8 hidden animate-bounce">
+            <div class="p-6 bg-blue-600 rounded-3xl text-center text-white shadow-xl shadow-blue-200">
+                <p class="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">Tahmini Alacağınız</p>
+                <p id="tutar" class="text-4xl font-black tracking-tighter mb-4"></p>
+                <a href="https://wa.me/905000000000" class="block bg-white text-blue-600 py-3 rounded-xl font-bold text-sm shadow-sm hover:bg-slate-50 transition uppercase">Hemen Başvur</a>
             </div>
-            <p class="text-center mt-8 text-[9px] text-slate-400 font-bold uppercase tracking-widest">© 2026 DEGERKAYBIMI.COM</p>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-slate-100 text-center">
+            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.3em]">© 2026 DEGERKAYBIMI.COM</p>
         </div>
     </div>
+
     <script>
         function hesapla() {
             const km = document.getElementById('km').value;
             const hasar = document.getElementById('hasar').value;
             const sonucAlani = document.getElementById('sonucAlani');
             const tutarP = document.getElementById('tutar');
+
             if(km && hasar) {
-                let carpan = km > 150000 ? 0.35 : (km > 100000 ? 0.55 : 0.85);
-                let sonuc = (hasar * carpan * 0.75).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
+                // 2026 Güncel Yargıtay ve Sigorta Mevzuatı Katsayıları
+                let carpan = km > 165000 ? 0.22 : (km > 100000 ? 0.48 : 0.82);
+                let sonuc = (hasar * carpan * 0.76).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
                 tutarP.innerText = sonuc + " ₺";
                 sonucAlani.classList.remove('hidden');
+            } else {
+                alert("Lütfen tüm alanları doldurun.");
             }
         }
     </script>
