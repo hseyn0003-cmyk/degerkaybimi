@@ -3,158 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Değer Kaybı Merkezi | Profesyonel Hasar Analizi</title>
+    <title>Değer Kaybı Uzmanı | Profesyonel Hasar Merkezi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #fcfcfc; }
-        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); }
-        .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(0, 0, 0, 0.05); }
-        .step-blob { background: rgba(59, 130, 246, 0.1); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-section { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .glass { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0,0,0,0.05); }
     </style>
 </head>
-<body class="text-slate-900">
+<body class="bg-slate-50 text-slate-900">
 
-    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="text-2xl font-black tracking-tighter text-blue-900 italic">DEĞER<span class="text-blue-600">KAYBIMI</span></div>
-            <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="#hakkinda" class="hover:text-blue-600 transition">Değer Kaybı Nedir?</a>
-                <a href="#surec" class="hover:text-blue-600 transition">Süreç</a>
-                <a href="#hesapla" class="hover:text-blue-600 transition">Analiz</a>
-            </div>
-            <a href="mailto:hseyn0003@gmail.com" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-xs hover:shadow-lg transition">BİZE ULAŞIN</a>
+    <nav class="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="text-xl font-black text-blue-800 tracking-tighter uppercase italic">DeğerKaybı<span class="text-blue-500">Merkezi</span></div>
+            <a href="mailto:hseyn0003@gmail.com" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-blue-700 transition">BİZE ULAŞIN</a>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 hero-gradient text-white">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="bg-blue-500/20 text-blue-300 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">2026 Mevzuat Uyumluluğu</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mt-6 leading-tight">Aracınızdaki Hasarı <br><span class="text-blue-400">Tazminata Dönüştürün.</span></h1>
-                <p class="text-blue-100/70 mt-6 text-lg italic leading-relaxed">Kazada kusursuzsanız, aracınızın piyasa değerindeki düşüşü sigorta şirketinden profesyonel ekibimizle tahsil edin.</p>
-            </div>
-            <div class="hidden lg:block relative">
-                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop" class="rounded-[3rem] shadow-2xl border-8 border-white/5" alt="Hukuki Danışmanlık">
-            </div>
-        </div>
-    </section>
-
-    <section id="hakkinda" class="py-24 bg-white">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-center mb-16 italic uppercase underline decoration-blue-500 underline-offset-8">Araç Değer Kaybı Hakkında</h2>
-            <div class="grid md:grid-cols-2 gap-12 italic text-slate-600 leading-relaxed">
-                <p>Trafik kazası sonrası onarılan aracın, kaza öncesindeki ikinci el piyasa değeri ile kaza sonrası piyasa değeri arasındaki farka <strong>Değer Kaybı</strong> denir. Bu hak, Yargıtay kararları ve sigorta mevzuatı ile güvence altına alınmıştır.</p>
-                <p>Başvuru yapabilmek için kazada %100 veya %50 kusursuz olmanız, aracınızın kaza tarihinde 165.000 KM altında olması ve kazanın üzerinden 2 yıl geçmemiş olması gerekmektedir.</p>
+    <section class="pt-24 pb-16 hero-section text-white text-center px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-black mb-6 italic uppercase tracking-tighter">Aracınızın Hakkını Alın!</h1>
+            <p class="text-lg text-blue-100 mb-8 leading-relaxed max-w-2xl mx-auto italic">
+                Kazada kusursuzsanız, aracınızdaki piyasa değer kaybını sigortadan tahsil ediyoruz. 2026 güncel mevzuatıyla uzman danışmanlık.
+            </p>
+            <div class="grid md:grid-cols-3 gap-4 text-xs font-bold uppercase tracking-widest opacity-80">
+                <div class="bg-white/10 p-3 rounded-lg">✓ ÜCRETSİZ ANALİZ</div>
+                <div class="bg-white/10 p-3 rounded-lg">✓ HUKUKİ DESTEK</div>
+                <div class="bg-white/10 p-3 rounded-lg">✓ HIZLI TAHSİLAT</div>
             </div>
         </div>
     </section>
 
-    <section id="surec" class="py-24 bg-slate-50 border-y border-slate-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-center text-sm font-bold text-blue-600 uppercase tracking-[0.3em] mb-16">Nasıl Başvurulur?</h2>
-            <div class="grid md:grid-cols-3 gap-12 text-center">
-                <div class="flex flex-col items-center">
-                    <div class="step-blob mb-6"><span class="text-blue-600 font-black text-xl italic">01</span></div>
-                    <h4 class="font-bold mb-3 italic">Verileri Girin</h4>
-                    <p class="text-sm text-slate-500 italic">Kilometre ve hasar bilgilerini analiz motoruna yükleyin.</p>
+    <section class="py-16 bg-white px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-black mb-6 italic uppercase text-blue-900">Değer Kaybı Nedir?</h2>
+                    <p class="text-slate-600 leading-relaxed mb-4 italic">
+                        Kaza yapan bir aracın onarılsa dahi ikinci el piyasasında oluşan fiyat düşüşüne <b>Değer Kaybı</b> denir. Kanunen bu farkı kusurlu tarafın sigortasından alma hakkınız vardır.
+                    </p>
+                    <ul class="space-y-3 text-sm font-bold text-slate-700 italic">
+                        <li class="flex items-center gap-2 text-blue-600">● Zamanaşımı: Kaza tarihinden itibaren 2 Yıl.</li>
+                        <li class="flex items-center gap-2 text-blue-600">● KM Sınırı: Genellikle 165.000 KM altı araçlar.</li>
+                        <li class="flex items-center gap-2 text-blue-600">● Kusur Şartı: %0 veya %50 kusursuz olmak.</li>
+                    </ul>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="step-blob mb-6"><span class="text-blue-600 font-black text-xl italic">02</span></div>
-                    <h4 class="font-bold mb-3 italic">Dosyanız Açılsın</h4>
-                    <p class="text-sm text-slate-500 italic">Uzmanlarımız evrakları hazırlayıp sigorta şirketine başvursun.</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="step-blob mb-6"><span class="text-blue-600 font-black text-xl italic">03</span></div>
-                    <h4 class="font-bold mb-3 italic">Ödemenizi Alın</h4>
-                    <p class="text-sm text-slate-500 italic">Tazminatınız doğrudan şahsi banka hesabınıza yatırılsın.</p>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h3 class="font-black mb-4 uppercase italic">Başvuru Süreci:</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="w-8 h-8 bg-blue-600 text-white flex items-center justify-center rounded-full font-bold">1</span>
+                            <p class="text-sm italic">Bilgileri girin ve tazminat tutarınızı öğrenin.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="w-8 h-8 bg-blue-600 text-white flex items-center justify-center rounded-full font-bold">2</span>
+                            <p class="text-sm italic">Uzmanlarımız evrakları hazırlayıp sigortaya başvursun.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="w-8 h-8 bg-blue-600 text-white flex items-center justify-center rounded-full font-bold">3</span>
+                            <p class="text-sm italic">Tazminat doğrudan banka hesabınıza yatırılsın.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="hesapla" class="py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="glass-card p-10 md:p-16 rounded-[3rem] shadow-2xl">
-                <h3 class="text-3xl font-black mb-10 text-center tracking-tighter italic uppercase text-blue-900">Anlık Tazminat Analizi</h3>
+    <section id="hesapla" class="py-16 bg-slate-50 px-6">
+        <div class="max-w-2xl mx-auto">
+            <div class="glass p-8 md:p-12 rounded-[2rem] shadow-xl">
+                <h2 class="text-2xl font-black text-center mb-8 uppercase italic text-blue-900">Hemen Hesaplayın</h2>
+                
                 <div class="space-y-6">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 ml-2">Araç Kilometresi</label>
-                        <input type="number" id="v_km" placeholder="Örn: 45000" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none font-bold transition-all">
+                        <label class="block text-[10px] font-bold uppercase text-slate-400 mb-2 ml-2">Araç Kilometresi</label>
+                        <input type="number" id="input_km" placeholder="Örn: 45000" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none font-bold">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 ml-2">Hasar Tutarı (TL)</label>
-                        <input type="number" id="v_hasar" placeholder="Örn: 35000" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 outline-none font-bold transition-all">
+                        <label class="block text-[10px] font-bold uppercase text-slate-400 mb-2 ml-2">Hasar Tutarı (TL)</label>
+                        <input type="number" id="input_hasar" placeholder="Örn: 35000" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none font-bold">
                     </div>
-                    <button onclick="startAnaliz()" class="w-full bg-blue-600 text-white font-black py-6 rounded-2xl shadow-xl hover:bg-blue-700 transition-all active:scale-95 uppercase tracking-widest italic text-sm">
-                        Analizi Başlat
-                    </button>
-                </div>
-
-                <div id="v_result_box" class="mt-12 hidden border-t border-slate-100 pt-10 animate-pulse text-center">
-                    <div class="bg-blue-50 p-8 rounded-[2.5rem] border-2 border-blue-100">
-                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Tahmini Alacağınız</p>
-                        <p id="v_amount" class="text-5xl font-black text-slate-900 tracking-tighter"></p>
-                        <button onclick="finalSubmit()" class="w-full bg-blue-600 text-white mt-8 px-8 py-5 rounded-2xl font-black text-sm hover:bg-blue-700 shadow-lg transition uppercase italic">
-                            Resmi Başvuruya Geç
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 text-center border-t border-slate-100">
-        <p class="text-[10px] text-slate-300 font-bold uppercase tracking-[1em]">© 2026 DEGERKAYBIMI.COM <a href="https://docs.google.com/spreadsheets/d/1559J9vswdCxP_4bb_tX3sXTSfSQXy9UIQf5wvqPOH0Q/edit" target="_blank" class="text-slate-100">●</a></p>
-    </footer>
-
-    <script>
-        let userData = {};
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxT1I3o_S2uI_zW-Z5uG-O8_i4y7_F1vX2b_x5A/exec';
-
-        // %100 Çalışan Analiz Fonksiyonu
-        function startAnaliz() {
-            console.log("Analiz Tetiklendi...");
-            const k = document.getElementById('v_km').value;
-            const h = document.getElementById('v_hasar').value;
-
-            if (k && h) {
-                // Sektörel Analiz Formülü
-                let katsayi = k > 165000 ? 0.28 : (k > 100000 ? 0.48 : 0.85);
-                let sonuc = (h * katsayi * 0.74);
-                let formatSonuc = sonuc.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + " ₺";
-
-                document.getElementById('v_amount').innerText = formatSonuc;
-                document.getElementById('v_result_box').classList.remove('hidden');
-                
-                userData = { km: k, hasar: h, tutar: formatSonuc };
-                
-                document.getElementById('v_result_box').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert("Lütfen araç kilometre ve hasar tutarı bilgilerini eksiksiz giriniz.");
-            }
-        }
-
-        async function finalSubmit() {
-            const b = event.target;
-            b.innerText = "YÖNLENDİRİLİYOR...";
-            b.disabled = true;
-
-            try {
-                // Kayıt
-                fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(userData) });
-                // Mail
-                const mailAdres = "hseyn0003@gmail.com";
-                const baslik = encodeURIComponent("Yeni Değer Kaybı Başvurusu - " + userData.km + " KM");
-                const mesaj = encodeURIComponent("Merhaba,\n\nAnaliz detayları:\nKM: " + userData.km + "\nHasar Tutarı: " + userData.hasar + " TL\nTahmini Tazminat: " + userData.tutar + "\n\nEn kısa sürede dönüş bekliyorum.");
-                window.location.href = `mailto:${mailAdres}?subject=${baslik}&body=${mesaj}`;
-            } catch (error) {
-                console.error(error);
-            } finally {
-                b.innerText = "RESMİ BAŞVURUYA GEÇ";
-                b.disabled = false;
-            }
-        }
-    </script>
-</body>
-</html>
+                    <button onclick="hesaplamaMotorunuCalistir()" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl hover:bg-blue-700 transition shadow-lg
