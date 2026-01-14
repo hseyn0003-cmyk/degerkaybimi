@@ -3,77 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Değer Kaybı Hesaplama 2026 | Ücretsiz Tazminat Analizi</title>
-    <meta name="description" content="Aracınızdaki değer kaybını saniyeler içinde hesaplayın. 2026 mevzuatına uygun, hızlı ve ücretsiz değer kaybı tazminat analizi.">
-    <meta name="keywords" content="değer kaybı hesaplama, araç değer kaybı, tazminat hesapla, degerkaybimi">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Değer Kaybı Analizi | Ücretsiz Başvuru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #f8fafc; }
-        .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); }
-        .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 3rem; }
-        details summary::-webkit-details-marker { display: none; }
-        .animate-float { animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        :root { --primary: #1e3a8a; --secondary: #3b82f6; --text: #1f2937; }
+        body { font-family: 'Poppins', sans-serif; background: #f3f4f6; color: var(--text); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .card { background: white; padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        h2 { color: var(--primary); text-align: center; margin-bottom: 1.5rem; font-weight: 700; }
+        .input-group { margin-bottom: 1.2rem; }
+        label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+        input { width: 100%; padding: 0.8rem; border: 2px solid #e5e7eb; border-radius: 0.8rem; font-size: 1rem; box-sizing: border-box; transition: 0.3s; }
+        input:focus { border-color: var(--secondary); outline: none; }
+        button { width: 100%; padding: 1rem; background: var(--primary); color: white; border: none; border-radius: 0.8rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        button:hover { background: var(--secondary); transform: translateY(-2px); }
+        #result { margin-top: 1.5rem; padding: 1.2rem; border-radius: 1rem; text-align: center; display: none; background: #eff6ff; border: 1px solid #dbeafe; }
+        .loading { display: none; text-align: center; margin-top: 10px; font-size: 0.9rem; color: #666; }
     </style>
 </head>
-<body class="text-slate-900">
+<body>
 
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="text-2xl font-black tracking-tighter text-blue-900 italic uppercase">DEĞER<span class="text-blue-600">KAYBIMI</span></div>
-            <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                <a href="#nasil" class="hover:text-blue-600">Süreç Nasıl İşler?</a>
-                <a href="#hesapla" class="hover:text-blue-600">Hızlı Analiz</a>
-                <a href="#sss" class="hover:text-blue-600">Sıkça Sorulanlar</a>
-            </div>
-            <a href="mailto:hseyn0003@gmail.com" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-xs hover:bg-blue-700 shadow-lg transition uppercase">Bize Ulaşın</a>
+<div class="card">
+    <h2>Analiz Formu</h2>
+    <form id="analysisForm">
+        <div class="input-group">
+            <label>Araç Kilometresi (KM)</label>
+            <input type="number" id="km" placeholder="Örn: 45000" required>
         </div>
-    </nav>
-
-    <section class="pt-32 pb-20 hero-bg text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <span class="bg-blue-500/20 text-blue-300 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest border border-blue-500/30">2026 Mevzuat Uyumluluğu</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter italic uppercase">Aracınızın <br><span class="text-blue-400">Hakkını Alın.</span></h1>
-                <p class="text-blue-100/70 text-lg italic leading-relaxed max-w-lg">Kazada kusursuzsanız, aracınızın piyasa değerindeki düşüşü profesyonel ekibimizle sigortadan tahsil edin.</p>
-                <div class="flex gap-4">
-                    <a href="#hesapla" class="bg-white text-blue-900 px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-50 transition shadow-2xl">Analizi Başlat</a>
-                </div>
-            </div>
-            <div class="hidden lg:block animate-float">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" class="rounded-[4rem] shadow-2xl border-8 border-white/5" alt="Hasar Danışmanı">
-            </div>
+        <div class="input-group">
+            <label>Hasar Kaydı Tutarı (TL)</label>
+            <input type="number" id="hasar" placeholder="Örn: 25000" required>
         </div>
-    </section>
+        <button type="submit" id="submitBtn">Analizi Başlat</button>
+    </form>
 
-    <section id="nasil" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-center mb-16 italic uppercase underline decoration-blue-500 underline-offset-8">Başvuru Süreci</h2>
-            <div class="grid md:grid-cols-3 gap-12 text-center">
-                <div class="space-y-4">
-                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl font-black mx-auto">1</div>
-                    <h4 class="font-bold italic uppercase">Verileri Girin</h4>
-                    <p class="text-sm text-slate-500 italic leading-relaxed">KM ve Hasar bilgilerini analiz motoruna yükleyin.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl font-black mx-auto">2</div>
-                    <h4 class="font-bold italic uppercase">Ücretsiz İnceleme</h4>
-                    <p class="text-sm text-slate-500 italic leading-relaxed">Uzmanlarımız evraklarınızı yasal mevzuata göre incelesin.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl font-black mx-auto">3</div>
-                    <h4 class="font-bold italic uppercase">Ödemeyi Alın</h4>
-                    <p class="text-sm text-slate-500 italic leading-relaxed">Tazminatınız doğrudan banka hesabınıza (IBAN) yatırılsın.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div id="loading" class="loading">Hesaplanıyor ve Kaydediliyor...</div>
 
-    <section id="hesapla" class="py-24 bg-slate-50">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="glass-card p-10 md:p-16 shadow-2xl border border-white">
-                <h3 class="text-3xl font-black mb-10 text-center tracking-tighter italic uppercase text-blue-900">Anlık Tazminat Analizi</h3>
-                <div class="
+    <div id="result">
+        <p style="margin:0; font-size: 0.9rem; color: #666;">Tahmini Alınabilecek Tazminat:</p>
+        <h3 id="tazminatTutar" style="color: #059669; font-size: 1.8rem; margin: 0.5rem 0;">0 TL</h3>
+        <p style="font-size: 0.8rem; color: #ef4444;">*Kesin sonuç için uzmanımız sizi arayacaktır.</p>
+    </div>
+</div>
+
+<script>
+    // ÖNEMLİ: Google Sheets Web App URL'sini buraya yapıştır
+    const scriptURL = 'BURAYA_GOOGLE_TABLO_LINKINI_YAPISTIRIN';
+    const form = document.getElementById('analysisForm');
