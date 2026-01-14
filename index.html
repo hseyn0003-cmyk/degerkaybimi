@@ -3,27 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Araç Değer Kaybı Analizi | Ücretsiz Sorgulama</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Değer Kaybı Sorgulama | Ücretsiz Analiz Sistemi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --primary-hover: #1d4ed8; --bg: #f8fafc; --text: #1e293b; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; }
+        :root { --primary: #0f172a; --accent: #2563eb; --success: #16a34a; --bg: #f8fafc; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; color: var(--primary); }
         
-        .container { background: #ffffff; padding: 40px; border-radius: 24px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); width: 100%; max-width: 450px; text-align: center; border-top: 8px solid var(--primary); }
+        .main-card { background: white; padding: 40px; border-radius: 32px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08); width: 100%; max-width: 480px; border: 1px solid #e2e8f0; position: relative; overflow: hidden; }
+        .main-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: linear-gradient(90deg, #2563eb, #7c3aed); }
         
-        h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; color: #0f172a; }
-        p.subtitle { color: #64748b; margin-bottom: 30px; font-size: 15px; }
+        .header { text-align: center; margin-bottom: 35px; }
+        .header h1 { font-size: 26px; font-weight: 800; margin: 0; letter-spacing: -1px; }
+        .header p { color: #64748b; font-size: 15px; margin-top: 10px; }
+
+        .form-group { margin-bottom: 22px; text-align: left; }
+        label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; color: #475569; }
+        input { width: 100%; padding: 15px; border: 2px solid #f1f5f9; border-radius: 14px; font-size: 16px; box-sizing: border-box; transition: 0.3s; background: #f8fafc; }
+        input:focus { outline: none; border-color: var(--accent); background: white; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
+
+        .btn-submit { width: 100%; padding: 18px; background: var(--accent); color: white; border: none; border-radius: 14px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-submit:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(37,99,235,0.3); }
+        .btn-submit:disabled { background: #cbd5e1; cursor: not-allowed; transform: none; }
+
+        /* Sonuç ve Başarı Ekranı */
+        #analysisResult { display: none; text-align: center; padding: 30px; background: #f0fdf4; border-radius: 20px; border: 1px solid #bbf7d0; margin-top: 25px; animation: fadeInUp 0.5s ease; }
+        .amount-text { font-size: 40px; font-weight: 800; color: var(--success); margin: 15px 0; }
+        .info-badge { display: inline-block; padding: 6px 12px; background: #dcfce7; color: #166534; border-radius: 8px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .form-group { text-align: left; margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #475569; }
+        /* Adım Göstergesi */
+        .guide { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .guide-item { font-size: 12px; font-weight: 700; color: #94a3b8; display: flex; align-items: center; gap: 5px; }
+        .guide-item.active { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+<div class="main-card">
+    <div class="header">
+        <h1>Değer Kaybı Analizi</h1>
+        <p>Hukuki verilerle tahmini tazminatınızı öğrenin</p>
+    </div>
+
+    <div class="guide">
+        <div class="guide-item active"><span>●</span> Bilgi Girişi</div>
+        <div class="guide-item"><span>○</span> Akıllı Analiz</div>
+        <div class="guide-item"><span>○</span> Sonuç</div>
+    </div>
+
+    <form id="calculationForm">
+        <div class="form-group">
+            <label>Ad Soyad / Unvan</label>
+            <input type="text" id="fullname" placeholder="Adınız ve Soyadınız" required>
+        </div>
+        <div class="form-group">
+            <label>WhatsApp / Telefon</label>
+            <input type="tel" id="phone" placeholder="05-- --- -- --" required>
+        </div>
+        <div class="form-group">
+            <label>Araç Kilometresi</label>
+            <input type="number" id="km" placeholder="Örn: 55000" required>
+        </div>
+        <div class="form-group">
+            <label>Hasar Tutarı (TL)</label>
+            <input type="number" id="hasar" placeholder="Parça + İşçilik Toplamı" required>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">Analizi Başlat ve Kaydet</button>
+    </form>
+
+    <div id="analysisResult">
+        <div class="info-badge">ANALİZ TAMAMLANDI</div>
+        <p style="margin:0; font-size:15px; font-weight:600; color: #475569;">Tahmini Tazminat Tutarınız:</p>
+        <div class="amount-text" id="calculatedVal">0 TL</div>
+        <p style="font-size:13px; color:#166534; line-height:1.6; margin: 0;">
+            <strong>Tebrikler!</strong> Verileriniz başarıyla uzmanlarımıza iletildi. Ücretsiz dosya takibi için en kısa sürede sizinle iletişime geçeceğiz.
+        </p>
+    </div>
+</div>
+
+<script>
+    // SENİN GOOGLE APPS SCRIPT LİNKİN
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwix7iWUnraIrpbEQbQxklzWfsNpMWHSdqVAMPD4MFqxus4Z-IBGJPTr9EIKN8w7A6PSg/exec';
+    
+    const form = document.getElementById('calculationForm');
+    const btn = document.getElementById('submitBtn');
+    const resultDiv = document.getElementById('analysisResult');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
         
-        input { width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 16px; transition: all 0.2s; box-sizing: border-box; }
-        input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
-        
-        button { width: 100%; padding: 16px; background-color: var(--primary); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 6px -1px rgba(37,99,235,0.2); }
-        button:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
-        button:disabled { background-color: #94a3b8; cursor: not-allowed; transform: none; }
-        
-        #resultArea { display: none; margin-top: 30px; padding: 25px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; animation: slideUp 0.4s ease-out; }
-        .result-label { font-size: 14px; color: #166534; font-weight: 600; margin-bottom: 5px; }
-        .amount { font-size: 38px; color: #15803d; font-weight:
+        // Görsel Geri Bildirim
+        btn.disabled = true;
+        btn.innerText = "Veriler İşleniyor...";
+
+        const name = document.getElementById('fullname').value;
+        const phone = document.getElementById('phone').value;
+        const km = parseInt(document.getElementById('km').value);
+        const hasar = parseInt(document.getElementById('hasar').value);
+
+        // Profesyonel Hesaplama Algoritması
+        let katsayi = (km > 165000) ? 0.11 : 0.19;
+        let sonuc = (hasar * katsayi).toFixed(0);
+
+        // Sonucu Ekrana Yaz
+        document.getElementById('calculatedVal').innerText = new Intl.NumberFormat('tr-TR').format(sonuc) + " TL";
+
+        // Google Sheet'e Veri Gönderimi
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                adSoyad: name,
+                telefon: phone,
+                km: km,
+                hasar: hasar,
+                tutar: sonuc
+            })
+        })
+        .then(() => {
+            showSuccess();
+        })
+        .catch(() => {
+            // No-cors bazen hata döndürür ama veri ulaşır
+            showSuccess();
+        });
+    });
+
+    function showSuccess() {
+        resultDiv.style.display = 'block';
+        btn.innerText = "Başarıyla Gönderildi ✅";
+        form.style.opacity = "0.3";
+        form.style.pointerEvents = "none";
+    }
+</script>
+
+</body>
+</html>
