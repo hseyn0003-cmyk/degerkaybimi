@@ -1,105 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PlayVibe – Fast Games for Young Minds</title>
-<style>
-  body, html { margin:0; padding:0; font-family:Arial,sans-serif; background:#0F172A; color:#fff; }
-  header { height:100vh; background:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-  h1 { font-size:4rem; color:#7C3AED; margin:0; }
-  p { font-size:1.5rem; margin:10px 0; }
-  .btn { padding:15px 30px; margin:10px; background:#22D3EE; color:#0F172A; text-decoration:none; font-weight:bold; border-radius:10px; display:inline-block; }
-  section { padding:60px 20px; max-width:1200px; margin:0 auto; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
-  .game-card { background:#1E293B; padding:20px; border-radius:15px; text-align:center; }
-  .game-card img { width:100%; border-radius:10px; }
-  .game-card h3 { margin:10px 0; color:#22D3EE; }
-  footer { padding:20px; text-align:center; background:#111827; }
-  iframe { width:100%; height:500px; border:none; border-radius:10px; margin-top:20px; }
-  /* Admin gizli tık */
-  #adminTrigger { position:fixed; bottom:10px; right:10px; width:50px; height:50px; opacity:0; cursor:pointer; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Bulmaca | Her Gün Yeni Oyun</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --p-purple: #6366f1; --p-pink: #ec4899; --p-dark: #0f172a; --bg: #f8fafc; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; color: var(--p-dark); }
+        
+        header { width: 100%; background: white; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-align: center; position: sticky; top: 0; z-index: 100; }
+        header h1 { margin: 0; font-size: 24px; background: linear-gradient(90deg, var(--p-purple), var(--p-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .app-container { width: 100%; max-width: 500px; padding: 20px; box-sizing: border-box; }
+        
+        /* Oyun Seçme Sekmeleri */
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
+        .tab-btn { padding: 10px 20px; background: white; border: 2px solid #e2e8f0; border-radius: 50px; cursor: pointer; white-space: nowrap; font-weight: 600; transition: 0.3s; }
+        .tab-btn.active { background: var(--p-purple); color: white; border-color: var(--p-purple); }
+
+        .game-card { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); text-align: center; display: none; min-height: 300px; }
+        .game-card.active { display: block; animation: slideIn 0.4s ease; }
+
+        /* Oyun 1: Sayı Tahmin */
+        input#guessInput { width: 80px; padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 20px; text-align: center; }
+        
+        /* Oyun 2: Kelime Bulmaca */
+        .word-box { font-size: 32px; font-weight: 800; letter-spacing: 5px; margin: 20px 0; color: var(--p-purple); }
+
+        /* Ortak Buton */
+        .action-btn { background: var(--p-dark); color: white; border: none; padding: 15px 30px; border-radius: 15px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 20px; width: 100%; }
+        
+        #installBtn { display: none; background: var(--p-pink); margin-bottom: 15px; }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body>
 
 <header>
-  <h1>PLAYVIBE</h1>
-  <p>Fast Games for Young Minds</p>
-  <a href="#games" class="btn">PLAY NOW</a>
+    <h1>MEGA BULMACA</h1>
 </header>
 
-<section id="games">
-  <h2>Popular Games</h2>
-  <div class="grid">
-    <div class="game-card">
-      <img src="https://images.unsplash.com/photo-1606312610581-5e188fae414e?auto=format&fit=crop&w=400&q=80" alt="Tap Runner">
-      <h3>Tap Runner</h3>
-      <a class="btn" onclick="loadGame('tap-runner')">PLAY</a>
+<div class="app-container">
+    <button id="installBtn" class="action-btn">📲 Uygulamayı Ana Ekrana Ekle</button>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openGame('numGame')">🔢 Sayı Bul</button>
+        <button class="tab-btn" onclick="openGame('wordGame')">🔤 Kelime Avı</button>
+        <button class="tab-btn" onclick="openGame('memoryGame')">🧠 Hafıza</button>
     </div>
-    <div class="game-card">
-      <img src="https://images.unsplash.com/photo-1606312610581-5e188fae414e?auto=format&fit=crop&w=400&q=80" alt="Color Match">
-      <h3>Color Match</h3>
-      <a class="btn" onclick="loadGame('color-match')">PLAY</a>
+
+    <div id="numGame" class="game-card active">
+        <h2>Sayı Tahmini</h2>
+        <p>1-100 arası tuttuğum sayıyı bulabilir misin?</p>
+        <input type="number" id="guessInput">
+        <button class="action-btn" onclick="checkGuess()">Tahmin Et</button>
+        <p id="numMsg" style="margin-top:20px; font-weight:600;"></p>
     </div>
-  </div>
 
-  <!-- Oyun iframe -->
-  <iframe id="gameFrame"></iframe>
-</section>
+    <div id="wordGame" class="game-card">
+        <h2>Kelimeyi Tamamla</h2>
+        <p>Aşağıdaki meyveyi tahmin et:</p>
+        <div class="word-box" id="wordDisplay">E _ M _</div>
+        <input type="text" id="wordInput" placeholder="Cevabın?" style="width:100%; padding:15px; border-radius:12px; border:2px solid #eee; box-sizing:border-box;">
+        <button class="action-btn" onclick="checkWord()">Kontrol Et</button>
+        <p id="wordMsg" style="margin-top:20px; font-weight:600;"></p>
+    </div>
 
-<section id="about">
-  <h2>Why PlayVibe?</h2>
-  <p>Instant play. No signup. Pure fun. Fun games for everyone.</p>
-</section>
-
-<footer>
-  <p>© 2026 PlayVibe</p>
-</footer>
-
-<!-- Gizli Admin Trigger -->
-<div id="adminTrigger" onclick="adminClick()"></div>
+    <div id="memoryGame" class="game-card">
+        <h2>Zihin Egzersizi</h2>
+        <p>Her gün yeni bir bulmaca buraya eklenecek!</p>
+        <div style="font-size: 50px; margin: 20px;">🚧</div>
+        <p>Yapım aşamasında...</p>
+    </div>
+</div>
 
 <script>
-  // Mini oyunlar tek kodda (HTML stringleri)
-  const games = {
-    "tap-runner": `
-      <html><body style="background:#0F172A; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; color:#fff; font-family:Arial;">
-      <button onclick="score++;document.getElementById('s').textContent=score" style="padding:20px 40px;font-size:24px;background:#7C3AED;color:#fff;border:none;border-radius:10px;cursor:pointer;">Tap Me! <span id="s">0</span></button>
-      <script>let score=0;</script>
-      </body></html>
-    `,
-    "color-match": `
-      <html><body style="margin:0;background:#0F172A; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh;">
-      <div onclick="alert('Correct!')" style="width:100px;height:100px;margin:10px;background:red;cursor:pointer;"></div>
-      <div onclick="alert('Wrong!')" style="width:100px;height:100px;margin:10px;background:blue;cursor:pointer;"></div>
-      <div onclick="alert('Wrong!')" style="width:100px;height:100px;margin:10px;background:green;cursor:pointer;"></div>
-      </body></html>
-    `
-  };
-
-  // Oyun yükleme
-  function loadGame(name){
-    const iframe = document.getElementById('gameFrame');
-    iframe.srcdoc = games[name];
-  }
-
-  // Admin gizli girişi
-  let adminCounter = 0;
-  function adminClick(){
-    adminCounter++;
-    if(adminCounter===3){
-      let pass = prompt("Admin Password:");
-      if(pass==="PlayVibeAdmin123"){ // Şifreyi istediğin gibi değiştir
-        alert("Admin Panel Açıldı! (backend ekleyebilirsin)");
-        // Örnek: Admin panel URL'si
-        // window.location.href="admin.html";
-      } else {
-        alert("Wrong Password");
-      }
-      adminCounter=0;
+    // Tab Sistemi
+    function openGame(gameId) {
+        document.querySelectorAll('.game-card').forEach(g => g.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(gameId).classList.add('active');
+        event.currentTarget.classList.add('active');
     }
-  }
+
+    // Oyun 1 Mantığı
+    let targetNum = Math.floor(Math.random() * 100) + 1;
+    function checkGuess() {
+        let g = document.getElementById('guessInput').value;
+        let msg = document.getElementById('numMsg');
+        if(g == targetNum) { msg.innerText = "🎉 Tebrikler! Doğru!"; msg.style.color = "green"; }
+        else if(g < targetNum) { msg.innerText = "Daha YÜKSEK! ⬆️"; msg.style.color = "orange"; }
+        else { msg.innerText = "Daha DÜŞÜK! ⬇️"; msg.style.color = "orange"; }
+    }
+
+    // Oyun 2 Mantığı
+    function checkWord() {
+        let w = document.getElementById('wordInput').value.toLowerCase();
+        let msg = document.getElementById('wordMsg');
+        if(w == "elma") { msg.innerText = "Harikasın! 🍎"; msg.style.color = "green"; }
+        else { msg.innerText = "Tekrar dene! ❌"; msg.style.color = "red"; }
+    }
+
+    // PWA: Uygulamayı Yükleme Mantığı
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        document.getElementById('installBtn').style.display = 'block';
+    });
+
+    document.getElementById('installBtn').addEventListener('click', () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    document.getElementById('installBtn').style.display = 'none';
+                }
+                deferredPrompt = null;
+            });
+        }
+    });
 </script>
 
 </body>
