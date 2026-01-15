@@ -2,51 +2,61 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Araç Değer Kaybı Başvurusu</title>
+<title>Araç Değer Kaybı Hesaplama & Başvuru</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- GOOGLE ADSENSE (ONAY ALINCA publisher-id YAZ) -->
-<!--
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
-crossorigin="anonymous"></script>
--->
-
 <style>
-body{margin:0;font-family:Arial;background:#f4f6f8;color:#222}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#222}
 .hero{
-  background:url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e') center/cover no-repeat;
-  height:100vh;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;
+background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') center/cover no-repeat;
+height:100vh;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center
 }
-.hero h1{font-size:42px;text-shadow:0 4px 10px #000}
-section{padding:70px 20px;max-width:1000px;margin:auto}
-.btn{background:#e67e22;color:#fff;padding:15px 35px;border-radius:6px;
-text-decoration:none;font-weight:bold}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#fff;padding:25px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-form{max-width:500px;margin:auto}
-input,button{width:100%;padding:12px;margin-top:12px}
-button{background:#0a3d62;color:#fff;border:0;border-radius:5px}
-footer{text-align:center;padding:25px;font-size:14px;color:#666}
+.hero h1{font-size:46px;margin-bottom:10px;text-shadow:0 4px 12px #000}
+.hero p{text-shadow:0 2px 6px #000}
 
-/* GİZLİ ADMIN */
+.btn{background:#e67e22;color:#fff;padding:15px 35px;border-radius:6px;
+text-decoration:none;font-weight:bold;display:inline-block;margin-top:15px}
+
+section{padding:90px 20px;max-width:1100px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+.card{background:#fff;padding:30px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+
+h2{text-align:center;margin-bottom:40px;color:#0a3d62}
+
+.calc,form{max-width:520px;margin:auto;background:#fff;padding:35px;
+border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.1)}
+input,select,button{width:100%;padding:13px;margin-top:12px;font-size:15px}
+button{background:#0a3d62;color:#fff;border:0;border-radius:5px;cursor:pointer}
+
+footer{text-align:center;padding:40px;font-size:14px;color:#666;background:#fff}
+
+/* gizli admin */
+#secret{position:fixed;right:10px;bottom:10px;width:30px;height:30px;opacity:0}
 #admin{display:none;position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,.8);align-items:center;justify-content:center}
 #admin div{background:#fff;padding:30px;border-radius:8px}
-#secret{position:fixed;right:15px;bottom:15px;width:25px;height:25px;opacity:0}
 </style>
 
 <script>
-let c=0;
+function hesapla(){
+  let yil=document.getElementById("yil").value;
+  let bedel=document.getElementById("bedel").value;
+  if(!yil||!bedel){alert("Alanları doldurun");return;}
+  let oran = yil<2015 ? 0.12 : 0.08;
+  let sonuc = Math.round(bedel*oran);
+  document.getElementById("sonuc").innerHTML =
+  "Tahmini Değer Kaybı: <b>"+sonuc.toLocaleString()+" TL</b><br><small>Kesin tutar eksper incelemesi sonrası belirlenir.</small>";
+}
+
+let t=0;
 function secret(){
-  c++;
-  if(c===3){document.getElementById("admin").style.display="flex";c=0;}
+ t++;
+ if(t===3){document.getElementById("admin").style.display="flex";t=0;}
 }
 function login(){
-  if(document.getElementById("pass").value==="1234"){
-    alert("Admin Girişi Başarılı");
-  }else{
-    alert("Hatalı");
-  }
+ if(document.getElementById("pass").value==="1234"){
+   alert("Admin girişi başarılı");
+ }else{alert("Hatalı şifre")}
 }
 </script>
 </head>
@@ -55,41 +65,51 @@ function login(){
 
 <div class="hero">
   <div>
-    <h1>Araç Değer Kaybınızı Alın</h1>
-    <p>Ücretsiz – Hızlı – Güvenli</p>
-    <a class="btn" href="#basvuru">Hemen Başvur</a>
+    <h1>Araç Değer Kaybı Alacağınızı Hesaplayın</h1>
+    <p>Ücretsiz • Hızlı • Güvenli</p>
+    <a class="btn" href="#hesap">Ücretsiz Hesapla</a>
   </div>
 </div>
 
 <section>
   <div class="cards">
     <div class="card">
-      <h3>Ücretsiz İnceleme</h3>
-      <p>Uzman ekip analiz eder.</p>
+      <h3>Uzman İnceleme</h3>
+      <p>Dosyanız uzman ekiplerce analiz edilir.</p>
+    </div>
+    <div class="card">
+      <h3>Yasal Süreç</h3>
+      <p>Sigorta mevzuatına uygun işlem yapılır.</p>
     </div>
     <div class="card">
       <h3>Hızlı Sonuç</h3>
-      <p>3–7 iş günü.</p>
-    </div>
-    <div class="card">
-      <h3>Gizli & Güvenli</h3>
-      <p>Bilgileriniz korunur.</p>
+      <p>3–7 iş günü içinde sonuçlanır.</p>
     </div>
   </div>
 </section>
 
-<!-- REKLAM ALANI -->
+<section id="hesap">
+<h2>ÜCRETSİZ TAHMİNİ DEĞER KAYBI HESAPLAMA</h2>
+<div class="calc">
+  <input type="number" id="yil" placeholder="Araç Model Yılı">
+  <input type="number" id="bedel" placeholder="Araç Değeri (TL)">
+  <button onclick="hesapla()">Hesapla</button>
+  <p id="sonuc" style="margin-top:15px"></p>
+</div>
+</section>
+
 <section>
-  <!-- ADSENSE ONAYDAN SONRA AKTİF OLUR -->
-  <div style="background:#eee;padding:40px;text-align:center">
-    Reklam Alanı
-  </div>
+<h2>Neden Biz?</h2>
+<div class="cards">
+  <div class="card">✓ Ücretsiz Ön İnceleme</div>
+  <div class="card">✓ Gizli & Güvenli Başvuru</div>
+  <div class="card">✓ Yüksek Tahsilat Oranı</div>
+</div>
 </section>
 
 <section id="basvuru">
-<form action="https://formsubmit.co/hseyn0003@gmail.com" method="POST">
 <h2>Başvuru Formu</h2>
-
+<form action="https://formsubmit.co/hseyn0003@gmail.com" method="POST">
 <input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
 <input type="tel" name="Telefon" placeholder="Telefon" required>
 <input type="text" name="Plaka" placeholder="Araç Plakası" required>
@@ -98,18 +118,16 @@ function login(){
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_subject" value="Yeni Değer Kaybı Başvurusu">
 
-<button type="submit">Gönder</button>
+<button type="submit">Başvuruyu Gönder</button>
 </form>
 </section>
 
 <footer>
-© 2026 degerkaybimi.com
+© 2026 degerkaybimi.com – Tüm Hakları Saklıdır
 </footer>
 
-<!-- GİZLİ ADMIN NOKTASI -->
+<!-- GİZLİ ADMIN -->
 <div id="secret" onclick="secret()"></div>
-
-<!-- ADMIN -->
 <div id="admin">
   <div>
     <h3>Admin Girişi</h3>
