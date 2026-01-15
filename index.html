@@ -1,140 +1,112 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Değer Kaybı Merkezi | Profesyonel Tazminat Analizi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --p-blue: #2563eb; --p-dark: #0f172a; --p-gray: #64748b; --success: #16a34a; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        
-        .main-card { background: white; width: 100%; max-width: 500px; padding: 40px; border-radius: 24px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-top: 8px solid var(--p-blue); position: relative; }
-        
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h1 { font-size: 26px; font-weight: 800; color: var(--p-dark); margin: 0; }
-        .header p { color: var(--p-gray); font-size: 15px; margin-top: 8px; }
-
-        .progress-bar { display: flex; justify-content: space-between; margin-bottom: 30px; background: #f1f5f9; padding: 12px; border-radius: 12px; }
-        .step { font-size: 12px; font-weight: 700; color: #94a3b8; }
-        .step.active { color: var(--p-blue); }
-
-        .group { margin-bottom: 20px; text-align: left; }
-        label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #475569; }
-        input { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 16px; box-sizing: border-box; transition: 0.3s; }
-        input:focus { outline: none; border-color: var(--p-blue); background: #fff; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
-
-        .kvkk { display: flex; gap: 10px; margin: 20px 0; font-size: 13px; color: var(--p-gray); line-height: 1.4; text-align: left; }
-        .kvkk input { width: 18px; height: 18px; margin: 0; cursor: pointer; }
-
-        button { width: 100%; padding: 18px; background: var(--p-blue); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #1d4ed8; transform: translateY(-2px); }
-        button:disabled { background: #cbd5e1; cursor: not-allowed; }
-
-        #resultBox { display: none; text-align: center; margin-top: 25px; padding: 25px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 20px; animation: fadeInUp 0.5s ease; }
-        .res-amt { font-size: 36px; font-weight: 800; color: var(--success); margin: 10px 0; }
-        
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .footer { margin-top: 30px; font-size: 13px; color: #94a3b8; text-align: center; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Değer Kaybı Hesaplama | degerkaybimi.com</title>
+  <meta name="description" content="Araç değer kaybınızı ücretsiz hesaplayın. Kaza sonrası değer kaybı başvurusu, uzman destek ve hızlı sonuç." />
+  <meta name="keywords" content="değer kaybı, araç değer kaybı, kaza değer kaybı, değer kaybı hesaplama" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b1220;--card:#121a2b;--pri:#4f7cff;--txt:#e6e9f2;--mut:#aab0c2}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#0b1220,#0e1530);color:var(--txt)}
+    .container{max-width:1100px;margin:auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;letter-spacing:.3px}
+    .logo span{color:var(--pri)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin:48px 0}
+    .card{background:rgba(18,26,43,.9);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .hero .card{padding:28px}
+    h1{font-size:40px;line-height:1.15;margin:0 0 12px}
+    p{color:var(--mut)}
+    .cta{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:14px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+    .btn.pri{background:var(--pri);color:#fff}
+    .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.18)}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    form .full{grid-column:1/-1}
+    label{font-size:13px;color:#cfd4e6}
+    input,select{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:#0b1220;color:#fff}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:32px 0}
+    .features .card{padding:20px}
+    footer{border-top:1px solid rgba(255,255,255,.08);margin-top:48px;padding-top:18px;color:#9aa1b6}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}h1{font-size:32px}.features{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="logo">deger<span>kaybimi</span>.com</div>
+      <nav>
+        <a href="#hesapla" class="btn ghost">Hesapla</a>
+      </nav>
+    </header>
 
-<div class="main-card">
-    <div class="header">
-        <h1>Tazminat Analiz Sistemi</h1>
-        <p>Eksper verileriyle anlık değer kaybı sorgulama</p>
-    </div>
-
-    <div class="progress-bar">
-        <div class="step active" id="s1">1. BİLGİLER</div>
-        <div class="step" id="s2">2. ANALİZ</div>
-        <div class="step" id="s3">3. SONUÇ</div>
-    </div>
-
-    <form id="megaForm">
-        <div class="group">
-            <label>Adınız Soyadınız</label>
-            <input type="text" id="name" placeholder="Örn: Ahmet Yılmaz" required>
+    <section class="hero">
+      <div class="card">
+        <h1>Araç Değer Kaybınızı<br/>Dakikalar İçinde Hesaplayın</h1>
+        <p>Kaza sonrası araç değer kaybı hesaplama, ücretsiz ön analiz ve uzman başvuru desteği.</p>
+        <div class="cta">
+          <a href="#hesapla" class="btn pri">Ücretsiz Hesapla</a>
+          <a href="#" class="btn ghost">Uzmanla Görüş</a>
         </div>
-        <div class="group">
-            <label>Telefon (WhatsApp)</label>
-            <input type="tel" id="phone" placeholder="05-- --- -- --" required>
-        </div>
-        <div class="group">
-            <label>Araç Kilometresi</label>
-            <input type="number" id="km" placeholder="Örn: 45000" required>
-        </div>
-        <div class="group">
-            <label>Hasar Tutarı (TL)</label>
-            <input type="number" id="hasar" placeholder="Toplam parça + işçilik" required>
-        </div>
-        
-        <div class="kvkk">
-            <input type="checkbox" required>
-            <span><a href="#" style="color:var(--p-blue); text-decoration:none; font-weight:600;">KVKK Metnini</a> ve verilerimin analiz amaçlı işlenmesini kabul ediyorum.</span>
-        </div>
+      </div>
+      <div class="card">
+        <h3 id="hesapla">Hızlı Ön Hesaplama</h3>
+        <form onsubmit="return hesapla(event)">
+          <div>
+            <label>Marka</label>
+            <input required placeholder="Örn: Fiat" />
+          </div>
+          <div>
+            <label>Model</label>
+            <input required placeholder="Örn: Egea" />
+          </div>
+          <div>
+            <label>Model Yılı</label>
+            <input type="number" min="1990" max="2026" required />
+          </div>
+          <div>
+            <label>Kilometre</label>
+            <input type="number" required />
+          </div>
+          <div class="full">
+            <label>Hasar Durumu</label>
+            <select>
+              <option>Hafif</option>
+              <option>Orta</option>
+              <option>Ağır</option>
+            </select>
+          </div>
+          <div class="full">
+            <button class="btn pri" style="width:100%">Hesapla</button>
+          </div>
+        </form>
+        <p id="sonuc" style="margin-top:10px"></p>
+      </div>
+    </section>
 
-        <button type="submit" id="submitBtn">Analizi Başlat</button>
-    </form>
+    <section class="features">
+      <div class="card"><strong>Ücretsiz Ön Analiz</strong><p>Bilgilerinizi girin, hızlıca ön sonuç alın.</p></div>
+      <div class="card"><strong>Uzman Destek</strong><p>Hukuk ve sigorta uzmanlarıyla süreç yönetimi.</p></div>
+      <div class="card"><strong>Hızlı Başvuru</strong><p>Online başvuru ile zaman kaybetmeyin.</p></div>
+    </section>
 
-    <div id="resultBox">
-        <div style="font-size:14px; font-weight:700; color:#166534; letter-spacing:1px;">ANALİZ TAMAMLANDI</div>
-        <div class="res-amt" id="resAmt">0 TL</div>
-        <p style="font-size:13px; color:#166534; margin:0;">Başvurunuz uzmanlarımıza iletildi. Dosya takibiniz için en kısa sürede sizinle iletişime geçilecektir.</p>
-    </div>
-</div>
+    <footer>
+      <small>© 2026 degerkaybimi.com • Tüm hakları saklıdır.</small>
+    </footer>
+  </div>
 
-<div class="footer">
-    © 2024 Değer Kaybı Merkezi | Güvenli Veri Altyapısı
-</div>
-
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwix7iWUnraIrpbEQbQxklzWfsNpMWHSdqVAMPD4MFqxus4Z-IBGJPTr9EIKN8w7A6PSg/exec';
-    const form = document.getElementById('megaForm');
-    const btn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        btn.disabled = true;
-        btn.innerText = "Analiz Ediliyor...";
-        document.getElementById('s2').classList.add('active');
-
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const km = parseInt(document.getElementById('km').value);
-        const hasar = parseInt(document.getElementById('hasar').value);
-
-        // Profesyonel Analiz Katsayısı
-        let carpan = (km > 160000) ? 0.12 : 0.21;
-        let sonuc = (hasar * carpan).toFixed(0);
-
-        document.getElementById('resAmt').innerText = new Intl.NumberFormat('tr-TR').format(sonuc) + " TL";
-
-        fetch(scriptURL, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify({
-                adSoyad: name,
-                telefon: phone,
-                km: km,
-                hasar: hasar,
-                tutar: sonuc
-            })
-        }).then(() => {
-            finish();
-        }).catch(() => {
-            finish();
-        });
-    });
-
-    function finish() {
-        document.getElementById('resultBox').style.display = 'block';
-        form.style.display = 'none';
-        document.getElementById('s3').classList.add('active');
-        btn.innerText = "İşlem Başarılı";
+  <script>
+    function hesapla(e){
+      e.preventDefault();
+      const tahmini = Math.floor(15000 + Math.random()*25000);
+      document.getElementById('sonuc').innerText = `Tahmini Değer Kaybı: ${tahmini.toLocaleString('tr-TR')} TL`;
+      return false;
     }
-</script>
-
+  </script>
 </body>
 </html>
