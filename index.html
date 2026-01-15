@@ -3,108 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Değer Kaybı Hesaplama | degerkaybimi.com</title>
-  <meta name="description" content="Araç değer kaybınızı ücretsiz hesaplayın. Kaza sonrası değer kaybı başvurusu, uzman destek ve hızlı sonuç." />
-  <meta name="keywords" content="değer kaybı, araç değer kaybı, kaza değer kaybı, değer kaybı hesaplama" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Araç Değer Kaybı Hesaplama ve Başvuru | degerkaybimi.com</title>
+  <meta name="description" content="Kaza sonrası araç değer kaybınızı ücretsiz hesaplayın. Online başvuru, uzman destek ve hızlı sonuç." />
+  <meta name="keywords" content="araç değer kaybı, kaza değer kaybı, değer kaybı hesaplama, sigorta değer kaybı" />
   <style>
-    :root{--bg:#0b1220;--card:#121a2b;--pri:#4f7cff;--txt:#e6e9f2;--mut:#aab0c2}
+    :root{--pri:#0f62fe;--dark:#0b1220;--light:#f5f7fb;--card:#ffffff;--mut:#6b7280}
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#0b1220,#0e1530);color:var(--txt)}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:#111}
+    header{background:var(--dark);color:#fff}
     .container{max-width:1100px;margin:auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:800;letter-spacing:.3px}
-    .logo span{color:var(--pri)}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin:48px 0}
-    .card{background:rgba(18,26,43,.9);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .hero .card{padding:28px}
-    h1{font-size:40px;line-height:1.15;margin:0 0 12px}
+    .nav{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:22px;font-weight:800}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-top:32px}
+    .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+    h1{font-size:36px;margin:0 0 10px}
+    h2{margin-top:0}
     p{color:var(--mut)}
-    .cta{display:flex;gap:12px;margin-top:18px}
-    .btn{padding:14px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
-    .btn.pri{background:var(--pri);color:#fff}
-    .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.18)}
-    form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:10px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+    .btn.full{width:100%}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     form .full{grid-column:1/-1}
-    label{font-size:13px;color:#cfd4e6}
-    input,select{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:#0b1220;color:#fff}
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:32px 0}
-    .features .card{padding:20px}
-    footer{border-top:1px solid rgba(255,255,255,.08);margin-top:48px;padding-top:18px;color:#9aa1b6}
-    @media(max-width:900px){.hero{grid-template-columns:1fr}h1{font-size:32px}.features{grid-template-columns:1fr}}
+    input,select{width:100%;padding:11px;border-radius:8px;border:1px solid #d1d5db}
+    section{margin-top:48px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    footer{margin-top:60px;background:#111;color:#9ca3af}
+    footer .container{display:flex;flex-direction:column;gap:8px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}h1{font-size:28px}.steps{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">deger<span>kaybimi</span>.com</div>
-      <nav>
-        <a href="#hesapla" class="btn ghost">Hesapla</a>
-      </nav>
-    </header>
+  <header>
+    <div class="container nav">
+      <div class="logo">degerkaybimi.com</div>
+      <a href="#basvuru" class="btn">Ücretsiz Başvur</a>
+    </div>
+  </header>
 
+  <main class="container">
     <section class="hero">
       <div class="card">
-        <h1>Araç Değer Kaybınızı<br/>Dakikalar İçinde Hesaplayın</h1>
-        <p>Kaza sonrası araç değer kaybı hesaplama, ücretsiz ön analiz ve uzman başvuru desteği.</p>
-        <div class="cta">
-          <a href="#hesapla" class="btn pri">Ücretsiz Hesapla</a>
-          <a href="#" class="btn ghost">Uzmanla Görüş</a>
-        </div>
+        <h1>Araç Değer Kaybı<br/>Hesaplama & Başvuru</h1>
+        <p>Kaza sonrası aracınızın uğradığı değer kaybını ücretsiz hesaplayın ve sigortadan tazminat alma hakkınızı öğrenin.</p>
+        <a href="#hesapla" class="btn">Hemen Hesapla</a>
       </div>
-      <div class="card">
-        <h3 id="hesapla">Hızlı Ön Hesaplama</h3>
+      <div class="card" id="hesapla">
+        <h2>Ücretsiz Ön Hesaplama</h2>
         <form onsubmit="return hesapla(event)">
           <div>
-            <label>Marka</label>
-            <input required placeholder="Örn: Fiat" />
+            <input required placeholder="Araç Markası" />
           </div>
           <div>
-            <label>Model</label>
-            <input required placeholder="Örn: Egea" />
+            <input required placeholder="Araç Modeli" />
           </div>
           <div>
-            <label>Model Yılı</label>
-            <input type="number" min="1990" max="2026" required />
+            <input type="number" placeholder="Model Yılı" required />
           </div>
           <div>
-            <label>Kilometre</label>
-            <input type="number" required />
+            <input type="number" placeholder="Kilometre" required />
           </div>
           <div class="full">
-            <label>Hasar Durumu</label>
             <select>
-              <option>Hafif</option>
-              <option>Orta</option>
-              <option>Ağır</option>
+              <option>Hasar Durumu: Hafif</option>
+              <option>Hasar Durumu: Orta</option>
+              <option>Hasar Durumu: Ağır</option>
             </select>
           </div>
           <div class="full">
-            <button class="btn pri" style="width:100%">Hesapla</button>
+            <button class="btn full">Hesapla</button>
           </div>
         </form>
-        <p id="sonuc" style="margin-top:10px"></p>
+        <p id="sonuc"></p>
       </div>
     </section>
 
-    <section class="features">
-      <div class="card"><strong>Ücretsiz Ön Analiz</strong><p>Bilgilerinizi girin, hızlıca ön sonuç alın.</p></div>
-      <div class="card"><strong>Uzman Destek</strong><p>Hukuk ve sigorta uzmanlarıyla süreç yönetimi.</p></div>
-      <div class="card"><strong>Hızlı Başvuru</strong><p>Online başvuru ile zaman kaybetmeyin.</p></div>
+    <section>
+      <h2>Nasıl Çalışır?</h2>
+      <div class="steps">
+        <div class="card"><strong>Bilgileri Gir</strong><p>Araç ve kaza bilgilerinizi paylaşın.</p></div>
+        <div class="card"><strong>Hesaplama</strong><p>Uzman kriterlere göre değer kaybı hesaplanır.</p></div>
+        <div class="card"><strong>Başvuru</strong><p>Sigorta şirketine başvurunuz yapılır.</p></div>
+      </div>
     </section>
 
-    <footer>
-      <small>© 2026 degerkaybimi.com • Tüm hakları saklıdır.</small>
-    </footer>
-  </div>
+    <section id="basvuru">
+      <h2>Kimler Değer Kaybı Alabilir?</h2>
+      <div class="card">
+        <ul>
+          <li>Kaza tarihi 2 yıl içinde olanlar</li>
+          <li>Tam kusurlu olmayan araç sahipleri</li>
+          <li>Pert kaydı bulunmayan araçlar</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© 2026 degerkaybimi.com — Tüm hakları saklıdır.</small>
+      <small>Bu site bilgilendirme amaçlıdır.</small>
+    </div>
+  </footer>
 
   <script>
     function hesapla(e){
       e.preventDefault();
-      const tahmini = Math.floor(15000 + Math.random()*25000);
-      document.getElementById('sonuc').innerText = `Tahmini Değer Kaybı: ${tahmini.toLocaleString('tr-TR')} TL`;
+      const tutar = Math.floor(12000 + Math.random()*30000);
+      document.getElementById('sonuc').innerText = `Tahmini Değer Kaybı: ${tutar.toLocaleString('tr-TR')} TL`;
       return false;
     }
   </script>
