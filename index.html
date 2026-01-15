@@ -2,188 +2,251 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mega Game Pro | Oyuncu Paneli</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Royal Kingdom | Sovereign Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #6366f1; --secondary: #f43f5e; --gold: #f59e0b; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 80px; }
+        :root { 
+            --royal-sky: #0ea5e9; --royal-grass: #22c55e; --royal-gold: #fbbf24; 
+            --royal-red: #f43f5e; --royal-blue: #4f46e5; --royal-white: #ffffff;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+        body { font-family: 'Fredoka', sans-serif; margin: 0; background: var(--royal-sky); overflow: hidden; color: #1e293b; }
+
+        /* --- ARKA PLAN VE ATMOSFER (PARALLAX) --- */
+        .world { position: fixed; inset: 0; background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 40%, #22c55e 40%, #15803d 100%); z-index: -1; }
+        .cloud { position: absolute; background: white; border-radius: 50px; opacity: 0.8; animation: moveCloud var(--d) infinite linear; }
+        @keyframes moveCloud { from { left: -200px; } to { left: 120vw; } }
+
+        /* --- ÜST HUD (CAN, ALTIN, ELMAS) --- */
+        .hud { position: fixed; top: 0; width: 100%; padding: 20px; z-index: 1000; }
+        .hud-container { display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto; }
         
-        /* Üst Profil Barı */
-        .user-bar { background: var(--card); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); sticky: top; z-index: 1000; }
-        .user-info { display: flex; align-items: center; gap: 10px; }
-        .avatar { width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; border: 2px solid white; }
-        .stats { display: flex; gap: 15px; font-size: 14px; font-weight: 700; }
-        .stat-item { display: flex; align-items: center; gap: 5px; }
-        .coin-icon { color: var(--gold); }
+        .resource-pill { 
+            background: rgba(0,0,0,0.5); border: 3px solid rgba(255,255,255,0.4); 
+            padding: 8px 15px; border-radius: 30px; color: white; display: flex; align-items: center; gap: 8px; font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .heart-count { color: var(--royal-red); font-size: 20px; text-shadow: 0 0 5px white; }
+        .timer { font-size: 11px; opacity: 0.9; width: 40px; }
 
-        .app-container { width: 100%; max-width: 450px; margin: auto; padding: 20px; }
-        
-        /* Oyun Kartları */
-        .game-card { background: var(--card); padding: 25px; border-radius: 24px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; display: none; }
-        .game-card.active { display: block; animation: fadeIn 0.3s ease; }
+        /* --- KRALLIK SAHNESİ --- */
+        .kingdom-view { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 120px; }
+        .castle-base { position: relative; width: 320px; height: 320px; }
+        .building-part { 
+            position: absolute; bottom: 0; width: 100%; height: 100%; 
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(800px) scale(0); opacity: 0;
+            filter: drop-shadow(0 20px 20px rgba(0,0,0,0.3));
+        }
+        .building-part.active { transform: translateY(0) scale(1); opacity: 1; }
 
-        /* Profil Sekmesi */
-        .profile-card { background: linear-gradient(135deg, var(--primary), #4338ca); padding: 30px; border-radius: 24px; text-align: center; margin-bottom: 20px; }
-        .level-badge { background: white; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 12px; display: inline-block; margin-top: 10px; }
+        /* --- KONTROL PANELLERİ --- */
+        .ui-panel { 
+            position: fixed; bottom: 100px; width: 90%; max-width: 450px; left: 50%; transform: translateX(-50%); 
+            z-index: 500; display: none;
+        }
+        .ui-panel.active { display: block; animation: slideUp 0.4s ease-out; }
+        .royal-card { 
+            background: white; border-radius: 40px; padding: 30px; text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border-bottom: 12px solid #e2e8f0;
+        }
 
-        /* Butonlar ve Girdiler */
-        .btn { width: 100%; padding: 15px; border-radius: 15px; border: none; font-weight: 800; cursor: pointer; transition: 0.2s; margin-top: 10px; font-family: inherit; }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 0 #4338ca; }
-        .btn-primary:active { transform: translateY(2px); box-shadow: none; }
-        .input-dark { width: 100%; padding: 15px; background: rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; text-align: center; font-size: 18px; margin-bottom: 10px; }
+        /* --- BUTONLAR (ROYAL STYLE) --- */
+        .btn-play { 
+            background: var(--royal-blue); color: white; border: none; padding: 22px; border-radius: 25px; 
+            width: 100%; font-size: 24px; font-weight: 800; cursor: pointer;
+            border-bottom: 8px solid #3730a3; transition: 0.1s; margin-bottom: 15px;
+        }
+        .btn-play:active { transform: translateY(4px); border-bottom-width: 4px; }
+        .btn-gold { background: var(--royal-gold); color: #92400e; border-bottom-color: #d97706; }
 
-        /* Alt Navigasyon Menu */
-        .nav-menu { position: fixed; bottom: 0; width: 100%; background: var(--card); display: flex; justify-content: space-around; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .nav-item { color: #94a3b8; text-decoration: none; font-size: 12px; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
-        .nav-item.active { color: var(--primary); }
+        /* --- CAN YOK EKRANI --- */
+        .shop-item { background: #f8fafc; border-radius: 20px; padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* --- ALT NAVİGASYON --- */
+        .nav-bar { 
+            position: fixed; bottom: 0; width: 100%; height: 90px; background: white; 
+            display: flex; justify-content: space-around; align-items: center; border-top: 5px solid #f1f5f9;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .nav-icon { font-size: 35px; cursor: pointer; filter: grayscale(1); opacity: 0.4; transition: 0.3s; }
+        .nav-icon.active { filter: grayscale(0); opacity: 1; transform: scale(1.3) translateY(-10px); }
+
+        @keyframes slideUp { from { transform: translate(-50%, 200px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
     </style>
 </head>
 <body>
 
-<div class="user-bar">
-    <div class="user-info">
-        <div class="avatar" id="userInitial">?</div>
-        <div>
-            <div style="font-size: 12px; color: #94a3b8;">Hoş geldin,</div>
-            <div style="font-weight: 800;" id="navUsername">Gezgin</div>
+<div class="world">
+    <div class="cloud" style="width:150px; height:50px; top:10%; --d:30s;"></div>
+    <div class="cloud" style="width:200px; height:60px; top:20%; --d:45s; left:300px;"></div>
+</div>
+
+<div class="hud">
+    <div class="hud-container">
+        <div class="resource-pill" onclick="showLives()">
+            <span class="heart-count">❤️</span>
+            <span id="lives">5</span>
+            <span class="timer" id="timer">FULL</span>
         </div>
-    </div>
-    <div class="stats">
-        <div class="stat-item"><span class="coin-icon">💰</span> <span id="userCoins">0</span></div>
-        <div class="stat-item"><span style="color: #10b981;">⭐</span> <span id="userXP">0</span></div>
+        <div class="resource-pill">💰 <span id="coins">100</span></div>
+        <div class="resource-pill">💎 <span id="gems">10</span></div>
     </div>
 </div>
 
-<div class="app-container">
-    
-    <div id="profilePage" class="game-card active">
-        <div class="profile-card">
-            <div style="font-size: 50px;">👤</div>
-            <h2 id="profileNameDisplay" style="margin: 10px 0 5px 0;">Oyuncu Adı</h2>
-            <div class="level-badge" id="levelDisplay">SEVİYE 1</div>
-        </div>
-        <div style="text-align: left; background: rgba(0,0,0,0.1); padding: 15px; border-radius: 15px;">
-            <label style="font-size: 12px; color: #94a3b8;">Kullanıcı Adını Değiştir:</label>
-            <input type="text" id="usernameInput" class="input-dark" placeholder="Yeni adın...">
-            <button class="btn btn-primary" onclick="saveUsername()">Kaydet</button>
-        </div>
+<div class="kingdom-view">
+    <div class="castle-base">
+        <div id="part0" class="building-part" style="font-size:200px; z-index:1;">🪵</div>
+        <div id="part1" class="building-part" style="font-size:220px; z-index:2;">🧱</div>
+        <div id="part2" class="building-part" style="font-size:250px; z-index:3;">🏰</div>
+        <div id="part3" class="building-part" style="font-size:100px; bottom:250px; left:110px; z-index:4;">🚩</div>
     </div>
-
-    <div id="gamePage" class="game-card">
-        <h2>Sayı Tahmin</h2>
-        <p style="color: #94a3b8;">1-50 arası tuttum. Bilirsen +10 XP ve +5 Coin!</p>
-        <input type="number" id="guessInput" class="input-dark">
-        <button class="btn btn-primary" onclick="playGuessGame()">Tahmin Et</button>
-        <p id="gameMsg" style="margin-top: 15px; font-weight: 700;"></p>
-    </div>
-
-    <div id="wordPage" class="game-card">
-        <h2>Kelime Avı</h2>
-        <p id="wordHint" style="color: #94a3b8;"></p>
-        <div id="wordDisplay" style="font-size: 30px; letter-spacing: 5px; margin: 20px 0; color: var(--secondary); font-weight: 800;"></div>
-        <input type="text" id="wordInput" class="input-dark" placeholder="Cevabın?">
-        <button class="btn btn-primary" onclick="playWordGame()">Kontrol Et</button>
-    </div>
-
 </div>
 
-<nav class="nav-menu">
-    <div class="nav-item active" onclick="showPage('profilePage', this)"><span>👤</span> Profil</div>
-    <div class="nav-item" onclick="showPage('gamePage', this)"><span>🔢</span> Sayı Bul</div>
-    <div class="nav-item" onclick="showPage('wordPage', this)"><span>🔤</span> Kelime</div>
+<div id="panel-castle" class="ui-panel active">
+    <div class="royal-card">
+        <h2 id="b-title" style="margin:0">Yeni Bölüm</h2>
+        <p id="b-desc" style="color:#64748b">Krallığını büyütmek için inşaata başla!</p>
+        <button id="btn-b" class="btn-play" onclick="handleBuild()">İnşa Et (💰 <span id="b-cost">50</span>)</button>
+    </div>
+</div>
+
+<div id="panel-mine" class="ui-panel">
+    <div class="royal-card">
+        <h2>Altın Topla</h2>
+        <p style="color:#64748b">Her kazma 1 Can ❤️ götürür!</p>
+        <button class="btn-play btn-gold" onclick="handleMine()">MADENE GİR (-1 ❤️)</button>
+    </div>
+</div>
+
+<div id="panel-lives" class="ui-panel">
+    <div class="royal-card">
+        <h2 style="color:var(--royal-red)">CANIN BİTTİ!</h2>
+        <p style="color:#64748b">Bekleme, hemen oyuna dön!</p>
+        <div class="shop-item">
+            <span>FULL CAN ❤️</span>
+            <button class="btn-play btn-gold" style="width:auto; padding:10px 20px; font-size:16px;" onclick="buyLives()">💎 5</button>
+        </div>
+        <button class="btn-play" style="background:#94a3b8; border-bottom-color:#64748b; font-size:16px; margin-top:15px;" onclick="closeLives()">BEKLEYECEĞİM</button>
+    </div>
+</div>
+
+<nav class="nav-bar">
+    <div class="nav-icon active" onclick="tab('castle', this)">🏰</div>
+    <div class="nav-icon" onclick="tab('mine', this)">⚒️</div>
 </nav>
 
 <script>
-    // --- VERİ SİSTEMİ (LOCALSTORAGE) ---
-    let userData = JSON.parse(localStorage.getItem('megaGameUser')) || {
-        name: "Gezgin",
-        coins: 0,
-        xp: 0,
-        level: 1
+    // --- OYUN DURUMU VE BELLEK ---
+    let state = JSON.parse(localStorage.getItem('royal_v2_data')) || {
+        coins: 100, gems: 10, lives: 5, step: 0, lastRegen: Date.now()
     };
 
-    function updateUI() {
-        document.getElementById('navUsername').innerText = userData.name;
-        document.getElementById('profileNameDisplay').innerText = userData.name;
-        document.getElementById('userInitial').innerText = userData.name[0].toUpperCase();
-        document.getElementById('userCoins').innerText = userData.coins;
-        document.getElementById('userXP').innerText = userData.xp;
-        document.getElementById('levelDisplay').innerText = "SEVİYE " + userData.level;
-        localStorage.setItem('megaGameUser', JSON.stringify(userData));
-    }
-
-    function addRewards(xp, coins) {
-        userData.xp += xp;
-        userData.coins += coins;
-        // Basit Level Atlama (Her 100 XP'de bir)
-        userData.level = Math.floor(userData.xp / 100) + 1;
-        updateUI();
-    }
-
-    function saveUsername() {
-        const newName = document.getElementById('usernameInput').value;
-        if(newName.length > 2) {
-            userData.name = newName;
-            updateUI();
-            alert("Kullanıcı adın güncellendi!");
-        }
-    }
-
-    function showPage(pageId, element) {
-        document.querySelectorAll('.game-card').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        element.classList.add('active');
-        if(pageId === 'wordPage') initWordGame();
-    }
-
-    // --- SAYI OYUNU MANTIĞI ---
-    let secretNum = Math.floor(Math.random() * 50) + 1;
-    function playGuessGame() {
-        const val = document.getElementById('guessInput').value;
-        const msg = document.getElementById('gameMsg');
-        if(val == secretNum) {
-            msg.innerText = "🎉 BİLDİN! +10 XP, +5 Coin";
-            msg.style.color = "#10b981";
-            addRewards(10, 5);
-            secretNum = Math.floor(Math.random() * 50) + 1;
-        } else {
-            msg.innerText = val < secretNum ? "Daha YÜKSEK! ⬆️" : "Daha DÜŞÜK! ⬇️";
-            msg.style.color = "#f59e0b";
-        }
-    }
-
-    // --- KELİME OYUNU MANTIĞI ---
-    const words = [
-        {q: "En sevilen meyve?", a: "ELMA"},
-        {q: "Türkiye'nin başkenti?", a: "ANKARA"},
-        {q: "Gece parlayan gök cismi?", a: "AY"}
+    const config = [
+        { name: "Köy Meydanı", cost: 50 },
+        { name: "Yüksek Surlar", cost: 150 },
+        { name: "Kraliyet Kulesi", cost: 400 },
+        { name: "Zafer Bayrağı", cost: 1000 }
     ];
-    let currentTask;
-    function initWordGame() {
-        currentTask = words[Math.floor(Math.random() * words.length)];
-        document.getElementById('wordHint').innerText = currentTask.q;
-        document.getElementById('wordDisplay').innerText = "_ ".repeat(currentTask.a.length);
+
+    const REGEN_TIME = 30; // Test için 30 saniye. Gerçek için 300 yap.
+
+    function save() {
+        localStorage.setItem('royal_v2_data', JSON.stringify(state));
+        updateHUD();
     }
-    function playWordGame() {
-        const ans = document.getElementById('wordInput').value.toUpperCase();
-        if(ans === currentTask.a) {
-            alert("Harikasın! +20 XP, +10 Coin");
-            addRewards(20, 10);
-            document.getElementById('wordInput').value = "";
-            initWordGame();
+
+    // --- CAN SİSTEMİ (TICKER) ---
+    function updateHUD() {
+        let now = Date.now();
+        let passed = Math.floor((now - state.lastRegen) / 1000);
+
+        if (state.lives < 5) {
+            if (passed >= REGEN_TIME) {
+                let add = Math.floor(passed / REGEN_TIME);
+                state.lives = Math.min(5, state.lives + add);
+                state.lastRegen = now - (passed % REGEN_TIME) * 1000;
+            }
+            let remain = REGEN_TIME - (passed % REGEN_TIME);
+            document.getElementById('timer').innerText = "00:" + (remain < 10 ? "0" : "") + remain;
         } else {
-            alert("Yanlış cevap, tekrar dene!");
+            document.getElementById('timer').innerText = "FULL";
+        }
+
+        document.getElementById('lives').innerText = state.lives;
+        document.getElementById('coins').innerText = state.coins;
+        document.getElementById('gems').innerText = state.gems;
+
+        // İnşaat durumu
+        config.forEach((c, i) => {
+            if(state.step > i) document.getElementById('part'+i).classList.add('active');
+        });
+
+        if(state.step < config.length) {
+            document.getElementById('b-title').innerText = config[state.step].name;
+            document.getElementById('b-cost').innerText = config[state.step].cost;
+        } else {
+            document.getElementById('b-title').innerText = "Efsanevi Krallık!";
+            document.getElementById('btn-b').disabled = true;
+            document.getElementById('btn-b').innerText = "TAMAMLANDI";
         }
     }
 
-    // Başlangıçta UI'ı yükle
-    updateUI();
-</script>
+    // --- AKSİYONLAR ---
+    function handleMine() {
+        if (state.lives > 0) {
+            state.lives--;
+            state.coins += 25;
+            if (state.lives === 4) state.lastRegen = Date.now();
+            save();
+            alert("Altın Kazandın! 💰");
+        } else {
+            showLives();
+        }
+    }
 
+    function handleBuild() {
+        let cost = config[state.step].cost;
+        if (state.coins >= cost) {
+            state.coins -= cost;
+            state.step++;
+            save();
+        } else {
+            alert("Yeterli altının yok! Madene gir.");
+        }
+    }
+
+    function buyLives() {
+        if (state.gems >= 5) {
+            state.gems -= 5;
+            state.lives = 5;
+            save();
+            closeLives();
+        }
+    }
+
+    // --- UI YÖNETİMİ ---
+    function tab(type, el) {
+        document.querySelectorAll('.ui-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-icon').forEach(n => n.classList.remove('active'));
+        document.getElementById('panel-' + type).classList.add('active');
+        el.classList.add('active');
+    }
+
+    function showLives() {
+        document.querySelectorAll('.ui-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById('panel-lives').classList.add('active');
+    }
+
+    function closeLives() {
+        document.getElementById('panel-lives').classList.remove('active');
+        document.getElementById('panel-castle').classList.add('active');
+        document.querySelector('.nav-icon').classList.add('active');
+    }
+
+    setInterval(updateHUD, 1000);
+    save();
+</script>
 </body>
 </html>
