@@ -1,204 +1,82 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Araç Değer Kaybı | Ücretsiz Hesaplama ve Başvuru</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayVibe – Fast Games for Young Minds</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#222;line-height:1.6}
-a{text-decoration:none;color:inherit}
-
-/* HEADER */
-header{
-position:fixed;top:0;left:0;width:100%;z-index:5;
-background:#0a3d62;color:#fff;padding:15px 30px;
-display:flex;justify-content:space-between;align-items:center
-}
-header nav a{margin-left:20px;font-weight:bold}
-
-/* HERO */
-.hero{
-margin-top:70px;
-background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-url("https://images.unsplash.com/photo-1503376780353-7e6692767b70") center/cover no-repeat;
-height:90vh;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center
-}
-.hero h1{font-size:48px}
-.hero p{font-size:20px}
-.btn{
-display:inline-block;background:#e67e22;color:#fff;
-padding:15px 40px;border-radius:6px;font-weight:bold;margin-top:20px
-}
-
-/* SECTIONS */
-section{padding:90px 20px;max-width:1200px;margin:auto}
-h2{text-align:center;color:#0a3d62;margin-bottom:40px}
-
-/* CARDS */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
-.card{
-background:#fff;padding:35px;border-radius:10px;
-box-shadow:0 8px 24px rgba(0,0,0,.08)
-}
-
-/* CALC & FORM */
-.calc,form{
-max-width:520px;margin:auto;background:#fff;padding:40px;
-border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12)
-}
-input,select,button{width:100%;padding:14px;margin-top:14px;font-size:15px}
-button{background:#0a3d62;color:#fff;border:0;border-radius:6px;cursor:pointer}
-
-/* FAQ */
-details{
-background:#fff;margin-bottom:15px;padding:20px;
-border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.06)
-}
-
-/* FOOTER */
-footer{text-align:center;padding:50px;background:#fff;color:#666}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;left:20px;bottom:20px;background:#25d366;color:#fff;
-padding:15px 20px;border-radius:50px;font-weight:bold;z-index:6
-}
-
-/* GİZLİ ADMIN */
-#secret{position:fixed;right:10px;bottom:10px;width:35px;height:35px;opacity:0}
-#admin,#panel{
-display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,.85);align-items:center;justify-content:center;z-index:10
-}
-.adminbox{background:#fff;padding:35px;border-radius:10px;min-width:300px}
-.stat{background:#f4f6f8;padding:12px;border-radius:6px;margin-top:10px}
+  body, html { margin:0; padding:0; font-family:'Roboto', sans-serif; background:#0F172A; color:#fff; }
+  header { height:100vh; background:url('assets/bg.jpg') center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+  h1 { font-size:4rem; color:#7C3AED; margin:0; }
+  p { font-size:1.5rem; margin:10px 0; }
+  .btn { padding:15px 30px; margin:10px; background:#22D3EE; color:#0F172A; text-decoration:none; font-weight:bold; border-radius:10px; display:inline-block; }
+  section { padding:60px 20px; max-width:1200px; margin:0 auto; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+  .game-card { background:#1E293B; padding:20px; border-radius:15px; text-align:center; }
+  .game-card img { width:100%; border-radius:10px; }
+  .game-card h3 { margin:10px 0; color:#22D3EE; }
+  footer { padding:20px; text-align:center; background:#111827; }
+  /* Admin gizli tık */
+  #adminTrigger { position:fixed; bottom:10px; right:10px; width:50px; height:50px; opacity:0; cursor:pointer; }
 </style>
-
-<script>
-/* Sayaçlar */
-let visits=localStorage.getItem("visits")||0;visits++;
-localStorage.setItem("visits",visits);
-
-/* Başvuru sayacı */
-function basvuruSay(){
- let b=localStorage.getItem("basvuru")||0;
- localStorage.setItem("basvuru",++b);
-}
-
-/* Hesaplama */
-function hesapla(){
- let yil=document.getElementById("yil").value;
- let deger=document.getElementById("deger").value;
- if(!yil||!deger){alert("Tüm alanları doldurun");return;}
- let oran=yil<2016?0.12:0.08;
- let sonuc=Math.round(deger*oran);
- document.getElementById("sonuc").innerHTML=
- "Tahmini Değer Kaybı: <b>"+sonuc.toLocaleString()+" TL</b><br><small>Kesin tutar eksper sonrası belirlenir.</small>";
-}
-
-/* Gizli admin */
-let t=0;
-function secret(){if(++t===3){admin.style.display="flex";t=0}}
-function login(){
- if(pass.value==="1234"){
-   admin.style.display="none";
-   panel.style.display="flex";
-   v.innerText=localStorage.getItem("visits");
-   b.innerText=localStorage.getItem("basvuru")||0;
- }else alert("Hatalı şifre");
-}
-</script>
 </head>
-
 <body>
 
 <header>
-  <b>degerkaybimi.com</b>
-  <nav>
-    <a href="#nedir">Nedir?</a>
-    <a href="#hesap">Hesaplama</a>
-    <a href="#surec">Süreç</a>
-    <a href="#sss">S.S.S</a>
-    <a href="#basvuru">Başvuru</a>
-  </nav>
+  <h1>PLAYVIBE</h1>
+  <p>Fast Games for Young Minds</p>
+  <a href="#games" class="btn">PLAY NOW</a>
 </header>
 
-<div class="hero">
-  <div>
-    <h1>Araç Değer Kaybınızı Öğrenin</h1>
-    <p>Ücretsiz hesaplayın, hızlıca başvurun</p>
-    <a href="#hesap" class="btn">Ücretsiz Hesapla</a>
+<section id="games">
+  <h2>Popular Games</h2>
+  <div class="grid">
+    <div class="game-card">
+      <img src="assets/tap-runner.jpg" alt="Tap Runner">
+      <h3>Tap Runner</h3>
+      <a class="btn" href="play.html?game=tap-runner">PLAY</a>
+    </div>
+    <div class="game-card">
+      <img src="assets/color-match.jpg" alt="Color Match">
+      <h3>Color Match</h3>
+      <a class="btn" href="play.html?game=color-match">PLAY</a>
+    </div>
+    <!-- Yeni oyunlar buraya eklenebilir -->
   </div>
-</div>
-
-<section id="nedir">
-<h2>Araç Değer Kaybı Nedir?</h2>
-<div class="cards">
-<div class="card">Kaza sonrası araç ikinci el değer kaybına uğrar.</div>
-<div class="card">Bu kayıp kusurlu sigortadan talep edilir.</div>
-<div class="card">Yasal ve sigorta mevzuatına uygundur.</div>
-</div>
 </section>
 
-<section id="hesap">
-<h2>Ücretsiz Tahmini Değer Kaybı Hesaplama</h2>
-<div class="calc">
-<input type="number" id="yil" placeholder="Araç Model Yılı">
-<input type="number" id="deger" placeholder="Araç Değeri (TL)">
-<button onclick="hesapla()">Hesapla</button>
-<p id="sonuc"></p>
-</div>
+<section id="about">
+  <h2>Why PlayVibe?</h2>
+  <p>Instant play. No signup. Pure fun. Fun games for everyone.</p>
 </section>
 
-<section id="surec">
-<h2>Süreç Nasıl İşler?</h2>
-<div class="cards">
-<div class="card">1️⃣ Online başvuru</div>
-<div class="card">2️⃣ Eksper incelemesi</div>
-<div class="card">3️⃣ Sigorta başvurusu</div>
-<div class="card">4️⃣ Ödeme tahsili</div>
-</div>
-</section>
+<footer>
+  <p>© 2026 PlayVibe</p>
+</footer>
 
-<section id="sss">
-<h2>Sıkça Sorulan Sorular</h2>
-<details><summary>Kimler başvurabilir?</summary><p>Kusuru %100 olmayan araç sahipleri.</p></details>
-<details><summary>Ücret alıyor musunuz?</summary><p>Ön inceleme ücretsizdir.</p></details>
-<details><summary>Ne kadar sürede sonuçlanır?</summary><p>3–7 iş günü.</p></details>
-</section>
+<!-- Gizli Admin Trigger -->
+<div id="adminTrigger" onclick="adminClick()"></div>
 
-<section id="basvuru">
-<h2>Başvuru Formu</h2>
-<form action="https://formsubmit.co/hseyn0003@gmail.com" method="POST" onsubmit="basvuruSay()">
-<input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
-<input type="tel" name="Telefon" placeholder="Telefon" required>
-<input type="text" name="Plaka" placeholder="Araç Plakası" required>
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="Yeni Değer Kaybı Başvurusu">
-<button type="submit">Başvuruyu Gönder</button>
-</form>
-</section>
-
-<footer>© 2026 degerkaybimi.com</footer>
-
-<a class="whatsapp" href="https://wa.me/90XXXXXXXXXX" target="_blank">WhatsApp</a>
-
-<div id="secret" onclick="secret()"></div>
-
-<div id="admin"><div class="adminbox">
-<h3>Admin Giriş</h3>
-<input id="pass" type="password" placeholder="Şifre">
-<button onclick="login()">Giriş</button>
-</div></div>
-
-<div id="panel"><div class="adminbox">
-<h3>Kontrol Paneli</h3>
-<div class="stat">Toplam Ziyaret: <b id="v"></b></div>
-<div class="stat">Toplam Başvuru: <b id="b"></b></div>
-<button onclick="location.reload()">Çıkış</button>
-</div></div>
+<script>
+  // Oyun oynama linkleri
+  const urlParams = new URLSearchParams(window.location.search);
+  
+  // Admin gizli girişi
+  let adminCounter = 0;
+  function adminClick(){
+    adminCounter++;
+    if(adminCounter===3){
+      let pass = prompt("Admin Password:");
+      if(pass==="PlayVibeAdmin123"){ // Şifreyi istediğin gibi değiştir
+        window.location.href="admin.html";
+      } else {
+        alert("Wrong Password");
+      }
+      adminCounter=0;
+    }
+  }
+</script>
 
 </body>
 </html>
