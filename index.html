@@ -5,101 +5,118 @@
 <title>Araç Değer Kaybı Başvurusu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- GOOGLE ADSENSE (ONAY ALINCA publisher-id YAZ) -->
+<!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
+crossorigin="anonymous"></script>
+-->
+
 <style>
-body{margin:0;font-family:Arial;background:#f5f7fa;color:#222}
-header{background:#0a3d62;color:#fff;padding:50px 20px;text-align:center}
-section{display:none;padding:40px 20px;max-width:900px;margin:auto}
-section.active{display:block}
-.btn{display:inline-block;background:#e67e22;color:#fff;padding:15px 30px;
-text-decoration:none;border-radius:6px;font-weight:bold;cursor:pointer}
-.box{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+body{margin:0;font-family:Arial;background:#f4f6f8;color:#222}
+.hero{
+  background:url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e') center/cover no-repeat;
+  height:100vh;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;
+}
+.hero h1{font-size:42px;text-shadow:0 4px 10px #000}
+section{padding:70px 20px;max-width:1000px;margin:auto}
+.btn{background:#e67e22;color:#fff;padding:15px 35px;border-radius:6px;
+text-decoration:none;font-weight:bold}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 .card{background:#fff;padding:25px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-footer{text-align:center;padding:20px;font-size:14px;color:#666}
-form{max-width:500px;margin:auto;background:#fff;padding:30px;border-radius:8px;
-box-shadow:0 4px 12px rgba(0,0,0,.1)}
-input,button{width:100%;padding:12px;margin-top:12px;font-size:15px}
-button{background:#0a3d62;color:#fff;border:0;border-radius:5px;cursor:pointer}
-nav a{margin:0 8px;color:#0a3d62;cursor:pointer;text-decoration:underline}
+form{max-width:500px;margin:auto}
+input,button{width:100%;padding:12px;margin-top:12px}
+button{background:#0a3d62;color:#fff;border:0;border-radius:5px}
+footer{text-align:center;padding:25px;font-size:14px;color:#666}
+
+/* GİZLİ ADMIN */
+#admin{display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.8);align-items:center;justify-content:center}
+#admin div{background:#fff;padding:30px;border-radius:8px}
+#secret{position:fixed;right:15px;bottom:15px;width:25px;height:25px;opacity:0}
 </style>
 
 <script>
-function show(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  window.scrollTo(0,0);
+let c=0;
+function secret(){
+  c++;
+  if(c===3){document.getElementById("admin").style.display="flex";c=0;}
+}
+function login(){
+  if(document.getElementById("pass").value==="1234"){
+    alert("Admin Girişi Başarılı");
+  }else{
+    alert("Hatalı");
+  }
 }
 </script>
 </head>
 
 <body>
 
-<header>
-  <h1>Araç Değer Kaybı Başvurusu</h1>
-  <p>Kazadan sonra aracınızın değer kaybını tahsil edin</p>
-  <span class="btn" onclick="show('basvuru')">Hemen Başvur</span>
-</header>
+<div class="hero">
+  <div>
+    <h1>Araç Değer Kaybınızı Alın</h1>
+    <p>Ücretsiz – Hızlı – Güvenli</p>
+    <a class="btn" href="#basvuru">Hemen Başvur</a>
+  </div>
+</div>
 
-<!-- ANA SAYFA -->
-<section id="anasayfa" class="active">
-  <div class="box">
+<section>
+  <div class="cards">
     <div class="card">
       <h3>Ücretsiz İnceleme</h3>
-      <p>Başvurunuz uzman ekip tarafından analiz edilir.</p>
+      <p>Uzman ekip analiz eder.</p>
     </div>
     <div class="card">
       <h3>Hızlı Sonuç</h3>
-      <p>3–7 iş günü içinde sonuçlanır.</p>
+      <p>3–7 iş günü.</p>
     </div>
     <div class="card">
-      <h3>Güvenli</h3>
-      <p>Bilgileriniz gizli tutulur.</p>
+      <h3>Gizli & Güvenli</h3>
+      <p>Bilgileriniz korunur.</p>
     </div>
   </div>
 </section>
 
-<!-- BAŞVURU -->
+<!-- REKLAM ALANI -->
+<section>
+  <!-- ADSENSE ONAYDAN SONRA AKTİF OLUR -->
+  <div style="background:#eee;padding:40px;text-align:center">
+    Reklam Alanı
+  </div>
+</section>
+
 <section id="basvuru">
-  <form action="https://formsubmit.co/hseyn0003@gmail.com" method="POST">
-    <h2>Değer Kaybı Başvurusu</h2>
+<form action="https://formsubmit.co/hseyn0003@gmail.com" method="POST">
+<h2>Başvuru Formu</h2>
 
-    <input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
-    <input type="tel" name="Telefon" placeholder="Telefon" required>
-    <input type="text" name="Plaka" placeholder="Araç Plakası" required>
-    <input type="date" name="Kaza Tarihi" required>
+<input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
+<input type="tel" name="Telefon" placeholder="Telefon" required>
+<input type="text" name="Plaka" placeholder="Araç Plakası" required>
+<input type="date" name="Kaza Tarihi" required>
 
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="Yeni Değer Kaybı Başvurusu">
-    <input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="Yeni Değer Kaybı Başvurusu">
 
-    <button type="submit">Başvuruyu Gönder</button>
-  </form>
-</section>
-
-<!-- YÖNERGE -->
-<section id="yonerge">
-  <h2>Başvuru Yönergeleri</h2>
-  <ul>
-    <li>Araç onarılmış olmalıdır</li>
-    <li>Araç pert olmamalıdır</li>
-    <li>Kusur oranı %100 olmamalıdır</li>
-  </ul>
-</section>
-
-<!-- KVKK -->
-<section id="kvkk">
-  <h2>KVKK Aydınlatma Metni</h2>
-  <p>6698 sayılı KVKK kapsamında kişisel verileriniz korunmaktadır.</p>
+<button type="submit">Gönder</button>
+</form>
 </section>
 
 <footer>
-  <nav>
-    <a onclick="show('anasayfa')">Ana Sayfa</a> |
-    <a onclick="show('basvuru')">Başvuru</a> |
-    <a onclick="show('yonerge')">Yönergeler</a> |
-    <a onclick="show('kvkk')">KVKK</a>
-  </nav>
-  <br>© 2026 degerkaybimi.com
+© 2026 degerkaybimi.com
 </footer>
+
+<!-- GİZLİ ADMIN NOKTASI -->
+<div id="secret" onclick="secret()"></div>
+
+<!-- ADMIN -->
+<div id="admin">
+  <div>
+    <h3>Admin Girişi</h3>
+    <input id="pass" type="password" placeholder="Şifre">
+    <button onclick="login()">Giriş</button>
+  </div>
+</div>
 
 </body>
 </html>
