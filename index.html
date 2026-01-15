@@ -1,261 +1,105 @@
-# degerkaybimi.com – PROFESYONEL VE ÇALIŞIR SÜRÜM
-
-Aşağıdaki dosyalar **BİREBİR** bu şekilde olmalıdır. Senin gönderdiğin metinler HTML etiketleri olmadığı için **butonlar ve sayfalar çalışmıyor**. Bu sürüm:
-- GitHub Pages %100 uyumlu
-- Tüm butonlar çalışır
-- Başvurular **sana mail gelir** (müşteri maili görmez)
-- Arka sayfalar bağlı
-- Modern & profesyonel
-
----
-
-## ✅ 1️⃣ index.html (ANA SAYFA – TAM VE ÇALIŞIR)
-```html
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Araç Değer Kaybı Başvurusu | degerkaybimi.com</title>
-  <style>
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#111}
-    header{background:#0f172a;color:#fff;padding:50px 20px;text-align:center}
-    header a{display:inline-block;margin-top:20px;padding:14px 28px;background:#2563eb;color:#fff;text-decoration:none;border-radius:8px}
-    section{max-width:1000px;margin:40px auto;padding:0 20px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-    .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.06)}
-    footer{background:#0f172a;color:#cbd5f5;text-align:center;padding:20px;margin-top:60px}
-    footer a{color:#cbd5f5;text-decoration:none;margin:0 10px}
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Araç Değer Kaybı Başvurusu</h1>
-  <p>Kazadan sonra aracınızın değer kaybını tahsil edebilirsiniz</p>
-  <a href="basvuru.html">Hemen Başvur</a>
-</header>
-
-<section class="grid">
-  <div class="card">
-    <h3>Ücretsiz İnceleme</h3>
-    <p>Başvurunuz uzman ekip tarafından analiz edilir.</p>
-  </div>
-  <div class="card">
-    <h3>Hızlı Sonuç</h3>
-    <p>Ortalama 3–7 iş günü içinde ödeme.</p>
-  </div>
-  <div class="card">
-    <h3>Gizli & Güvenli</h3>
-    <p>Bilgileriniz üçüncü kişilerle paylaşılmaz.</p>
-  </div>
-</section>
-
-<section>
-  <h2>Nasıl Çalışır?</h2>
-  <ol>
-    <li>Online başvuru yapın</li>
-    <li>Eksper incelemesi yapılsın</li>
-    <li>Değer kaybınız tahsil edilsin</li>
-  </ol>
-</section>
-
-<footer>
-  <a href="yonerge.html">Yönergeler</a> |
-  <a href="kvkk.html">KVKK</a>
-  <p>© 2026 degerkaybimi.com</p>
-</footer>
-
-</body>
-</html>
-```
-
----
-
-## ✅ 2️⃣ basvuru.html (FORM – MAİL SANA GİDER)
-```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Başvuru Formu</title>
+<title>Araç Değer Kaybı Başvurusu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-body{font-family:Arial;background:#f4f6f8}
-form{max-width:480px;margin:50px auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
-input,button{width:100%;padding:14px;margin-top:12px;font-size:15px}
-button{background:#2563eb;color:#fff;border:0;border-radius:8px;cursor:pointer}
+body{margin:0;font-family:Arial;background:#f5f7fa;color:#222}
+header{background:#0a3d62;color:#fff;padding:50px 20px;text-align:center}
+section{display:none;padding:40px 20px;max-width:900px;margin:auto}
+section.active{display:block}
+.btn{display:inline-block;background:#e67e22;color:#fff;padding:15px 30px;
+text-decoration:none;border-radius:6px;font-weight:bold;cursor:pointer}
+.box{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#fff;padding:25px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+footer{text-align:center;padding:20px;font-size:14px;color:#666}
+form{max-width:500px;margin:auto;background:#fff;padding:30px;border-radius:8px;
+box-shadow:0 4px 12px rgba(0,0,0,.1)}
+input,button{width:100%;padding:12px;margin-top:12px;font-size:15px}
+button{background:#0a3d62;color:#fff;border:0;border-radius:5px;cursor:pointer}
+nav a{margin:0 8px;color:#0a3d62;cursor:pointer;text-decoration:underline}
 </style>
-</head>
-<body>
 
-<form action="https://formsubmit.co/hseyn0003@gmail.com" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="Yeni Değer Kaybı Başvurusu">
-
-  <input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
-  <input type="tel" name="Telefon" placeholder="Telefon" required>
-  <input type="text" name="Plaka" placeholder="Araç Plakası" required>
-  <input type="date" name="Kaza Tarihi" required>
-
-  <button type="submit">Başvuruyu Gönder</button>
-</form>
-
-</body>
-</html>
-```
-
----
-
-## ✅ 3️⃣ yonerge.html
-```html
-<!DOCTYPE html>
-<html lang="tr">
-<head><meta charset="UTF-8"><title>Başvuru Yönergeleri</title></head>
-<body style="font-family:Arial;padding:40px">
-<h1>Başvuru Yönergeleri</h1>
-<ul>
-  <li>Kaza sonrası onarım yapılmış olmalıdır</li>
-  <li>Araç pert olmamalıdır</li>
-  <li>Kusur oranı %100 olmamalıdır</li>
-</ul>
-</body>
-</html>
-```
-
----
-
-## ✅ 4️⃣ kvkk.html
-```html
-<!DOCTYPE html>
-<html lang="tr">
-<head><meta charset="UTF-8"><title>KVKK</title></head>
-<body style="font-family:Arial;padding:40px">
-<h1>KVKK Aydınlatma Metni</h1>
-<p>6698 sayılı KVKK kapsamında bilgileriniz korunmaktadır.</p>
-</body>
-</html>
-```
-
----
-
-## 📁 DOĞRU DOSYA YAPISI (ÇOK ÖNEMLİ)
-```
-root /
- ├ index.html
- ├ basvuru.html
- ├ yonerge.html
- ├ kvkk.html
- └ CNAME   (içinde: degerkaybimi.com)
-```
-
----
-
-## 🔴 NEDEN ÖNCESİ ÇALIŞMIYORDU?
-- HTML etiketleri yoktu
-- <a href> linkleri yoktu
-- Form action eksikti
-
-BU SÜRÜMDE HEPSİ DÜZELTİLDİ ✅
-
----
-
-## 🔐 GİZLİ YÖNETİCİ (ADMIN) + GÖRÜNMEYEN AÇIKLAMALAR
-
-İstediğin şey **GitHub Pages sınırları içinde mümkün** ve doğru yolu şu:
-
-### 1️⃣ Sitede GÖRÜNMEYECEK açıklamalar
-Bazı metinler **sadece sana özel** olacak, ziyaretçi görmeyecek.
-Bunu iki şekilde yapıyoruz:
-
-#### ✅ Yöntem A – Admin Giriş Yapınca Açılan Alanlar (ÖNERİLEN)
-```html
-<div class="admin-only" style="display:none">
-  <h3>ADMIN NOTLARI</h3>
-  <p>Bu açıklamalar sadece sana görünür</p>
-</div>
-```
-
-```html
 <script>
-const sifre = prompt("Admin şifresi:");
-if(sifre === "1234"){
-  document.querySelectorAll('.admin-only').forEach(e=>e.style.display='block');
+function show(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0,0);
 }
 </script>
-```
-➡️ Normal kullanıcı **ASLA görmez**
-➡️ Şifreyi bilen sen görürsün
+</head>
 
----
-
-### 2️⃣ GERÇEKÇİ ADMIN PANELİ (GitHub Pages UYUMLU)
-GitHub Pages backend desteklemez ❌
-Ama **EN SAĞLAM ÇÖZÜM**:
-
-## 🟢 Google Sheet Admin Panel (ÖNERİLEN)
-
-#### Nasıl çalışır?
-- Başvuru formu
-- Veriler **Google Sheet'e düşer**
-- Sheet = senin admin panelin
-- Telefon, plaka, tarih hepsi listelenir
-
-#### Form action şöyle olur:
-```html
-<form action="https://formsubmit.co/YOUR_SHEET_ENDPOINT" method="POST">
-```
-
-✔ Şifreli
-✔ Mobil uyumlu
-✔ Ücretsiz
-✔ Gerçek admin panel
-
----
-
-### 3️⃣ KENDİ ADMIN SAYFAN (basit ama iş görür)
-
-`admin.html` (şifreli giriş)
-```html
-<!DOCTYPE html>
-<html lang="tr">
-<head><meta charset="UTF-8"><title>Admin Panel</title></head>
 <body>
-<script>
-const s = prompt("Admin Şifre");
-if(s !== "1234"){ document.body.innerHTML = "Yetkisiz"; }
-</script>
 
-<h1>Admin Panel</h1>
-<p>Başvurular mail + sheet üzerinden takip edilir</p>
+<header>
+  <h1>Araç Değer Kaybı Başvurusu</h1>
+  <p>Kazadan sonra aracınızın değer kaybını tahsil edin</p>
+  <span class="btn" onclick="show('basvuru')">Hemen Başvur</span>
+</header>
+
+<!-- ANA SAYFA -->
+<section id="anasayfa" class="active">
+  <div class="box">
+    <div class="card">
+      <h3>Ücretsiz İnceleme</h3>
+      <p>Başvurunuz uzman ekip tarafından analiz edilir.</p>
+    </div>
+    <div class="card">
+      <h3>Hızlı Sonuç</h3>
+      <p>3–7 iş günü içinde sonuçlanır.</p>
+    </div>
+    <div class="card">
+      <h3>Güvenli</h3>
+      <p>Bilgileriniz gizli tutulur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BAŞVURU -->
+<section id="basvuru">
+  <form action="https://formsubmit.co/hseyn0003@gmail.com" method="POST">
+    <h2>Değer Kaybı Başvurusu</h2>
+
+    <input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
+    <input type="tel" name="Telefon" placeholder="Telefon" required>
+    <input type="text" name="Plaka" placeholder="Araç Plakası" required>
+    <input type="date" name="Kaza Tarihi" required>
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="Yeni Değer Kaybı Başvurusu">
+    <input type="hidden" name="_template" value="table">
+
+    <button type="submit">Başvuruyu Gönder</button>
+  </form>
+</section>
+
+<!-- YÖNERGE -->
+<section id="yonerge">
+  <h2>Başvuru Yönergeleri</h2>
+  <ul>
+    <li>Araç onarılmış olmalıdır</li>
+    <li>Araç pert olmamalıdır</li>
+    <li>Kusur oranı %100 olmamalıdır</li>
+  </ul>
+</section>
+
+<!-- KVKK -->
+<section id="kvkk">
+  <h2>KVKK Aydınlatma Metni</h2>
+  <p>6698 sayılı KVKK kapsamında kişisel verileriniz korunmaktadır.</p>
+</section>
+
+<footer>
+  <nav>
+    <a onclick="show('anasayfa')">Ana Sayfa</a> |
+    <a onclick="show('basvuru')">Başvuru</a> |
+    <a onclick="show('yonerge')">Yönergeler</a> |
+    <a onclick="show('kvkk')">KVKK</a>
+  </nav>
+  <br>© 2026 degerkaybimi.com
+</footer>
+
 </body>
 </html>
-```
-
-📌 Not: Bu **temel koruma**dır. GitHub Pages için yeterlidir.
-
----
-
-## ❗ ÖNEMLİ GERÇEK
-- GitHub Pages = backend YOK
-- Gerçek login + DB için:
-  - Firebase
-  - Supabase
-  - Vercel gerekir
-
-Ama senin ihtiyacın için:
-✅ Gizli açıklamalar
-✅ Başvuru takibi
-✅ Admin kontrol
-
-**Bu sistem FAZLASIYLA yeterli.**
-
----
-
-### ŞİMDİ SANA NET SORUYORUM 👇
-
-1️⃣ Admin panel **Google Sheet** olsun mu? (EN SAĞLAM)
-2️⃣ Admin panel **sadece şifreli sayfa** mı olsun?
-3️⃣ Gizli açıklamalar hangi sayfada olsun? (index / başvuru)
-
-Cevapla → birebir kurayım 🚀
