@@ -3,146 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mega Game Pro | Eğlence Dünyası</title>
+    <title>Mega Game Pro | Oyuncu Paneli</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #6366f1; --secondary: #f43f5e; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
+        :root { --primary: #6366f1; --secondary: #f43f5e; --gold: #f59e0b; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 80px; }
         
-        header { width: 100%; padding: 25px; text-align: center; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        header h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 1px; color: var(--primary); text-transform: uppercase; }
+        /* Üst Profil Barı */
+        .user-bar { background: var(--card); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); sticky: top; z-index: 1000; }
+        .user-info { display: flex; align-items: center; gap: 10px; }
+        .avatar { width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; border: 2px solid white; }
+        .stats { display: flex; gap: 15px; font-size: 14px; font-weight: 700; }
+        .stat-item { display: flex; align-items: center; gap: 5px; }
+        .coin-icon { color: var(--gold); }
 
-        .app-container { width: 100%; max-width: 450px; padding: 20px; }
+        .app-container { width: 100%; max-width: 450px; margin: auto; padding: 20px; }
         
-        /* Navigasyon */
-        .tabs { display: flex; gap: 10px; margin-bottom: 25px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
-        .tab-btn { padding: 12px 20px; background: var(--card); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; cursor: pointer; color: #94a3b8; font-weight: 700; white-space: nowrap; transition: 0.3s; font-size: 14px; }
-        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); transform: scale(1.05); }
+        /* Oyun Kartları */
+        .game-card { background: var(--card); padding: 25px; border-radius: 24px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; display: none; }
+        .game-card.active { display: block; animation: fadeIn 0.3s ease; }
 
-        .game-card { background: var(--card); padding: 30px; border-radius: 28px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); text-align: center; display: none; border: 1px solid rgba(255,255,255,0.05); }
-        .game-card.active { display: block; animation: zoomIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); }
+        /* Profil Sekmesi */
+        .profile-card { background: linear-gradient(135deg, var(--primary), #4338ca); padding: 30px; border-radius: 24px; text-align: center; margin-bottom: 20px; }
+        .level-badge { background: white; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 12px; display: inline-block; margin-top: 10px; }
 
-        /* Oyun 1: Sayı Tahmin */
-        .num-input { width: 100px; padding: 15px; background: var(--bg); border: 2px solid var(--primary); border-radius: 15px; font-size: 24px; color: white; text-align: center; margin-bottom: 15px; }
-        
-        /* Oyun 2: Kelime */
-        .word-display { font-size: 32px; font-weight: 800; letter-spacing: 8px; margin: 25px 0; color: var(--secondary); text-transform: uppercase; }
-        
-        /* Oyun 3: Hafıza (Kartlar) */
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
-        .cell { aspect-ratio: 1; background: var(--bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
-        .cell.flipped { background: var(--primary); transform: rotateY(180deg); }
+        /* Butonlar ve Girdiler */
+        .btn { width: 100%; padding: 15px; border-radius: 15px; border: none; font-weight: 800; cursor: pointer; transition: 0.2s; margin-top: 10px; font-family: inherit; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 0 #4338ca; }
+        .btn-primary:active { transform: translateY(2px); box-shadow: none; }
+        .input-dark { width: 100%; padding: 15px; background: rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; text-align: center; font-size: 18px; margin-bottom: 10px; }
 
-        /* Ortak Elemanlar */
-        .btn { background: var(--primary); color: white; border: none; padding: 16px; border-radius: 18px; font-size: 16px; font-weight: 800; cursor: pointer; width: 100%; transition: 0.2s; box-shadow: 0 4px 0 #4338ca; }
-        .btn:active { transform: translateY(4px); box-shadow: none; }
-        .msg { margin-top: 20px; font-weight: 600; min-height: 24px; }
+        /* Alt Navigasyon Menu */
+        .nav-menu { position: fixed; bottom: 0; width: 100%; background: var(--card); display: flex; justify-content: space-around; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .nav-item { color: #94a3b8; text-decoration: none; font-size: 12px; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+        .nav-item.active { color: var(--primary); }
 
-        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>🎮 Mega Game Pro</h1>
-</header>
-
-<div class="app-container">
-    <div class="tabs">
-        <button class="tab-btn active" onclick="openGame('numGame')">🔢 Sayı Tahmin</button>
-        <button class="tab-btn" onclick="openGame('wordGame')">🔤 Kelime Avı</button>
-        <button class="tab-btn" onclick="openGame('memoryGame')">🧠 Hafıza Kartı</button>
+<div class="user-bar">
+    <div class="user-info">
+        <div class="avatar" id="userInitial">?</div>
+        <div>
+            <div style="font-size: 12px; color: #94a3b8;">Hoş geldin,</div>
+            <div style="font-weight: 800;" id="navUsername">Gezgin</div>
+        </div>
     </div>
-
-    <div id="numGame" class="game-card active">
-        <h2>Gizli Sayı Kaç?</h2>
-        <p style="color:#94a3b8">1-100 arası bir sayı tuttum.</p>
-        <input type="number" id="numInp" class="num-input">
-        <button class="btn" onclick="playNum()">Tahmin Et</button>
-        <p id="numMsg" class="msg"></p>
-    </div>
-
-    <div id="wordGame" class="game-card">
-        <h2>Kelimeyi Bul</h2>
-        <p style="color:#94a3b8">Karışık harflerle verilen meyve:</p>
-        <div id="wordBoard" class="word-display">_ _ _ _ _</div>
-        <input type="text" id="wordInp" class="num-input" style="width:100%" placeholder="Tahminin?">
-        <button class="btn" onclick="playWord()">Kontrol Et</button>
-        <p id="wordMsg" class="msg"></p>
-    </div>
-
-    <div id="memoryGame" class="game-card">
-        <h2>Hafıza Testi</h2>
-        <p style="color:#94a3b8">Aynı emojileri eşleştirin!</p>
-        <div class="grid" id="grid"></div>
-        <button class="btn" style="margin-top:20px; background:var(--secondary); box-shadow:0 4px 0 #be123c" onclick="initMemory()">Yeniden Başlat</button>
+    <div class="stats">
+        <div class="stat-item"><span class="coin-icon">💰</span> <span id="userCoins">0</span></div>
+        <div class="stat-item"><span style="color: #10b981;">⭐</span> <span id="userXP">0</span></div>
     </div>
 </div>
 
-<script>
-    // Tab Sistemi
-    function openGame(id) {
-        document.querySelectorAll('.game-card').forEach(g => g.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        event.currentTarget.classList.add('active');
-        if(id === 'memoryGame') initMemory();
-    }
-
-    // --- SAYI TAHMİN ---
-    let target = Math.floor(Math.random() * 100) + 1;
-    function playNum() {
-        let val = document.getElementById('numInp').value;
-        let m = document.getElementById('numMsg');
-        if(val == target) { m.innerHTML = "🎯 BİLDİN! Sayı: " + target; m.style.color = "#10b981"; }
-        else if(val < target) { m.innerHTML = "DAHA YÜKSEK 🔼"; m.style.color = "#f59e0b"; }
-        else { m.innerHTML = "DAHA DÜŞÜK 🔽"; m.style.color = "#f59e0b"; }
-    }
-
-    // --- KELİME BUL ---
-    const words = ["ELMA", "ARMUT", "KİRAZ", "VİŞNE", "KAVUN"];
-    let currWord = words[Math.floor(Math.random()*words.length)];
-    document.getElementById('wordBoard').innerText = currWord[0] + " _ ".repeat(currWord.length-2) + currWord[currWord.length-1];
+<div class="app-container">
     
-    function playWord() {
-        let val = document.getElementById('wordInp').value.toUpperCase();
-        let m = document.getElementById('wordMsg');
-        if(val === currWord) { m.innerText = "TEBRİKLER! 🍇"; m.style.color = "#10b981"; }
-        else { m.innerText = "YANLIŞ TAHMİN! ❌"; m.style.color = "#f43f5e"; }
+    <div id="profilePage" class="game-card active">
+        <div class="profile-card">
+            <div style="font-size: 50px;">👤</div>
+            <h2 id="profileNameDisplay" style="margin: 10px 0 5px 0;">Oyuncu Adı</h2>
+            <div class="level-badge" id="levelDisplay">SEVİYE 1</div>
+        </div>
+        <div style="text-align: left; background: rgba(0,0,0,0.1); padding: 15px; border-radius: 15px;">
+            <label style="font-size: 12px; color: #94a3b8;">Kullanıcı Adını Değiştir:</label>
+            <input type="text" id="usernameInput" class="input-dark" placeholder="Yeni adın...">
+            <button class="btn btn-primary" onclick="saveUsername()">Kaydet</button>
+        </div>
+    </div>
+
+    <div id="gamePage" class="game-card">
+        <h2>Sayı Tahmin</h2>
+        <p style="color: #94a3b8;">1-50 arası tuttum. Bilirsen +10 XP ve +5 Coin!</p>
+        <input type="number" id="guessInput" class="input-dark">
+        <button class="btn btn-primary" onclick="playGuessGame()">Tahmin Et</button>
+        <p id="gameMsg" style="margin-top: 15px; font-weight: 700;"></p>
+    </div>
+
+    <div id="wordPage" class="game-card">
+        <h2>Kelime Avı</h2>
+        <p id="wordHint" style="color: #94a3b8;"></p>
+        <div id="wordDisplay" style="font-size: 30px; letter-spacing: 5px; margin: 20px 0; color: var(--secondary); font-weight: 800;"></div>
+        <input type="text" id="wordInput" class="input-dark" placeholder="Cevabın?">
+        <button class="btn btn-primary" onclick="playWordGame()">Kontrol Et</button>
+    </div>
+
+</div>
+
+<nav class="nav-menu">
+    <div class="nav-item active" onclick="showPage('profilePage', this)"><span>👤</span> Profil</div>
+    <div class="nav-item" onclick="showPage('gamePage', this)"><span>🔢</span> Sayı Bul</div>
+    <div class="nav-item" onclick="showPage('wordPage', this)"><span>🔤</span> Kelime</div>
+</nav>
+
+<script>
+    // --- VERİ SİSTEMİ (LOCALSTORAGE) ---
+    let userData = JSON.parse(localStorage.getItem('megaGameUser')) || {
+        name: "Gezgin",
+        coins: 0,
+        xp: 0,
+        level: 1
+    };
+
+    function updateUI() {
+        document.getElementById('navUsername').innerText = userData.name;
+        document.getElementById('profileNameDisplay').innerText = userData.name;
+        document.getElementById('userInitial').innerText = userData.name[0].toUpperCase();
+        document.getElementById('userCoins').innerText = userData.coins;
+        document.getElementById('userXP').innerText = userData.xp;
+        document.getElementById('levelDisplay').innerText = "SEVİYE " + userData.level;
+        localStorage.setItem('megaGameUser', JSON.stringify(userData));
     }
 
-    // --- HAFIZA KARTI ---
-    const icons = ['🍎','🍎','🍌','🍌','🍇','🍇','🍓','🍓','🍉','🍉','🍒','🍒','🥑','🥑','🥝','🥝'];
-    let flipped = [];
-    function initMemory() {
-        const grid = document.getElementById('grid');
-        grid.innerHTML = '';
-        let shuffled = icons.sort(() => Math.random() - 0.5);
-        shuffled.forEach((icon, i) => {
-            let cell = document.createElement('div');
-            cell.className = 'cell';
-            cell.dataset.icon = icon;
-            cell.onclick = () => {
-                if(flipped.length < 2 && !cell.classList.contains('flipped')) {
-                    cell.innerText = icon;
-                    cell.classList.add('flipped');
-                    flipped.push(cell);
-                    if(flipped.length === 2) {
-                        if(flipped[0].dataset.icon === flipped[1].dataset.icon) {
-                            flipped = [];
-                        } else {
-                            setTimeout(() => {
-                                flipped.forEach(c => { c.innerText = ''; c.classList.remove('flipped'); });
-                                flipped = [];
-                            }, 700);
-                        }
-                    }
-                }
-            };
-            grid.appendChild(cell);
-        });
+    function addRewards(xp, coins) {
+        userData.xp += xp;
+        userData.coins += coins;
+        // Basit Level Atlama (Her 100 XP'de bir)
+        userData.level = Math.floor(userData.xp / 100) + 1;
+        updateUI();
     }
+
+    function saveUsername() {
+        const newName = document.getElementById('usernameInput').value;
+        if(newName.length > 2) {
+            userData.name = newName;
+            updateUI();
+            alert("Kullanıcı adın güncellendi!");
+        }
+    }
+
+    function showPage(pageId, element) {
+        document.querySelectorAll('.game-card').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        element.classList.add('active');
+        if(pageId === 'wordPage') initWordGame();
+    }
+
+    // --- SAYI OYUNU MANTIĞI ---
+    let secretNum = Math.floor(Math.random() * 50) + 1;
+    function playGuessGame() {
+        const val = document.getElementById('guessInput').value;
+        const msg = document.getElementById('gameMsg');
+        if(val == secretNum) {
+            msg.innerText = "🎉 BİLDİN! +10 XP, +5 Coin";
+            msg.style.color = "#10b981";
+            addRewards(10, 5);
+            secretNum = Math.floor(Math.random() * 50) + 1;
+        } else {
+            msg.innerText = val < secretNum ? "Daha YÜKSEK! ⬆️" : "Daha DÜŞÜK! ⬇️";
+            msg.style.color = "#f59e0b";
+        }
+    }
+
+    // --- KELİME OYUNU MANTIĞI ---
+    const words = [
+        {q: "En sevilen meyve?", a: "ELMA"},
+        {q: "Türkiye'nin başkenti?", a: "ANKARA"},
+        {q: "Gece parlayan gök cismi?", a: "AY"}
+    ];
+    let currentTask;
+    function initWordGame() {
+        currentTask = words[Math.floor(Math.random() * words.length)];
+        document.getElementById('wordHint').innerText = currentTask.q;
+        document.getElementById('wordDisplay').innerText = "_ ".repeat(currentTask.a.length);
+    }
+    function playWordGame() {
+        const ans = document.getElementById('wordInput').value.toUpperCase();
+        if(ans === currentTask.a) {
+            alert("Harikasın! +20 XP, +10 Coin");
+            addRewards(20, 10);
+            document.getElementById('wordInput').value = "";
+            initWordGame();
+        } else {
+            alert("Yanlış cevap, tekrar dene!");
+        }
+    }
+
+    // Başlangıçta UI'ı yükle
+    updateUI();
 </script>
 
 </body>
